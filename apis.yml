@@ -28,7 +28,7 @@ type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party
 created: '2025-02-24'
-modified: '2025-03-27'
+modified: '2026-03-16'
 position: Consumer
 description: >-
   Decentro is a fintech platform that provides seamless integration and
@@ -42,7 +42,7 @@ description: >-
   achieve their goals faster and more effectively.
 maintainers:
   - FN: Kin Lane
-    email: info@apievangelist.com
+    email: kin@apievangelist.com
 specificationVersion: '0.19'
 common:
   - name: Decentro - Payments, KYC & Banking APIs and SDKs
