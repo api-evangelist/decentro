@@ -1,0 +1,40 @@
+extends:
+  - spectral:oas
+rules:
+  decentro-info-contact:
+    description: API info should declare a Decentro contact.
+    given: $.info
+    severity: warn
+    then:
+      field: contact
+      function: truthy
+  decentro-base-url:
+    description: Servers should reference decentro.tech.
+    given: $.servers[*].url
+    severity: warn
+    then:
+      function: pattern
+      functionOptions:
+        match: "decentro\\.tech"
+  decentro-api-key-security:
+    description: API should declare client_secret API key authentication.
+    given: $.components.securitySchemes
+    severity: error
+    then:
+      field: apiKey
+      function: truthy
+  decentro-v2-paths:
+    description: API resources should be versioned under /v2.
+    given: $.paths
+    severity: warn
+    then:
+      function: pattern
+      functionOptions:
+        match: "/v2/"
+  decentro-operation-tags:
+    description: Operations should be tagged Collections, Payouts, Mandates, or Settlements.
+    given: $.paths[*][*]
+    severity: warn
+    then:
+      field: tags
+      function: truthy

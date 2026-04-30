@@ -1,0 +1,68 @@
+openapi: 3.1.0
+info:
+  title: Decentro Virtual Accounts API
+  description: >-
+    Decentro Virtual Accounts API enables creation, management, and
+    monitoring of virtual bank accounts for collections, escrow, and
+    reconciliation use-cases.
+  version: "1.0"
+servers:
+  - url: https://in.decentro.tech
+    description: India production
+tags:
+  - name: Virtual Accounts
+paths:
+  /v2/banking/account:
+    post:
+      summary: Create a virtual account
+      operationId: createVirtualAccount
+      tags: [Virtual Accounts]
+      responses:
+        "200":
+          description: Virtual account created.
+  /v2/banking/account/{accountNumber}:
+    get:
+      summary: Get virtual account details
+      operationId: getVirtualAccount
+      tags: [Virtual Accounts]
+      parameters:
+        - in: path
+          name: accountNumber
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Virtual account record.
+  /v2/banking/account/balance:
+    get:
+      summary: Get virtual account balance
+      operationId: getVirtualAccountBalance
+      tags: [Virtual Accounts]
+      responses:
+        "200":
+          description: Current balance.
+  /v2/banking/account/statement:
+    get:
+      summary: Get virtual account statement
+      operationId: getVirtualAccountStatement
+      tags: [Virtual Accounts]
+      responses:
+        "200":
+          description: Statement entries.
+  /v2/banking/account/whitelist:
+    post:
+      summary: Whitelist a remitter
+      operationId: whitelistRemitter
+      tags: [Virtual Accounts]
+      responses:
+        "200":
+          description: Remitter whitelisted.
+components:
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: client_secret
+security:
+  - apiKey: []

@@ -1,0 +1,50 @@
+name: Decentro Vocabulary
+description: >-
+  Shared vocabulary of terms used across Decentro's banking,
+  payments, KYC, virtual-accounts, and ledger APIs for the Indian
+  financial services ecosystem.
+terms:
+  - term: Virtual Account
+    definition: >-
+      A unique virtual bank account number tied to a customer or use
+      case, used for collections, escrow, and reconciliation.
+  - term: UPI
+    definition: >-
+      India's Unified Payments Interface for instant inter-bank
+      account-to-account transfers.
+  - term: UPI Autopay
+    definition: >-
+      A recurring-payments framework on UPI for subscription-style
+      mandates.
+  - term: ENACH
+    definition: >-
+      The Electronic National Automated Clearing House mandate used in
+      India for recurring debits.
+  - term: KYC
+    definition: >-
+      Know Your Customer - the regulatory verification of a customer's
+      identity, including Aadhaar, PAN, and document checks.
+  - term: DigiLocker
+    definition: >-
+      The Government of India's digital document wallet integrated by
+      Decentro for issued-document KYC.
+  - term: Aadhaar OTP
+    definition: >-
+      A one-time password tied to an Aadhaar holder's mobile, used for
+      e-KYC.
+  - term: Document Forensics
+    definition: >-
+      Verification of identity documents through extraction and
+      authenticity checks.
+  - term: Face Match
+    definition: >-
+      Comparison between a selfie/liveness frame and an identity
+      document photo.
+  - term: Ledger Account
+    definition: >-
+      A double-entry accounting bucket tracking debits and credits in
+      Decentro's Ledger API.
+  - term: Settlement
+    definition: >-
+      Movement of funds from a virtual or holding account to a
+      destination beneficiary.

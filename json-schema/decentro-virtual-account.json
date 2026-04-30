@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/decentro/json-schema/decentro-virtual-account.json",
+  "title": "Decentro Virtual Account",
+  "description": "A virtual bank account issued through Decentro for collections or escrow.",
+  "type": "object",
+  "properties": {
+    "account_number": {"type": "string"},
+    "ifsc": {"type": "string"},
+    "customer_id": {"type": "string"},
+    "purpose": {"type": "string"},
+    "currency": {"type": "string"},
+    "balance": {"type": "number"},
+    "status": {"type": "string", "enum": ["ACTIVE", "FROZEN", "CLOSED"]},
+    "created_at": {"type": "string", "format": "date-time"}
+  },
+  "required": ["account_number", "ifsc"]
+}

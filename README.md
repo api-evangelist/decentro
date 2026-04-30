@@ -1,47 +1,88 @@
 # Decentro (decentro)
-Decentro is a fintech platform that provides seamless integration and automation of banking services for businesses. By leveraging advanced technology, Decentro empowers businesses to streamline their banking operations, manage payments, and access financial data in real-time. With a user-friendly interface and customizable solutions, Decentro helps businesses optimize their financial processes, reduce manual work, and improve efficiency. Through its innovative approach to banking services, Decentro is revolutionizing the way businesses manage their finances and helping them achieve their goals faster and more effectively.
+
+Decentro is a banking-as-a-service platform that provides businesses with seamless integration to Indian banking infrastructure - including payments (UPI, IMPS, NEFT, RTGS), virtual accounts, KYC, ledger primitives, and credit-bureau data.
 
 **URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/api-evangelist/decentro/refs/heads/main/apis.yml)
 
 ## Scope
 
-- **Type:** Index 
-- **Position:** Consumer 
-- **Access:** 3rd-Party 
+- **Type:** Contract
+- **Position:** Consuming
+- **Access:** 3rd-Party
+- **x-type:** company
 
-## Tags:
+## Tags
 
- - Banking
+- Banking, Banking-as-a-Service, FinTech, India, KYC, Ledger, Payments, UPI, Virtual Accounts
 
 ## Timestamps
 
-- **Created:** 2025-02-24 
-- **Modified:** 2025-03-27 
+- **Created:** 2025-02-24
+- **Modified:** 2026-04-28
 
 ## APIs
 
-### Decentro
-Decentro is a financial technology company that provides businesses with innovative banking solutions. They offer a platform that allows companies to access multiple banking services such as payments, deposits, and lending all in one place. Decentro's goal is to simplify and streamline the banking experience for businesses by offering a user-friendly interface and personalized financial services. They work with various financial institutions to provide their clients with the best banking solutions tailored to their specific needs. With Decentro, businesses can manage their finances more effectively and efficiently, ultimately helping them to grow and succeed in the competitive market.
+### Decentro KYC & Onboarding API
 
-**Human URL:** [https://decentro.tech/](https://decentro.tech/)
+Identity verification, customer onboarding, DigiLocker integration, Aadhaar OTP, document classification, and face match.
 
-
-#### Tags:
-
- - Banking
+- **Base URL:** https://in.decentro.tech
+- **Human URL:** https://docs.decentro.tech/
 
 #### Properties
 
-- [Documentation](https://decentro.tech/)
+- [Documentation](https://docs.decentro.tech/)
+- [OpenAPI](openapi/decentro-kyc-api-openapi.yml)
+
+### Decentro Payments API
+
+Collections, payouts, ENACH mandates, UPI Autopay, settlements, and refunds for the Indian banking system.
+
+- **Base URL:** https://in.decentro.tech
+- **Human URL:** https://docs.decentro.tech/
+
+#### Properties
+
+- [Documentation](https://docs.decentro.tech/)
+- [OpenAPI](openapi/decentro-payments-api-openapi.yml)
+- [JSONSchema - Payout](json-schema/decentro-payout.json)
+- [Rules](rules/decentro-payments-api-rules.yml)
+- [Capabilities](capabilities/decentro-payments-api-capabilities.yml)
+
+### Decentro Virtual Accounts API
+
+Create and manage virtual bank accounts, balances, statements, and remitter whitelisting for collections and reconciliation.
+
+- **Base URL:** https://in.decentro.tech
+- **Human URL:** https://docs.decentro.tech/
+
+#### Properties
+
+- [Documentation](https://docs.decentro.tech/)
+- [OpenAPI](openapi/decentro-virtual-accounts-api-openapi.yml)
+- [JSONSchema - Virtual Account](json-schema/decentro-virtual-account.json)
+
+### Decentro Ledger API
+
+Double-entry accounting primitives for journals, ledger accounts, and transactions tied to Decentro virtual accounts and external counterparties.
+
+- **Base URL:** https://in.decentro.tech
+- **Human URL:** https://docs.decentro.tech/
+
+#### Properties
+
+- [Documentation](https://docs.decentro.tech/)
+- [OpenAPI](openapi/decentro-ledger-api-openapi.yml)
 
 ## Common Properties
 
-- [Portal](https://decentro.tech/)
+- [Website](https://decentro.tech/)
+- [Portal](https://docs.decentro.tech/)
+- [Reference](https://docs.decentro.tech/reference)
 - [Blog](https://decentro.tech/blog/)
+- [JSON-LD](json-ld/decentro-context.jsonld)
+- [Vocabulary](vocabulary/decentro-vocabulary.yml)
 
 ## Maintainers
 
-**FN:** Kin Lane
-
-**Email:** info@apievangelist.com
-
+- **Kin Lane** - kin@apievangelist.com

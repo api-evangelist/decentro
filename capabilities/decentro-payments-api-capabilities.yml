@@ -1,0 +1,49 @@
+name: Decentro Payments API Capabilities
+description: >-
+  Capabilities exposed by Decentro's Payments API for collections,
+  payouts, mandates, and refunds.
+capabilities:
+  - name: Generate UPI Collection Link
+    description: Create a payment link a customer can settle through any UPI app.
+    operationId: generateUpiLink
+    method: POST
+    path: /v2/payments/upi/link
+  - name: Generate Dynamic UPI QR
+    description: Issue a dynamic UPI QR code for in-person or in-app collections.
+    operationId: generateUpiQr
+    method: POST
+    path: /v2/payments/upi/qr
+  - name: Disburse Payout
+    description: Send funds via IMPS, NEFT, RTGS, or UPI to a beneficiary.
+    operationId: createPayout
+    method: POST
+    path: /v2/payments/transfer
+  - name: Get Payout Status
+    description: Track a previously initiated payout.
+    operationId: getPayoutStatus
+    method: GET
+    path: /v2/payments/transfer/status
+  - name: Register ENACH Mandate
+    description: Create a recurring-debit mandate via ENACH.
+    operationId: registerEnachMandate
+    method: POST
+    path: /v2/payments/enach/register
+  - name: Register UPI Autopay Mandate
+    description: Create a recurring-debit mandate via UPI Autopay.
+    operationId: registerUpiAutopayMandate
+    method: POST
+    path: /v2/payments/upi-autopay/mandate
+  - name: Issue Refund
+    description: Refund a previously settled payment.
+    operationId: issueRefund
+    method: POST
+    path: /v2/payments/refund
+use_cases:
+  - name: Embedded payments
+    description: Embed UPI collection and payout flows directly in fintech and SaaS apps.
+  - name: Subscription billing
+    description: Run recurring billing using ENACH and UPI Autopay mandates.
+  - name: Marketplace settlements
+    description: Split, hold, and release funds between buyers, marketplace, and sellers.
+  - name: Payroll and rewards
+    description: Disburse salaries, vendor payments, and reward payouts at scale.

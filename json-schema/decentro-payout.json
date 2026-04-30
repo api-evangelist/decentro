@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/decentro/json-schema/decentro-payout.json",
+  "title": "Decentro Payout",
+  "description": "A disbursement initiated via Decentro's Payments API.",
+  "type": "object",
+  "properties": {
+    "transfer_id": {"type": "string"},
+    "from_account": {"type": "string"},
+    "to_account": {"type": "string"},
+    "to_ifsc": {"type": "string"},
+    "amount": {"type": "number"},
+    "currency": {"type": "string"},
+    "purpose_message": {"type": "string"},
+    "transfer_type": {"type": "string", "enum": ["IMPS", "NEFT", "RTGS", "UPI"]},
+    "status": {"type": "string"},
+    "created_at": {"type": "string", "format": "date-time"}
+  },
+  "required": ["transfer_id", "amount", "transfer_type"]
+}

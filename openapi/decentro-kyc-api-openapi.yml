@@ -1,0 +1,78 @@
+openapi: 3.1.0
+info:
+  title: Decentro KYC & Onboarding API
+  description: >-
+    Decentro's KYC & Onboarding API provides identity verification,
+    customer onboarding workflows, and document/face forensics for
+    Indian financial services.
+  version: "1.0"
+  contact:
+    name: Decentro
+    url: https://decentro.tech/
+servers:
+  - url: https://in.decentro.tech
+    description: India production
+  - url: https://staging.decentro.tech
+    description: Staging
+tags:
+  - name: KYC
+  - name: Onboarding
+  - name: Verification
+  - name: Forensics
+paths:
+  /v2/kyc/public_registry/validate:
+    post:
+      summary: Validate against public registry
+      operationId: validatePublicRegistry
+      tags: [Verification]
+      responses:
+        "200":
+          description: Validation result.
+  /v2/kyc/identities/aadhaar/otp/generate:
+    post:
+      summary: Generate Aadhaar OTP
+      operationId: generateAadhaarOtp
+      tags: [KYC]
+      responses:
+        "200":
+          description: OTP generated.
+  /v2/kyc/identities/aadhaar/otp/validate:
+    post:
+      summary: Validate Aadhaar OTP
+      operationId: validateAadhaarOtp
+      tags: [KYC]
+      responses:
+        "200":
+          description: Aadhaar verification result.
+  /v2/kyc/forensics/document_classification:
+    post:
+      summary: Classify document
+      operationId: classifyDocument
+      tags: [Forensics]
+      responses:
+        "200":
+          description: Document classification result.
+  /v2/kyc/forensics/face_match:
+    post:
+      summary: Face match
+      operationId: faceMatch
+      tags: [Forensics]
+      responses:
+        "200":
+          description: Face match score.
+  /v2/kyc/digilocker/initialize:
+    post:
+      summary: Initialize DigiLocker session
+      operationId: initializeDigilocker
+      tags: [KYC]
+      responses:
+        "200":
+          description: DigiLocker session created.
+components:
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: client_secret
+security:
+  - apiKey: []
