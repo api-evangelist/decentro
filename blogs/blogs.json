@@ -1,0 +1,13 @@
+{
+  "repo": "decentro",
+  "feeds": [
+    {
+      "source": "https://decentro.tech/blog/",
+      "feed_url": "https://decentro.tech/blog/feed/",
+      "saved": 10,
+      "title": "Decentro"
+    }
+  ],
+  "post_count": 10,
+  "fetched": "2026-05-03T23:26:58Z"
+}
