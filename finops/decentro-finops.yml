@@ -1,5 +1,6 @@
 specification: FinOps Framework
 specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
 alignedWith:
   framework: FinOps Foundation Framework
   frameworkUrl: https://www.finops.org/framework/
@@ -8,158 +9,118 @@ alignedWith:
   dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
 provider: Decentro
 providerId: decentro
-publisherName: Decentro
-serviceCategory: API
+publisherName: Decentro Tech Pvt Ltd
+serviceCategory: Banking-as-a-Service
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: false
 tags:
-  - Banking
   - Banking-as-a-Service
   - FinTech
   - India
-  - KYC
-  - Ledger
   - Payments
-  - UPI
-  - Virtual Accounts
   - FinOps
-  - Cost Management
   - FOCUS
-description: FinOps framework definition for the Decentro API surface. Provides a FOCUS-aligned mapping
-  for cost allocation, usage measurement, and unit-economics reporting across the provider's APIs.
-principles:
-  - name: Visibility
-    description: Make API consumption costs visible to engineering, product, and finance teams in near
-      real-time.
-  - name: Allocation
-    description: Tag every chargeable API call with the consuming team, environment, application, and
-      feature so cost can be allocated.
-  - name: Optimization
-    description: Continuously evaluate request patterns, caching, batching, and tier selection to reduce
-      cost per useful unit of work.
-  - name: Accountability
-    description: Establish budget owners and chargeback or showback flows for each consuming team.
-domains:
-  - name: Understand Usage and Cost
-    capabilities:
-      - Data Ingestion
-      - Allocation
-      - Reporting and Analytics
-      - Anomaly Management
-  - name: Quantify Business Value
-    capabilities:
-      - Planning and Estimating
-      - Forecasting
-      - Budgeting
-      - Benchmarking
-      - Unit Economics
-  - name: Optimize Usage and Cost
-    capabilities:
-      - Architecting for Cloud
-      - Rate Optimization
-      - Workload Optimization
-      - Cloud Sustainability
-      - Licensing and SaaS
-  - name: Manage the FinOps Practice
-    capabilities:
-      - FinOps Practice Operations
-      - FinOps Education and Enablement
-      - Invoicing and Chargeback
-      - Onboarding Workloads
-      - Intersecting Disciplines
+description: 'FOCUS-aligned FinOps for Decentro: pay-per-API-call usage billing across six product
+  categories, with bank-side and regulator-side surcharges (UPI/IMPS/NEFT/RTGS, Aadhaar,
+  DigiLocker, credit bureaus) passed through. Rates are negotiated per merchant and not public.'
+sources:
+  - https://decentro.tech
+  - https://in.decentro.tech
+notes: No public per-call INR rates. Meters reflect Decentro's product categories; dollar/INR
+  values must come from the customer's portal or master service agreement.
 billingModel:
-  pricingCategory: Usage-Based
+  pricingCategory: Pay-As-You-Go + Pass-Through
   billingFrequency: Monthly
-  billingCurrency: USD
+  billingCurrency: INR
   chargeCategories:
     - Usage
-    - Purchase
     - Tax
-    - Credit
     - Adjustment
-  chargeFrequency: Recurring
+    - Refund
 focusColumns:
   ServiceName: Decentro
-  ServiceCategory: Developer Tools / API
+  ServiceCategory: Banking-as-a-Service
+  ServiceSubcategory: India FinTech Infrastructure
   ProviderName: Decentro
-  PublisherName: Decentro
-  InvoiceIssuerName: Decentro
+  PublisherName: Decentro Tech Pvt Ltd
+  InvoiceIssuerName: Decentro Tech Pvt Ltd
   PricingCategory: Usage-Based
   PricingUnit: request
-  BillingCurrency: USD
+  BillingCurrency: INR
   ChargeCategory: Usage
+  RegionId: IN
 meters:
-  - name: api_requests
-    description: Count of billable API requests
+  - name: kyc_calls
+    description: KYC, onboarding, Aadhaar, and DigiLocker verification calls.
     unit: request
+    aggregation: count
+    dimensions:
+      - product
+      - upstream_provider
+      - merchant
+  - name: payment_transactions
+    description: Money-movement transactions across UPI, IMPS, NEFT, and RTGS rails.
+    unit: transaction
+    aggregation: count
+    dimensions:
+      - rail
+      - sponsor_bank
+      - direction
+      - merchant
+  - name: virtual_account_operations
+    description: Virtual account create, fetch, balance, and reconciliation operations.
+    unit: request
+    aggregation: count
+    dimensions:
+      - operation
+      - merchant
+  - name: ledger_operations
+    description: Ledger journal, account, and transaction operations.
+    unit: request
+    aggregation: count
+    dimensions:
+      - operation
+      - merchant
+  - name: bytes_calls
+    description: Alternate-data and intelligence lookups.
+    unit: request
+    aggregation: count
+    dimensions:
+      - data_source
+      - merchant
+  - name: scanner_calls
+    description: Forensics and document-fraud verification calls.
+    unit: request
+    aggregation: count
+    dimensions:
+      - check_type
+      - merchant
+  - name: bank_passthrough_charges
+    description: Sponsor-bank and regulator surcharges passed through to the merchant.
+    unit: transaction
     aggregation: sum
     dimensions:
-      - api
-      - endpoint
-      - tier
-      - region
-      - consumer
-  - name: data_egress
-    description: Bytes returned over the network in API responses
-    unit: GB
-    aggregation: sum
-    dimensions:
-      - api
-      - region
-      - consumer
-  - name: compute_seconds
-    description: Server-side compute consumed by the request, where applicable
-    unit: second
-    aggregation: sum
-    dimensions:
-      - api
-      - endpoint
-      - tier
-apis:
-  - name: Decentro KYC & Onboarding API
-    baseURL: https://in.decentro.tech
-    tags:
-      - Aadhaar
-      - DigiLocker
-      - Forensics
-      - KYC
-      - Onboarding
-    serviceName: Decentro KYC & Onboarding API
-    serviceCategory: API
-  - name: Decentro Payments API
-    baseURL: https://in.decentro.tech
-    tags:
-      - Collections
-      - Mandates
-      - Payouts
-      - Settlements
-      - UPI
-    serviceName: Decentro Payments API
-    serviceCategory: API
-  - name: Decentro Virtual Accounts API
-    baseURL: https://in.decentro.tech
-    tags:
-      - Banking
-      - Reconciliation
-      - Virtual Accounts
-    serviceName: Decentro Virtual Accounts API
-    serviceCategory: API
-  - name: Decentro Ledger API
-    baseURL: https://in.decentro.tech
-    tags:
-      - Accounts
-      - Accounting
-      - Ledger
-      - Transactions
-    serviceName: Decentro Ledger API
-    serviceCategory: API
-unitEconomics:
-  - name: Cost per 1K Requests
-    metric: billed_cost / (api_requests / 1000)
-    target: TBD
-  - name: Cost per Active Consumer
-    metric: billed_cost / active_consumers
-    target: TBD
+      - rail
+      - sponsor_bank
+principles:
+  - name: Visibility
+    description: Use the Decentro merchant portal usage and settlement reports to track call
+      volume by product category and rail. Reconcile pass-through bank charges line-by-line against
+      the monthly invoice and settlement file.
+  - name: Allocation
+    description: Issue separate Decentro client_id / secret pairs per consuming product so calls
+      can be attributed to a business line. Tag webhooks and ledger transactions with internal
+      account identifiers for downstream attribution.
+  - name: Optimization
+    description: Cache KYC results subject to RBI re-KYC rules to avoid repeat lookups, route
+      payouts through the cheapest acceptable rail (IMPS vs NEFT vs RTGS), and pre-fund virtual
+      accounts during festival/salary peaks rather than retry-storming. Batch where the rail
+      allows.
+  - name: Accountability
+    description: Designate a single ops owner for the Decentro relationship who reviews monthly
+      settlement and bank surcharges, validates KPI guardrails (cost-per-onboarded-user,
+      cost-per-payout), and renegotiates rates when volume thresholds are hit.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

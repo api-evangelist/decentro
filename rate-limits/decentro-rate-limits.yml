@@ -4,105 +4,52 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Decentro
 providerId: decentro
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: false
 tags:
-  - Banking
   - Banking-as-a-Service
   - FinTech
   - India
-  - KYC
-  - Ledger
   - Payments
-  - UPI
-  - Virtual Accounts
   - Rate Limiting
-  - Quotas
-  - Throttling
-description: Machine-readable rate limit definitions for the Decentro API surface. Captures per-tier quotas,
-  burst behavior, response signaling, and recovery semantics. Defaults are scaffold values to be replaced
-  with published provider limits.
-headers:
-  limit: X-RateLimit-Limit
-  remaining: X-RateLimit-Remaining
-  reset: X-RateLimit-Reset
-  retryAfter: Retry-After
-  policy: RateLimit-Policy
+description: Decentro does not publish numeric API rate limits on its public site. Per-merchant
+  TPS allowances are tied to the sponsor-bank rail (UPI, IMPS, NEFT, RTGS) and the contractual
+  enrollment with that rail. KYC, DigiLocker, and Aadhaar lookups are also subject to upstream
+  regulator/issuer throttles outside Decentro's control. Numbers are visible only inside the
+  enterprise portal at in.decentro.tech.
+sources:
+  - https://decentro.tech
+  - https://in.decentro.tech
+notes: No public numeric rate limits. Limits depend on rail (UPI, IMPS, NEFT, RTGS) and the
+  sponsor-bank contract. KYC/Aadhaar/DigiLocker limits are governed by upstream regulators.
 responseCodes:
   throttled: 429
-  quotaExceeded: 429
   serviceUnavailable: 503
 limits:
-  - tier: free
-    name: Free Tier Default
-    scope: api-key
+  - name: Rail-specific TPS
+    scope: merchant
+    metric: transactions_per_second
+    limit: rail-specific — see Decentro enterprise portal
+    notes: UPI, IMPS, NEFT, and RTGS each carry distinct rail-side TPS allowances negotiated with
+      the sponsor bank.
+  - name: KYC / Aadhaar / DigiLocker upstream throttles
+    scope: merchant
     metric: requests_per_minute
-    limit: 10
-    burst: 20
-    timeFrame: minute
-    applies:
-      - Decentro KYC & Onboarding API
-      - Decentro Payments API
-      - Decentro Virtual Accounts API
-      - Decentro Ledger API
-  - tier: free
-    name: Free Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 1000
-    timeFrame: month
-    applies:
-      - Decentro KYC & Onboarding API
-      - Decentro Payments API
-      - Decentro Virtual Accounts API
-      - Decentro Ledger API
-  - tier: professional
-    name: Professional Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 100
-    burst: 200
-    timeFrame: minute
-    applies:
-      - Decentro KYC & Onboarding API
-      - Decentro Payments API
-      - Decentro Virtual Accounts API
-      - Decentro Ledger API
-  - tier: professional
-    name: Professional Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 100000
-    timeFrame: month
-    applies:
-      - Decentro KYC & Onboarding API
-      - Decentro Payments API
-      - Decentro Virtual Accounts API
-      - Decentro Ledger API
-  - tier: enterprise
-    name: Enterprise Negotiated Limit
-    scope: contract
-    metric: requests_per_minute
-    limit: 1000
-    burst: 5000
-    timeFrame: minute
-    applies:
-      - Decentro KYC & Onboarding API
-      - Decentro Payments API
-      - Decentro Virtual Accounts API
-      - Decentro Ledger API
+    limit: regulator/issuer-defined
+    notes: These calls are subject to UIDAI, DigiLocker, and credit-bureau throttles that flow
+      through Decentro and cannot be raised by Decentro alone.
 policies:
   - name: Backoff Strategy
-    description: Clients should implement exponential backoff with jitter, honoring the Retry-After header
-      when present.
-  - name: Burst Handling
-    description: Short bursts above the steady-state limit are tolerated up to the documented burst ceiling
-      before throttling engages.
-  - name: Quota Reset
-    description: Monthly quotas reset at the start of each calendar month in UTC. Per-minute and per-second
-      windows reset on a sliding-window basis.
-  - name: Fair Use
-    description: Even on uncapped enterprise tiers, sustained usage that materially impacts shared infrastructure
-      may be subject to fair-use throttling.
+    description: Retry on 429 with exponential backoff and jitter; honor any Retry-After header.
+  - name: Idempotency for Payments
+    description: Use Decentro's idempotency / reference identifiers for payment transactions to
+      avoid double-debits during retries.
+  - name: Webhook Reliability
+    description: Treat webhook delivery as at-least-once. Build idempotent receivers so duplicate
+      delivery does not double-credit ledgers.
+  - name: Rail Saturation
+    description: During festival or salary-cycle peaks, UPI/IMPS rails saturate at the bank side;
+      throttle outbound payouts and pre-fund virtual accounts to absorb spikes.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

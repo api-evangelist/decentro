@@ -4,158 +4,127 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Decentro
 providerId: decentro
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: false
 tags:
   - Banking
   - Banking-as-a-Service
   - FinTech
   - India
   - KYC
-  - Ledger
   - Payments
-  - UPI
-  - Virtual Accounts
-description: Machine-readable plans and pricing scaffold for this API provider. Conforms to the API Commons
-  Plans schema. Tier limits and prices are scaffold defaults; replace with provider-published values.
+description: Decentro is a banking-as-a-service platform for the Indian market. Its commercial
+  model is per-API-call pricing across six product categories — KYC and Onboarding, Bytes
+  (alternate data), Scanner (forensics), Payments (UPI/IMPS/NEFT/RTGS), Virtual Accounts, and
+  Ledger — combined with bank-side surcharges that vary by sponsor bank and rail. Decentro does
+  not publish numeric per-call rates on the public site; all pricing is quoted to onboarded
+  enterprises through the developer portal at in.decentro.tech and the sales team.
+sources:
+  - https://decentro.tech
+  - https://in.decentro.tech
+notes: No public pricing page found. Decentro markets pay-per-API-call but does not publish
+  numeric INR rates publicly. Reconciliation requires onboarded portal access or a sales quote.
 plans:
-  - id: decentro-free
-    name: Free
+  - id: decentro-sandbox
+    name: Sandbox
     type: freemium
-    description: Free entry tier for the Decentro API surface. Intended for evaluation, prototyping, and
-      low-volume integrations. Real limits and pricing must be reconciled with the provider's published
-      plan documentation.
+    description: Free sandbox access for evaluation and integration. Available after developer
+      portal sign-up. Sandbox traffic does not move real money or hit production rails.
     entries:
-      - label: API Requests
-        description: Monthly API request quota across all included endpoints
-        name: api_requests
+      - label: Sandbox API calls
+        name: sandbox_calls
         type: quota
-        metric: requests
-        limit: 1000
+        metric: request
+        limit: see decentro portal
         timeFrame: month
-        geo: global
-        domains:
-          - https://in.decentro.tech
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the free tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 10
-        timeFrame: minute
-        geo: global
-        domains:
-          - https://in.decentro.tech
+        geo: IN
         unit: 1
         price: '0.00'
         userMultiplied: false
     elements:
-      - name: Public Documentation
-      - name: Community Support
-      - name: Sandbox Access
-      - name: Decentro KYC & Onboarding API
-      - name: Decentro Payments API
-      - name: Decentro Virtual Accounts API
-      - name: Decentro Ledger API
-  - id: decentro-pro
-    name: Professional
-    type: paid
-    description: Production tier for Decentro. Provides higher quotas, priority support, and access to
-      the broader API portfolio. Pricing placeholder; align with the provider's pricing page.
+      - name: Sandbox environment
+      - name: Developer portal access
+      - name: Postman collection
+      - name: Decentro KYC & Onboarding API (sandbox)
+      - name: Decentro Payments API (sandbox)
+      - name: Decentro Virtual Accounts API (sandbox)
+      - name: Decentro Ledger API (sandbox)
+  - id: decentro-production
+    name: Production
+    type: usage-based
+    description: Pay-per-API-call production access negotiated per customer. Pricing depends on
+      the API category, monthly volume, and the sponsor-bank rail. Bank-side surcharges (UPI,
+      IMPS, NEFT, RTGS, Aadhaar, DigiLocker) pass through to the customer.
     entries:
-      - label: API Requests
-        description: Monthly API request quota
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 100000
-        timeFrame: month
-        geo: global
-        domains:
-          - https://in.decentro.tech
-        unit: 1
-        price: TBD
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the professional tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 100
-        timeFrame: minute
-        geo: global
-        domains:
-          - https://in.decentro.tech
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Overage
-        description: Per-request price after monthly quota is exceeded
-        name: overage
+      - label: KYC and Onboarding calls
+        name: kyc_calls
         type: metered
-        metric: requests
+        metric: request
         limit: -1
-        timeFrame: month
-        geo: global
-        domains:
-          - https://in.decentro.tech
-        unit: 1000
-        price: TBD
+        timeFrame: usage
+        geo: IN
+        unit: 1
+        price: contact decentro
+        userMultiplied: false
+      - label: Bytes (alternate data) calls
+        name: bytes_calls
+        type: metered
+        metric: request
+        limit: -1
+        timeFrame: usage
+        geo: IN
+        unit: 1
+        price: contact decentro
+        userMultiplied: false
+      - label: Scanner (forensics) calls
+        name: scanner_calls
+        type: metered
+        metric: request
+        limit: -1
+        timeFrame: usage
+        geo: IN
+        unit: 1
+        price: contact decentro
+        userMultiplied: false
+      - label: Payments transactions
+        name: payment_tx
+        type: metered
+        metric: transaction
+        limit: -1
+        timeFrame: usage
+        geo: IN
+        unit: 1
+        price: contact decentro
+        userMultiplied: false
+      - label: Virtual Account operations
+        name: va_operations
+        type: metered
+        metric: request
+        limit: -1
+        timeFrame: usage
+        geo: IN
+        unit: 1
+        price: contact decentro
+        userMultiplied: false
+      - label: Ledger operations
+        name: ledger_operations
+        type: metered
+        metric: request
+        limit: -1
+        timeFrame: usage
+        geo: IN
+        unit: 1
+        price: contact decentro
         userMultiplied: false
     elements:
-      - name: All Production Endpoints
-      - name: Email Support
-      - name: SLA Targets
-      - name: Webhook Subscriptions
       - name: Decentro KYC & Onboarding API
-      - name: Decentro Payments API
+      - name: Decentro Payments API (UPI, IMPS, NEFT, RTGS)
       - name: Decentro Virtual Accounts API
       - name: Decentro Ledger API
-  - id: decentro-enterprise
-    name: Enterprise
-    type: enterprise
-    description: Custom-negotiated tier for Decentro. Includes dedicated capacity, contractual SLAs, security
-      review, data residency options, and named technical account management.
-    entries:
-      - label: API Requests
-        description: Negotiated request volume; -1 indicates uncapped subject to fair use
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: -1
-        timeFrame: month
-        geo: configurable
-        domains:
-          - https://in.decentro.tech
-        unit: 1
-        price: custom
-        userMultiplied: false
-      - label: Rate Limit
-        description: Negotiated burst and steady-state rate
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 1000
-        timeFrame: minute
-        geo: configurable
-        domains:
-          - https://in.decentro.tech
-        unit: 1
-        price: custom
-        userMultiplied: false
-    elements:
-      - name: Unlimited / Negotiated Volume
-      - name: 24/7 Dedicated Support
-      - name: Contractual SLA
-      - name: Security & Compliance Review
-      - name: Dedicated Account Manager
-      - name: Custom Data Residency
-      - name: Decentro KYC & Onboarding API
-      - name: Decentro Payments API
-      - name: Decentro Virtual Accounts API
-      - name: Decentro Ledger API
+      - name: Decentro Bytes API
+      - name: Decentro Scanner API
+      - name: Webhook subscriptions
+      - name: Production rails
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
