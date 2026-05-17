@@ -2,7 +2,7 @@ aid: decentro
 name: Decentro
 url: >-
   https://raw.githubusercontent.com/api-evangelist/decentro/refs/heads/main/apis.yml
-type: Contract
+kind: contract
 position: Consuming
 access: 3rd-Party
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
@@ -19,7 +19,7 @@ tags:
 created: '2025-02-24'
 modified: '2026-04-28'
 specificationVersion: '0.19'
-xType: company
+kind: company
 description: >-
   Decentro is a banking-as-a-service platform that provides businesses
   with seamless integration to Indian banking infrastructure - including
@@ -118,7 +118,7 @@ common:
     url: https://decentro.tech/blog/
   - type: Pricing
     url: https://decentro.tech/pricing/
-  - type: JSON-LD
+  - type: JSONLD
     url: json-ld/decentro-context.jsonld
   - type: Vocabulary
     url: vocabulary/decentro-vocabulary.yml
