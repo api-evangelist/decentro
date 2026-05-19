@@ -1,0 +1,104 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Decentro Payments API — Payouts
+  description: 'Decentro Payments API — Payouts. 2 operations. Lead operation: Disburse a payout. Self-contained Naftiko capability
+    covering one Decentro business surface.'
+  tags:
+  - Decentro
+  - Payouts
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    DECENTRO_API_KEY: DECENTRO_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: payments-payouts
+    baseUri: https://in.decentro.tech
+    description: Decentro Payments API — Payouts business capability. Self-contained, no shared references.
+    resources:
+    - name: v2-payments-transfer
+      path: /v2/payments/transfer
+      operations:
+      - name: createpayout
+        method: POST
+        description: Disburse a payout
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v2-payments-transfer-status
+      path: /v2/payments/transfer/status
+      operations:
+      - name: getpayoutstatus
+        method: GET
+        description: Get payout status
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: apikey
+      key: client_secret
+      value: '{{env.DECENTRO_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: payments-payouts-rest
+    port: 8080
+    description: REST adapter for Decentro Payments API — Payouts. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/v2/payments/transfer
+      name: v2-payments-transfer
+      description: REST surface for v2-payments-transfer.
+      operations:
+      - method: POST
+        name: createpayout
+        description: Disburse a payout
+        call: payments-payouts.createpayout
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v2/payments/transfer/status
+      name: v2-payments-transfer-status
+      description: REST surface for v2-payments-transfer-status.
+      operations:
+      - method: GET
+        name: getpayoutstatus
+        description: Get payout status
+        call: payments-payouts.getpayoutstatus
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: payments-payouts-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Decentro Payments API — Payouts. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: disburse-payout
+      description: Disburse a payout
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: payments-payouts.createpayout
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-payout-status
+      description: Get payout status
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: payments-payouts.getpayoutstatus
+      outputParameters:
+      - type: object
+        mapping: $.

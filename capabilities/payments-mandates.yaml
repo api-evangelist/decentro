@@ -1,0 +1,104 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Decentro Payments API — Mandates
+  description: 'Decentro Payments API — Mandates. 2 operations. Lead operation: Register an ENACH mandate. Self-contained
+    Naftiko capability covering one Decentro business surface.'
+  tags:
+  - Decentro
+  - Mandates
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    DECENTRO_API_KEY: DECENTRO_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: payments-mandates
+    baseUri: https://in.decentro.tech
+    description: Decentro Payments API — Mandates business capability. Self-contained, no shared references.
+    resources:
+    - name: v2-payments-enach-register
+      path: /v2/payments/enach/register
+      operations:
+      - name: registerenachmandate
+        method: POST
+        description: Register an ENACH mandate
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v2-payments-upi-autopay-mandate
+      path: /v2/payments/upi-autopay/mandate
+      operations:
+      - name: registerupiautopaymandate
+        method: POST
+        description: Register a UPI Autopay mandate
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: apikey
+      key: client_secret
+      value: '{{env.DECENTRO_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: payments-mandates-rest
+    port: 8080
+    description: REST adapter for Decentro Payments API — Mandates. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/v2/payments/enach/register
+      name: v2-payments-enach-register
+      description: REST surface for v2-payments-enach-register.
+      operations:
+      - method: POST
+        name: registerenachmandate
+        description: Register an ENACH mandate
+        call: payments-mandates.registerenachmandate
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v2/payments/upi-autopay/mandate
+      name: v2-payments-upi-autopay-mandate
+      description: REST surface for v2-payments-upi-autopay-mandate.
+      operations:
+      - method: POST
+        name: registerupiautopaymandate
+        description: Register a UPI Autopay mandate
+        call: payments-mandates.registerupiautopaymandate
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: payments-mandates-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Decentro Payments API — Mandates. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: register-enach-mandate
+      description: Register an ENACH mandate
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: payments-mandates.registerenachmandate
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: register-upi-autopay-mandate
+      description: Register a UPI Autopay mandate
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: payments-mandates.registerupiautopaymandate
+      outputParameters:
+      - type: object
+        mapping: $.

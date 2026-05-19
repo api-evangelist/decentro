@@ -1,0 +1,72 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Decentro Payments API — Settlements
+  description: 'Decentro Payments API — Settlements. 1 operations. Lead operation: Issue a refund. Self-contained Naftiko
+    capability covering one Decentro business surface.'
+  tags:
+  - Decentro
+  - Settlements
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    DECENTRO_API_KEY: DECENTRO_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: payments-settlements
+    baseUri: https://in.decentro.tech
+    description: Decentro Payments API — Settlements business capability. Self-contained, no shared references.
+    resources:
+    - name: v2-payments-refund
+      path: /v2/payments/refund
+      operations:
+      - name: issuerefund
+        method: POST
+        description: Issue a refund
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: apikey
+      key: client_secret
+      value: '{{env.DECENTRO_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: payments-settlements-rest
+    port: 8080
+    description: REST adapter for Decentro Payments API — Settlements. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/v2/payments/refund
+      name: v2-payments-refund
+      description: REST surface for v2-payments-refund.
+      operations:
+      - method: POST
+        name: issuerefund
+        description: Issue a refund
+        call: payments-settlements.issuerefund
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: payments-settlements-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Decentro Payments API — Settlements. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: issue-refund
+      description: Issue a refund
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: payments-settlements.issuerefund
+      outputParameters:
+      - type: object
+        mapping: $.
