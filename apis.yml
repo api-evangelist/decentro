@@ -136,6 +136,8 @@ common:
     url: json-ld/decentro-context.jsonld
   - type: Vocabulary
     url: vocabulary/decentro-vocabulary.yml
+  - type: LLMsTxt
+    url: https://docs.decentro.tech/llms.txt
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
