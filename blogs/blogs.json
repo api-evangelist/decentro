@@ -2,12 +2,17 @@
   "repo": "decentro",
   "feeds": [
     {
-      "source": "https://decentro.tech/blog/",
+      "source": "https://decentro.tech/blog/feed/",
       "feed_url": "https://decentro.tech/blog/feed/",
-      "title": "Decentro",
-      "saved": 3
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    },
+    {
+      "source": "https://docs.decentro.tech/reference",
+      "error": "HTTPError"
     }
   ],
-  "post_count": 14,
-  "fetched": "2026-05-17T20:20:35Z"
+  "post_count": 17,
+  "fetched": "2026-06-01T23:35:02Z"
 }
