@@ -18,105 +18,87 @@ tags:
 created: '2025-02-24'
 modified: '2026-05-19'
 specificationVersion: '0.19'
-description: 'Decentro is a banking-as-a-service platform that provides businesses with seamless integration to Indian banking
-  infrastructure - including payments (UPI, IMPS, NEFT, RTGS), virtual accounts, KYC, ledger primitives, and credit-bureau
-  data. Decentro publishes a developer portal and Postman collection covering six API categories: KYC & Onboarding, Bytes
-  (alternate data), Scanner (forensics), Payments, Virtual Accounts, and Ledger.'
+description: >-
+  Decentro is a banking-as-a-service platform that provides businesses with seamless integration to Indian banking
+  infrastructure - including payments (UPI, IMPS, NEFT, RTGS), virtual accounts, KYC, ledger primitives, and
+  credit-bureau data. Decentro publishes a developer portal and Postman collection covering six API categories: KYC &
+  Onboarding, Bytes (alternate data), Scanner (forensics), Payments, Virtual Accounts, and Ledger.
 apis:
   - aid: decentro:kyc-api
     name: Decentro KYC & Onboarding API
-    description: Identity verification, customer onboarding, DigiLocker integration, Aadhaar OTP, document classification, and
-      face match.
+    description: >-
+      Identity verification, customer onboarding, DigiLocker integration, Aadhaar OTP, document classification, and face
+      match.
     humanURL: https://docs.decentro.tech/
     baseURL: https://in.decentro.tech
     tags:
-    - Aadhaar
-    - DigiLocker
-    - Forensics
-    - KYC
-    - Onboarding
+      - Aadhaar
+      - DigiLocker
+      - Forensics
+      - KYC
+      - Onboarding
     properties:
-    - type: Documentation
-      url: https://docs.decentro.tech/
-    - type: OpenAPI
-      url: openapi/decentro-kyc-api-openapi.yml
-    - type: NaftikoCapability
-      url: capabilities/kyc-forensics.yaml
-    - type: NaftikoCapability
-      url: capabilities/kyc-kyc.yaml
-    - type: NaftikoCapability
-      url: capabilities/kyc-verification.yaml
+      - type: Documentation
+        url: https://docs.decentro.tech/
+      - type: OpenAPI
+        url: openapi/decentro-kyc-api-openapi.yml
   - aid: decentro:payments-api
     name: Decentro Payments API
     description: Collections, payouts, ENACH mandates, UPI Autopay, settlements, and refunds for the Indian banking system.
     humanURL: https://docs.decentro.tech/
     baseURL: https://in.decentro.tech
     tags:
-    - Collections
-    - Mandates
-    - Payouts
-    - Settlements
-    - UPI
+      - Collections
+      - Mandates
+      - Payouts
+      - Settlements
+      - UPI
     properties:
-    - type: Documentation
-      url: https://docs.decentro.tech/
-    - type: OpenAPI
-      url: openapi/decentro-payments-api-openapi.yml
-    - type: JSONSchema
-      url: json-schema/decentro-payout.json
-    - type: Rules
-      url: rules/decentro-payments-api-rules.yml
-    - type: Capabilities
-      url: capabilities/decentro-payments-api-capabilities.yml
-    - type: NaftikoCapability
-      url: capabilities/payments-collections.yaml
-    - type: NaftikoCapability
-      url: capabilities/payments-mandates.yaml
-    - type: NaftikoCapability
-      url: capabilities/payments-payouts.yaml
-    - type: NaftikoCapability
-      url: capabilities/payments-settlements.yaml
+      - type: Documentation
+        url: https://docs.decentro.tech/
+      - type: OpenAPI
+        url: openapi/decentro-payments-api-openapi.yml
+      - type: JSONSchema
+        url: json-schema/decentro-payout.json
+      - type: Rules
+        url: rules/decentro-payments-api-rules.yml
+      - type: Capabilities
+        url: capabilities/decentro-payments-api-capabilities.yml
   - aid: decentro:virtual-accounts-api
     name: Decentro Virtual Accounts API
-    description: Create and manage virtual bank accounts, balances, statements, and remitter whitelisting for collections and
+    description: >-
+      Create and manage virtual bank accounts, balances, statements, and remitter whitelisting for collections and
       reconciliation.
     humanURL: https://docs.decentro.tech/
     baseURL: https://in.decentro.tech
     tags:
-    - Banking
-    - Reconciliation
-    - Virtual Accounts
+      - Banking
+      - Reconciliation
+      - Virtual Accounts
     properties:
-    - type: Documentation
-      url: https://docs.decentro.tech/
-    - type: OpenAPI
-      url: openapi/decentro-virtual-accounts-api-openapi.yml
-    - type: JSONSchema
-      url: json-schema/decentro-virtual-account.json
-    - type: NaftikoCapability
-      url: capabilities/virtual-accounts-virtual-accounts.yaml
+      - type: Documentation
+        url: https://docs.decentro.tech/
+      - type: OpenAPI
+        url: openapi/decentro-virtual-accounts-api-openapi.yml
+      - type: JSONSchema
+        url: json-schema/decentro-virtual-account.json
   - aid: decentro:ledger-api
     name: Decentro Ledger API
-    description: Double-entry accounting primitives for journals, ledger accounts, and transactions tied to Decentro virtual
+    description: >-
+      Double-entry accounting primitives for journals, ledger accounts, and transactions tied to Decentro virtual
       accounts and external counterparties.
     humanURL: https://docs.decentro.tech/
     baseURL: https://in.decentro.tech
     tags:
-    - Accounts
-    - Accounting
-    - Ledger
-    - Transactions
+      - Accounts
+      - Accounting
+      - Ledger
+      - Transactions
     properties:
-    - type: Documentation
-      url: https://docs.decentro.tech/
-    - type: OpenAPI
-      url: openapi/decentro-ledger-api-openapi.yml
-    - type: NaftikoCapability
-      url: capabilities/ledger-accounts.yaml
-    - type: NaftikoCapability
-      url: capabilities/ledger-journals.yaml
-    - type: NaftikoCapability
-      url: capabilities/ledger-transactions.yaml
+      - type: Documentation
+        url: https://docs.decentro.tech/
+      - type: OpenAPI
+        url: openapi/decentro-ledger-api-openapi.yml
 common:
   - type: GitHubOrganization
     url: https://github.com/decentro-in
