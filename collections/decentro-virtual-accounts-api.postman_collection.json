@@ -1,0 +1,418 @@
+{
+  "item": [
+    {
+      "id": "88366318-a5c7-4daf-92cf-0ccf616bcadb",
+      "name": "Virtual Accounts",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4879be69-8c60-484e-a9ee-3c11c4bf16fd",
+          "name": "Create a virtual account",
+          "request": {
+            "name": "Create a virtual account",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "banking",
+                "account"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4d70a3d0-4e9d-49d2-9e70-2514796383ea",
+              "name": "Virtual account created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "banking",
+                    "account"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "client_secret",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d21aa362-f87b-4a56-89c2-7c4777012f8e",
+          "name": "Get virtual account details",
+          "request": {
+            "name": "Get virtual account details",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "banking",
+                "account",
+                ":accountNumber"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountNumber",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "805b4396-dfbb-47e6-9351-d019afbe3a73",
+              "name": "Virtual account record.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "banking",
+                    "account",
+                    ":accountNumber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountNumber",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "client_secret",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4293f96a-1f95-4a4c-af6f-8aabd6b5b3f7",
+          "name": "Get virtual account balance",
+          "request": {
+            "name": "Get virtual account balance",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "banking",
+                "account",
+                "balance"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b27290fa-6ab1-4afb-9879-5c4393dcf60f",
+              "name": "Current balance.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "banking",
+                    "account",
+                    "balance"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "client_secret",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "38c19a43-a754-483b-b77e-2ad25cf3890f",
+          "name": "Get virtual account statement",
+          "request": {
+            "name": "Get virtual account statement",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "banking",
+                "account",
+                "statement"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "86937d7e-7412-432b-9b9e-f54beea61915",
+              "name": "Statement entries.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "banking",
+                    "account",
+                    "statement"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "client_secret",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7f2de1e0-71c0-4bfb-b308-fc77ea90779d",
+          "name": "Whitelist a remitter",
+          "request": {
+            "name": "Whitelist a remitter",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "banking",
+                "account",
+                "whitelist"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e7d789b3-6d89-47d6-9064-46b4dc891049",
+              "name": "Remitter whitelisted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "banking",
+                    "account",
+                    "whitelist"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "client_secret",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://in.decentro.tech",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "client_secret"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "58847347-9d0d-4784-bde0-3dda9be278e0",
+    "name": "Decentro Virtual Accounts API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Decentro Virtual Accounts API enables creation, management, and monitoring of virtual bank accounts for collections, escrow, and reconciliation use-cases.",
+      "type": "text/plain"
+    }
+  }
+}

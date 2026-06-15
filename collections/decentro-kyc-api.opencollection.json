@@ -1,0 +1,108 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Decentro KYC & Onboarding API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "client_secret",
+      "value": "{{client_secret}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Verification",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Validate against public registry",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://in.decentro.tech/v2/kyc/public_registry/validate"
+          },
+          "docs": "Validate against public registry"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "KYC",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Generate Aadhaar OTP",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://in.decentro.tech/v2/kyc/identities/aadhaar/otp/generate"
+          },
+          "docs": "Generate Aadhaar OTP"
+        },
+        {
+          "info": {
+            "name": "Validate Aadhaar OTP",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://in.decentro.tech/v2/kyc/identities/aadhaar/otp/validate"
+          },
+          "docs": "Validate Aadhaar OTP"
+        },
+        {
+          "info": {
+            "name": "Initialize DigiLocker session",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://in.decentro.tech/v2/kyc/digilocker/initialize"
+          },
+          "docs": "Initialize DigiLocker session"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Forensics",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Classify document",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://in.decentro.tech/v2/kyc/forensics/document_classification"
+          },
+          "docs": "Classify document"
+        },
+        {
+          "info": {
+            "name": "Face match",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://in.decentro.tech/v2/kyc/forensics/face_match"
+          },
+          "docs": "Face match"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

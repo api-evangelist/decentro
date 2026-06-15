@@ -1,0 +1,127 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Decentro Payments API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "client_secret",
+      "value": "{{client_secret}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Collections",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Generate UPI collection link",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://in.decentro.tech/v2/payments/upi/link"
+          },
+          "docs": "Generate UPI collection link"
+        },
+        {
+          "info": {
+            "name": "Generate dynamic UPI QR",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://in.decentro.tech/v2/payments/upi/qr"
+          },
+          "docs": "Generate dynamic UPI QR"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Payouts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Disburse a payout",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://in.decentro.tech/v2/payments/transfer"
+          },
+          "docs": "Disburse a payout"
+        },
+        {
+          "info": {
+            "name": "Get payout status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://in.decentro.tech/v2/payments/transfer/status"
+          },
+          "docs": "Get payout status"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Mandates",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Register an ENACH mandate",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://in.decentro.tech/v2/payments/enach/register"
+          },
+          "docs": "Register an ENACH mandate"
+        },
+        {
+          "info": {
+            "name": "Register a UPI Autopay mandate",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://in.decentro.tech/v2/payments/upi-autopay/mandate"
+          },
+          "docs": "Register a UPI Autopay mandate"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Settlements",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Issue a refund",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://in.decentro.tech/v2/payments/refund"
+          },
+          "docs": "Issue a refund"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

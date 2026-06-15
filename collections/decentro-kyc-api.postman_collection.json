@@ -1,0 +1,515 @@
+{
+  "item": [
+    {
+      "id": "1429799b-88d5-449b-b29b-9ce769f5b7d1",
+      "name": "KYC",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8a9e4844-e4ee-4067-bae2-5c91e47907f0",
+          "name": "Generate Aadhaar OTP",
+          "request": {
+            "name": "Generate Aadhaar OTP",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "kyc",
+                "identities",
+                "aadhaar",
+                "otp",
+                "generate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ea542e38-d21a-4c75-96a1-bf9a5a8fd95b",
+              "name": "OTP generated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "kyc",
+                    "identities",
+                    "aadhaar",
+                    "otp",
+                    "generate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "client_secret",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4ae1c5e6-a4c0-4d8f-87ec-438667df4d53",
+          "name": "Validate Aadhaar OTP",
+          "request": {
+            "name": "Validate Aadhaar OTP",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "kyc",
+                "identities",
+                "aadhaar",
+                "otp",
+                "validate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e35794e6-39a4-48f2-a9e6-1e6fc6dc57e4",
+              "name": "Aadhaar verification result.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "kyc",
+                    "identities",
+                    "aadhaar",
+                    "otp",
+                    "validate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "client_secret",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "55f4658c-bd7a-4f51-917a-6716f4915257",
+          "name": "Initialize DigiLocker session",
+          "request": {
+            "name": "Initialize DigiLocker session",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "kyc",
+                "digilocker",
+                "initialize"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "771230f3-65f6-4110-b4dd-1217ddc2d360",
+              "name": "DigiLocker session created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "kyc",
+                    "digilocker",
+                    "initialize"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "client_secret",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "670538f4-3a27-47ec-bd8a-e436e57957c4",
+      "name": "Onboarding",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [],
+      "event": []
+    },
+    {
+      "id": "3426d5b4-7607-47d5-b35c-f4a962128c4b",
+      "name": "Verification",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "dab93cd9-3498-4f01-8db1-48138484ecac",
+          "name": "Validate against public registry",
+          "request": {
+            "name": "Validate against public registry",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "kyc",
+                "public_registry",
+                "validate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f6df8fc4-b908-41a8-8a33-0882bfd9afda",
+              "name": "Validation result.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "kyc",
+                    "public_registry",
+                    "validate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "client_secret",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "76421e69-5e16-4154-b284-c868facd46ad",
+      "name": "Forensics",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bc076fd7-5aec-4ebe-af5e-522210a5fc2c",
+          "name": "Classify document",
+          "request": {
+            "name": "Classify document",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "kyc",
+                "forensics",
+                "document_classification"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "950e5597-f26f-4c0a-b80c-11ad1f35c34e",
+              "name": "Document classification result.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "kyc",
+                    "forensics",
+                    "document_classification"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "client_secret",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "586e62de-ca31-44a4-a63b-e1de8817d7c3",
+          "name": "Face match",
+          "request": {
+            "name": "Face match",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "kyc",
+                "forensics",
+                "face_match"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9d1662e2-5c3a-475b-bcfc-0d4dfe9ad542",
+              "name": "Face match score.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "kyc",
+                    "forensics",
+                    "face_match"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "client_secret",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://in.decentro.tech",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "client_secret"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "3de7b8f6-2bfe-422e-bb80-062f9b4a90cd",
+    "name": "Decentro KYC & Onboarding API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Decentro's KYC & Onboarding API provides identity verification, customer onboarding workflows, and document/face forensics for Indian financial services.\n\nContact Support:\n Name: Decentro",
+      "type": "text/plain"
+    }
+  }
+}

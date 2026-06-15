@@ -1,0 +1,575 @@
+{
+  "item": [
+    {
+      "id": "6a822d56-6472-4b5d-a4f2-d719e8d9e397",
+      "name": "Collections",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "09156479-3f37-4ab2-8430-f818775d930a",
+          "name": "Generate UPI collection link",
+          "request": {
+            "name": "Generate UPI collection link",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "payments",
+                "upi",
+                "link"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "752e3a9e-1ea3-4dfb-be59-af201ac6fe24",
+              "name": "UPI link created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "payments",
+                    "upi",
+                    "link"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "client_secret",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c486a8e8-2bde-47e2-9aee-27e978669a6f",
+          "name": "Generate dynamic UPI QR",
+          "request": {
+            "name": "Generate dynamic UPI QR",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "payments",
+                "upi",
+                "qr"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8c723768-6b62-4af1-bf82-b8dc0bf00dc3",
+              "name": "QR code generated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "payments",
+                    "upi",
+                    "qr"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "client_secret",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "e5cfea11-63b7-497a-9b95-46e16fc26ed9",
+      "name": "Payouts",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "db8f75d4-ebd5-4010-83c1-71bcc7272136",
+          "name": "Disburse a payout",
+          "request": {
+            "name": "Disburse a payout",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "payments",
+                "transfer"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1752c261-3f3d-4fd6-bdd9-8517ed6b743e",
+              "name": "Payout submitted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "payments",
+                    "transfer"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "client_secret",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b3f45c2d-0e9e-464c-8e75-85cfa4ec9206",
+          "name": "Get payout status",
+          "request": {
+            "name": "Get payout status",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "payments",
+                "transfer",
+                "status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1237359a-51d0-458f-8d71-edbf10e10147",
+              "name": "Current status of a payout.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "payments",
+                    "transfer",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "client_secret",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "9bfa39d3-c755-4cfc-ac22-e0104c8ca999",
+      "name": "Mandates",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "cba9488a-2f26-43f6-b4d6-ac18b63ff5bf",
+          "name": "Register an ENACH mandate",
+          "request": {
+            "name": "Register an ENACH mandate",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "payments",
+                "enach",
+                "register"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7a5962f0-6e4f-45c1-9046-746f68c10623",
+              "name": "Mandate registration result.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "payments",
+                    "enach",
+                    "register"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "client_secret",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0fb78b27-8106-41a3-9856-cb178ae6599e",
+          "name": "Register a UPI Autopay mandate",
+          "request": {
+            "name": "Register a UPI Autopay mandate",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "payments",
+                "upi-autopay",
+                "mandate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5b25cf7e-64b0-4817-a5c2-75667f378176",
+              "name": "Autopay mandate registration.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "payments",
+                    "upi-autopay",
+                    "mandate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "client_secret",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "b9ee9ee9-55d8-4780-a899-d9f42e4c34d9",
+      "name": "Settlements",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0520c48a-4b58-4111-9163-347130e8ff50",
+          "name": "Issue a refund",
+          "request": {
+            "name": "Issue a refund",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "payments",
+                "refund"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8d0b38bc-8cd1-41af-8532-36a3254f19b0",
+              "name": "Refund initiated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "payments",
+                    "refund"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "client_secret",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://in.decentro.tech",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "client_secret"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "10199524-9de6-4778-b362-21e4f68eff5c",
+    "name": "Decentro Payments API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Decentro's Payments API supports collections (UPI, dynamic QR), payouts, ENACH mandates, UPI Autopay, settlements, and refunds in the Indian banking system.\n\nContact Support:\n Name: Decentro",
+      "type": "text/plain"
+    }
+  }
+}
