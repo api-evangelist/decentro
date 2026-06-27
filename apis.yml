@@ -118,7 +118,7 @@ common:
     url: json-ld/decentro-context.jsonld
   - type: Vocabulary
     url: vocabulary/decentro-vocabulary.yml
-  - type: LLMsTxt
+  - type: LlmsText
     url: https://docs.decentro.tech/llms.txt
 maintainers:
   - FN: Kin Lane
