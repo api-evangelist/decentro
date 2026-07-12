@@ -100,6 +100,10 @@ apis:
       - type: OpenAPI
         url: openapi/decentro-ledger-api-openapi.yml
 common:
+  - type: DomainSecurity
+    url: security/decentro-domain-security.yml
+  - type: Authentication
+    url: authentication/decentro-authentication.yml
   - type: GitHubOrganization
     url: https://github.com/decentro-in
   - type: LinkedIn

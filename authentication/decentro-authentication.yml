@@ -1,0 +1,19 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/decentro-kyc-api-openapi.yml, openapi/decentro-ledger-api-openapi.yml, openapi/decentro-payments-api-openapi.yml,
+  openapi/decentro-virtual-accounts-api-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: apiKey
+  type: apiKey
+  in: header
+  parameter: client_secret
+  sources:
+  - openapi/decentro-kyc-api-openapi.yml
+  - openapi/decentro-ledger-api-openapi.yml
+  - openapi/decentro-payments-api-openapi.yml
+  - openapi/decentro-virtual-accounts-api-openapi.yml
