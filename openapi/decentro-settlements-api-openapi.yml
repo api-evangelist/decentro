@@ -1,0 +1,33 @@
+openapi: 3.1.0
+info:
+  title: Decentro KYC & Onboarding Accounts Settlements API
+  description: Decentro's KYC & Onboarding API provides identity verification, customer onboarding workflows, and document/face forensics for Indian financial services.
+  version: '1.0'
+  contact:
+    name: Decentro
+    url: https://decentro.tech/
+servers:
+- url: https://in.decentro.tech
+  description: India production
+- url: https://staging.decentro.tech
+  description: Staging
+security:
+- apiKey: []
+tags:
+- name: Settlements
+paths:
+  /v2/payments/refund:
+    post:
+      summary: Issue a refund
+      operationId: issueRefund
+      tags:
+      - Settlements
+      responses:
+        '200':
+          description: Refund initiated.
+components:
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: client_secret

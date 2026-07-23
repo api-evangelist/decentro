@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Decentro & Onboarding Accounts KYC API
+  title: Decentro KYC & Onboarding Accounts Forensics API
   description: Decentro's KYC & Onboarding API provides identity verification, customer onboarding workflows, and document/face forensics for Indian financial services.
   version: '1.0'
   contact:
@@ -14,35 +14,26 @@ servers:
 security:
 - apiKey: []
 tags:
-- name: KYC
+- name: Forensics
 paths:
-  /v2/kyc/identities/aadhaar/otp/generate:
+  /v2/kyc/forensics/document_classification:
     post:
-      summary: Generate Aadhaar OTP
-      operationId: generateAadhaarOtp
+      summary: Classify document
+      operationId: classifyDocument
       tags:
-      - KYC
+      - Forensics
       responses:
         '200':
-          description: OTP generated.
-  /v2/kyc/identities/aadhaar/otp/validate:
+          description: Document classification result.
+  /v2/kyc/forensics/face_match:
     post:
-      summary: Validate Aadhaar OTP
-      operationId: validateAadhaarOtp
+      summary: Face match
+      operationId: faceMatch
       tags:
-      - KYC
+      - Forensics
       responses:
         '200':
-          description: Aadhaar verification result.
-  /v2/kyc/digilocker/initialize:
-    post:
-      summary: Initialize DigiLocker session
-      operationId: initializeDigilocker
-      tags:
-      - KYC
-      responses:
-        '200':
-          description: DigiLocker session created.
+          description: Face match score.
 components:
   securitySchemes:
     apiKey:

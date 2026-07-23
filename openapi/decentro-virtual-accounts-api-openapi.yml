@@ -1,62 +1,71 @@
 openapi: 3.1.0
 info:
-  title: Decentro Virtual Accounts API
-  description: >-
-    Decentro Virtual Accounts API enables creation, management, and
-    monitoring of virtual bank accounts for collections, escrow, and
-    reconciliation use-cases.
-  version: "1.0"
+  title: Decentro KYC & Onboarding Accounts Virtual Accounts API
+  description: Decentro's KYC & Onboarding API provides identity verification, customer onboarding workflows, and document/face forensics for Indian financial services.
+  version: '1.0'
+  contact:
+    name: Decentro
+    url: https://decentro.tech/
 servers:
-  - url: https://in.decentro.tech
-    description: India production
+- url: https://in.decentro.tech
+  description: India production
+- url: https://staging.decentro.tech
+  description: Staging
+security:
+- apiKey: []
 tags:
-  - name: Virtual Accounts
+- name: Virtual Accounts
 paths:
   /v2/banking/account:
     post:
       summary: Create a virtual account
       operationId: createVirtualAccount
-      tags: [Virtual Accounts]
+      tags:
+      - Virtual Accounts
       responses:
-        "200":
+        '200':
           description: Virtual account created.
   /v2/banking/account/{accountNumber}:
     get:
       summary: Get virtual account details
       operationId: getVirtualAccount
-      tags: [Virtual Accounts]
+      tags:
+      - Virtual Accounts
       parameters:
-        - in: path
-          name: accountNumber
-          required: true
-          schema:
-            type: string
+      - in: path
+        name: accountNumber
+        required: true
+        schema:
+          type: string
       responses:
-        "200":
+        '200':
           description: Virtual account record.
   /v2/banking/account/balance:
     get:
       summary: Get virtual account balance
       operationId: getVirtualAccountBalance
-      tags: [Virtual Accounts]
+      tags:
+      - Virtual Accounts
       responses:
-        "200":
+        '200':
           description: Current balance.
   /v2/banking/account/statement:
     get:
       summary: Get virtual account statement
       operationId: getVirtualAccountStatement
-      tags: [Virtual Accounts]
+      tags:
+      - Virtual Accounts
       responses:
-        "200":
+        '200':
           description: Statement entries.
   /v2/banking/account/whitelist:
     post:
       summary: Whitelist a remitter
       operationId: whitelistRemitter
-      tags: [Virtual Accounts]
+      tags:
+      - Virtual Accounts
       responses:
-        "200":
+        '200':
           description: Remitter whitelisted.
 components:
   securitySchemes:
@@ -64,5 +73,3 @@ components:
       type: apiKey
       in: header
       name: client_secret
-security:
-  - apiKey: []

@@ -1,0 +1,48 @@
+openapi: 3.1.0
+info:
+  title: Decentro KYC & Onboarding Accounts API
+  description: Decentro's KYC & Onboarding API provides identity verification, customer onboarding workflows, and document/face forensics for Indian financial services.
+  version: '1.0'
+  contact:
+    name: Decentro
+    url: https://decentro.tech/
+servers:
+- url: https://in.decentro.tech
+  description: India production
+- url: https://staging.decentro.tech
+  description: Staging
+security:
+- apiKey: []
+tags:
+- name: Accounts
+paths:
+  /v2/ledger/account:
+    post:
+      summary: Create a ledger account
+      operationId: createLedgerAccount
+      tags:
+      - Accounts
+      responses:
+        '200':
+          description: Ledger account created.
+  /v2/ledger/account/{id}:
+    get:
+      summary: Get a ledger account
+      operationId: getLedgerAccount
+      tags:
+      - Accounts
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Ledger account details.
+components:
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: client_secret
