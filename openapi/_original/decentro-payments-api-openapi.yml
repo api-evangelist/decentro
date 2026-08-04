@@ -1,0 +1,84 @@
+openapi: 3.1.0
+info:
+  title: Decentro Payments API
+  description: >-
+    Decentro's Payments API supports collections (UPI, dynamic QR),
+    payouts, ENACH mandates, UPI Autopay, settlements, and refunds in
+    the Indian banking system.
+  version: "1.0"
+  contact:
+    name: Decentro
+    url: https://decentro.tech/
+servers:
+  - url: https://in.decentro.tech
+    description: India production
+tags:
+  - name: Collections
+  - name: Payouts
+  - name: Mandates
+  - name: Settlements
+paths:
+  /v2/payments/upi/link:
+    post:
+      summary: Generate UPI collection link
+      operationId: generateUpiLink
+      tags: [Collections]
+      responses:
+        "200":
+          description: UPI link created.
+  /v2/payments/upi/qr:
+    post:
+      summary: Generate dynamic UPI QR
+      operationId: generateUpiQr
+      tags: [Collections]
+      responses:
+        "200":
+          description: QR code generated.
+  /v2/payments/transfer:
+    post:
+      summary: Disburse a payout
+      operationId: createPayout
+      tags: [Payouts]
+      responses:
+        "200":
+          description: Payout submitted.
+  /v2/payments/transfer/status:
+    get:
+      summary: Get payout status
+      operationId: getPayoutStatus
+      tags: [Payouts]
+      responses:
+        "200":
+          description: Current status of a payout.
+  /v2/payments/enach/register:
+    post:
+      summary: Register an ENACH mandate
+      operationId: registerEnachMandate
+      tags: [Mandates]
+      responses:
+        "200":
+          description: Mandate registration result.
+  /v2/payments/upi-autopay/mandate:
+    post:
+      summary: Register a UPI Autopay mandate
+      operationId: registerUpiAutopayMandate
+      tags: [Mandates]
+      responses:
+        "200":
+          description: Autopay mandate registration.
+  /v2/payments/refund:
+    post:
+      summary: Issue a refund
+      operationId: issueRefund
+      tags: [Settlements]
+      responses:
+        "200":
+          description: Refund initiated.
+components:
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: client_secret
+security:
+  - apiKey: []

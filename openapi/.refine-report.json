@@ -1,0 +1,34 @@
+{
+  "provider": "decentro",
+  "sources": [
+    "decentro-accounts-api-openapi.yml",
+    "decentro-collections-api-openapi.yml",
+    "decentro-forensics-api-openapi.yml",
+    "decentro-journals-api-openapi.yml",
+    "decentro-kyc-api-openapi.yml",
+    "decentro-mandates-api-openapi.yml",
+    "decentro-payouts-api-openapi.yml",
+    "decentro-settlements-api-openapi.yml",
+    "decentro-transactions-api-openapi.yml",
+    "decentro-verification-api-openapi.yml",
+    "decentro-virtual-accounts-api-openapi.yml"
+  ],
+  "outputs": [
+    "decentro-accounts-api-openapi.yml",
+    "decentro-collections-api-openapi.yml",
+    "decentro-forensics-api-openapi.yml",
+    "decentro-journals-api-openapi.yml",
+    "decentro-kyc-api-openapi.yml",
+    "decentro-mandates-api-openapi.yml",
+    "decentro-payouts-api-openapi.yml",
+    "decentro-settlements-api-openapi.yml",
+    "decentro-transactions-api-openapi.yml",
+    "decentro-verification-api-openapi.yml",
+    "decentro-virtual-accounts-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

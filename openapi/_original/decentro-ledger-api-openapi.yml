@@ -1,0 +1,62 @@
+openapi: 3.1.0
+info:
+  title: Decentro Ledger API
+  description: >-
+    Decentro Ledger API provides double-entry accounting primitives -
+    journals, ledger accounts, and transactions - to record financial
+    activity across virtual accounts and external counterparties.
+  version: "1.0"
+servers:
+  - url: https://in.decentro.tech
+    description: India production
+tags:
+  - name: Journals
+  - name: Accounts
+  - name: Transactions
+paths:
+  /v2/ledger/journal:
+    post:
+      summary: Create a journal entry
+      operationId: createJournalEntry
+      tags: [Journals]
+      responses:
+        "200":
+          description: Journal entry recorded.
+  /v2/ledger/account:
+    post:
+      summary: Create a ledger account
+      operationId: createLedgerAccount
+      tags: [Accounts]
+      responses:
+        "200":
+          description: Ledger account created.
+  /v2/ledger/account/{id}:
+    get:
+      summary: Get a ledger account
+      operationId: getLedgerAccount
+      tags: [Accounts]
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Ledger account details.
+  /v2/ledger/transactions:
+    get:
+      summary: List transactions
+      operationId: listLedgerTransactions
+      tags: [Transactions]
+      responses:
+        "200":
+          description: Transactions in the ledger.
+components:
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: client_secret
+security:
+  - apiKey: []
