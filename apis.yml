@@ -89,8 +89,6 @@ apis:
     url: json-schema/decentro-payout.json
   - type: Rules
     url: rules/decentro-payments-api-rules.yml
-  - type: Capabilities
-    url: capabilities/decentro-payments-api-capabilities.yml
 - aid: decentro:decentro-collections-api
   name: Decentro Collections API
   description: The Collections API from Decentro — 2 operation(s) for collections.
@@ -107,8 +105,6 @@ apis:
     url: json-schema/decentro-payout.json
   - type: Rules
     url: rules/decentro-payments-api-rules.yml
-  - type: Capabilities
-    url: capabilities/decentro-payments-api-capabilities.yml
 - aid: decentro:decentro-forensics-api
   name: Decentro Forensics API
   description: The Forensics API from Decentro — 2 operation(s) for forensics.
@@ -125,8 +121,6 @@ apis:
     url: json-schema/decentro-payout.json
   - type: Rules
     url: rules/decentro-payments-api-rules.yml
-  - type: Capabilities
-    url: capabilities/decentro-payments-api-capabilities.yml
 - aid: decentro:decentro-journals-api
   name: Decentro Journals API
   description: The Journals API from Decentro — 1 operation(s) for journals.
@@ -143,8 +137,6 @@ apis:
     url: json-schema/decentro-payout.json
   - type: Rules
     url: rules/decentro-payments-api-rules.yml
-  - type: Capabilities
-    url: capabilities/decentro-payments-api-capabilities.yml
 - aid: decentro:decentro-mandates-api
   name: Decentro Mandates API
   description: The Mandates API from Decentro — 2 operation(s) for mandates.
@@ -161,8 +153,6 @@ apis:
     url: json-schema/decentro-payout.json
   - type: Rules
     url: rules/decentro-payments-api-rules.yml
-  - type: Capabilities
-    url: capabilities/decentro-payments-api-capabilities.yml
 - aid: decentro:decentro-payouts-api
   name: Decentro Payouts API
   description: The Payouts API from Decentro — 2 operation(s) for payouts.
@@ -179,8 +169,6 @@ apis:
     url: json-schema/decentro-payout.json
   - type: Rules
     url: rules/decentro-payments-api-rules.yml
-  - type: Capabilities
-    url: capabilities/decentro-payments-api-capabilities.yml
 - aid: decentro:decentro-settlements-api
   name: Decentro Settlements API
   description: The Settlements API from Decentro — 1 operation(s) for settlements.
@@ -197,8 +185,6 @@ apis:
     url: json-schema/decentro-payout.json
   - type: Rules
     url: rules/decentro-payments-api-rules.yml
-  - type: Capabilities
-    url: capabilities/decentro-payments-api-capabilities.yml
 - aid: decentro:decentro-transactions-api
   name: Decentro Transactions API
   description: The Transactions API from Decentro — 1 operation(s) for transactions.
@@ -215,8 +201,6 @@ apis:
     url: json-schema/decentro-payout.json
   - type: Rules
     url: rules/decentro-payments-api-rules.yml
-  - type: Capabilities
-    url: capabilities/decentro-payments-api-capabilities.yml
 - aid: decentro:decentro-verification-api
   name: Decentro Verification API
   description: The Verification API from Decentro — 1 operation(s) for verification.
@@ -233,8 +217,6 @@ apis:
     url: json-schema/decentro-payout.json
   - type: Rules
     url: rules/decentro-payments-api-rules.yml
-  - type: Capabilities
-    url: capabilities/decentro-payments-api-capabilities.yml
 common:
   - type: AgenticAccess
     url: agentic-access/decentro-agentic-access.yml
