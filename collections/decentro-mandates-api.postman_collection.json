@@ -1,27 +1,25 @@
 {
   "item": [
     {
-      "id": "52af2f5f-2f47-4c3a-b045-c53666cc797e",
-      "name": "KYC",
+      "id": "cbd95c90-1f03-48c3-847b-1d255b99c722",
+      "name": "Mandates",
       "description": {
         "content": "",
         "type": "text/plain"
       },
       "item": [
         {
-          "id": "3a3934fb-224c-4474-8310-aeb2bd623df6",
-          "name": "Generate Aadhaar OTP",
+          "id": "ebc51f49-85f7-42c9-8e1e-56ac661b6ef6",
+          "name": "Register an ENACH mandate",
           "request": {
-            "name": "Generate Aadhaar OTP",
+            "name": "Register an ENACH mandate",
             "description": {},
             "url": {
               "path": [
                 "v2",
-                "kyc",
-                "identities",
-                "aadhaar",
-                "otp",
-                "generate"
+                "payments",
+                "enach",
+                "register"
               ],
               "host": [
                 "{{baseUrl}}"
@@ -34,17 +32,15 @@
           },
           "response": [
             {
-              "id": "865f1abb-95d1-4ab0-ae70-6180cd940e92",
-              "name": "OTP generated.",
+              "id": "87195e85-d340-461b-9281-a00a6776fbb2",
+              "name": "Mandate registration result.",
               "originalRequest": {
                 "url": {
                   "path": [
                     "v2",
-                    "kyc",
-                    "identities",
-                    "aadhaar",
-                    "otp",
-                    "generate"
+                    "payments",
+                    "enach",
+                    "register"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -84,19 +80,17 @@
           }
         },
         {
-          "id": "faf0d776-4124-4043-838f-fa481fa1c51b",
-          "name": "Validate Aadhaar OTP",
+          "id": "48b874e2-4bd8-4a8a-9310-2307dd37ea7c",
+          "name": "Register a UPI Autopay mandate",
           "request": {
-            "name": "Validate Aadhaar OTP",
+            "name": "Register a UPI Autopay mandate",
             "description": {},
             "url": {
               "path": [
                 "v2",
-                "kyc",
-                "identities",
-                "aadhaar",
-                "otp",
-                "validate"
+                "payments",
+                "upi-autopay",
+                "mandate"
               ],
               "host": [
                 "{{baseUrl}}"
@@ -109,88 +103,15 @@
           },
           "response": [
             {
-              "id": "b742d82a-140f-46e7-af92-8345c9d6c5b0",
-              "name": "Aadhaar verification result.",
+              "id": "7f41c26b-2b34-4142-8eec-29f1768cf59a",
+              "name": "Autopay mandate registration.",
               "originalRequest": {
                 "url": {
                   "path": [
                     "v2",
-                    "kyc",
-                    "identities",
-                    "aadhaar",
-                    "otp",
-                    "validate"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "client_secret",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "cfb3f71f-fb1a-436f-bc93-0211afc8fd1b",
-          "name": "Initialize DigiLocker session",
-          "request": {
-            "name": "Initialize DigiLocker session",
-            "description": {},
-            "url": {
-              "path": [
-                "v2",
-                "kyc",
-                "digilocker",
-                "initialize"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "method": "POST",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "d0ab7891-c676-4982-ab69-d64f18309ca2",
-              "name": "DigiLocker session created.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v2",
-                    "kyc",
-                    "digilocker",
-                    "initialize"
+                    "payments",
+                    "upi-autopay",
+                    "mandate"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -259,8 +180,8 @@
     ]
   },
   "info": {
-    "_postman_id": "eaefcad4-65ab-46e5-8f81-9e842b4f8c6c",
-    "name": "Decentro & Onboarding Accounts KYC API",
+    "_postman_id": "47753816-24c3-458a-a028-b3caaa18ebb1",
+    "name": "Decentro KYC & Onboarding Accounts Mandates API",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "description": {
       "content": "Decentro's KYC & Onboarding API provides identity verification, customer onboarding workflows, and document/face forensics for Indian financial services.\n\nContact Support:\n Name: Decentro",

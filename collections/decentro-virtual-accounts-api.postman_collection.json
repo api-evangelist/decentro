@@ -1,7 +1,7 @@
 {
   "item": [
     {
-      "id": "88366318-a5c7-4daf-92cf-0ccf616bcadb",
+      "id": "413bfefd-92c3-416e-aef4-335836e283d9",
       "name": "Virtual Accounts",
       "description": {
         "content": "",
@@ -9,7 +9,7 @@
       },
       "item": [
         {
-          "id": "4879be69-8c60-484e-a9ee-3c11c4bf16fd",
+          "id": "bcf85355-37d7-4b50-9a0d-fc7a3e603d91",
           "name": "Create a virtual account",
           "request": {
             "name": "Create a virtual account",
@@ -31,7 +31,7 @@
           },
           "response": [
             {
-              "id": "4d70a3d0-4e9d-49d2-9e70-2514796383ea",
+              "id": "e324bba9-f529-473a-b4ff-c69a305a425a",
               "name": "Virtual account created.",
               "originalRequest": {
                 "url": {
@@ -78,7 +78,7 @@
           }
         },
         {
-          "id": "d21aa362-f87b-4a56-89c2-7c4777012f8e",
+          "id": "cd10230a-cc80-4e13-9724-9b8e2ac3f0dc",
           "name": "Get virtual account details",
           "request": {
             "name": "Get virtual account details",
@@ -109,7 +109,7 @@
           },
           "response": [
             {
-              "id": "805b4396-dfbb-47e6-9351-d019afbe3a73",
+              "id": "c80b3262-edb7-42c9-975c-31e649cce690",
               "name": "Virtual account record.",
               "originalRequest": {
                 "url": {
@@ -165,7 +165,7 @@
           }
         },
         {
-          "id": "4293f96a-1f95-4a4c-af6f-8aabd6b5b3f7",
+          "id": "9e4a03d9-ca88-4c4d-86bc-fd6cbbd76d59",
           "name": "Get virtual account balance",
           "request": {
             "name": "Get virtual account balance",
@@ -188,7 +188,7 @@
           },
           "response": [
             {
-              "id": "b27290fa-6ab1-4afb-9879-5c4393dcf60f",
+              "id": "70a20d5c-02de-4486-a83f-054ca406d678",
               "name": "Current balance.",
               "originalRequest": {
                 "url": {
@@ -236,7 +236,7 @@
           }
         },
         {
-          "id": "38c19a43-a754-483b-b77e-2ad25cf3890f",
+          "id": "33813284-f367-482f-ae6d-ba712b786899",
           "name": "Get virtual account statement",
           "request": {
             "name": "Get virtual account statement",
@@ -259,7 +259,7 @@
           },
           "response": [
             {
-              "id": "86937d7e-7412-432b-9b9e-f54beea61915",
+              "id": "7dc6dcb7-0327-46ab-a262-24923435588e",
               "name": "Statement entries.",
               "originalRequest": {
                 "url": {
@@ -307,7 +307,7 @@
           }
         },
         {
-          "id": "7f2de1e0-71c0-4bfb-b308-fc77ea90779d",
+          "id": "05a0f741-4fc5-4e5d-aff3-6d60e3fd3273",
           "name": "Whitelist a remitter",
           "request": {
             "name": "Whitelist a remitter",
@@ -330,7 +330,7 @@
           },
           "response": [
             {
-              "id": "e7d789b3-6d89-47d6-9064-46b4dc891049",
+              "id": "39b7c15d-5158-4ce4-a8d5-0cbc4f3de02c",
               "name": "Remitter whitelisted.",
               "originalRequest": {
                 "url": {
@@ -407,11 +407,11 @@
     ]
   },
   "info": {
-    "_postman_id": "58847347-9d0d-4784-bde0-3dda9be278e0",
-    "name": "Decentro Virtual Accounts API",
+    "_postman_id": "bd309dca-f2d3-4fe2-97bb-1b55e124ef2a",
+    "name": "Decentro KYC & Onboarding Accounts Virtual Accounts API",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "description": {
-      "content": "Decentro Virtual Accounts API enables creation, management, and monitoring of virtual bank accounts for collections, escrow, and reconciliation use-cases.",
+      "content": "Decentro's KYC & Onboarding API provides identity verification, customer onboarding workflows, and document/face forensics for Indian financial services.\n\nContact Support:\n Name: Decentro",
       "type": "text/plain"
     }
   }

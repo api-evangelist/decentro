@@ -1,0 +1,345 @@
+# Decentro Documentation
+
+> Dive into Decentro's APIs and product guides. Simple and automated APIs to help launch your FinTech products 10X faster.
+
+## Guides
+- [Overview & Guide](https://docs.decentro.tech/docs/overview.md)
+- [API Basics & Endpoints](https://docs.decentro.tech/docs/api-basics.md)
+- [Testing Credentials](https://docs.decentro.tech/docs/testing-credentials.md)
+- [KYC - Overview & Guide](https://docs.decentro.tech/docs/kyc-and-onboarding-overview-and-guide.md): Engage warp drive on your customer onboarding and boldly go where no fintech has gone before
+- [Workflows](https://docs.decentro.tech/docs/kyc-and-onboarding-workflows.md)
+- [UIStreams](https://docs.decentro.tech/docs/kyc-and-onboarding-workflows-uistreams.md): Unleash the fastest possible GTMs by onboarding customers with UIStreams
+- [DigiLocker UIStreams](https://docs.decentro.tech/docs/kyc-and-onboarding-workflows-uistreams-digilocker-uistreams.md): UIStreams specialized in orchestrating DigiLocker-based workflows.
+- [HyperStreams](https://docs.decentro.tech/docs/kyc-and-onboarding-workflows-hyperstreams.md): Empowering Seamless Financial Innovation with HyperStreams
+- [Advanced OCR HyperStream](https://docs.decentro.tech/docs/kyc-and-onboarding-workflows-hyperstreams-advanced-ocr.md)
+- [CKYC Prefill HyperStream](https://docs.decentro.tech/docs/kyc-and-onboarding-workflows-hyperstreams-ckyc-prefill.md)
+- [Employment Verification](https://docs.decentro.tech/docs/employment-verification.md)
+- [Identities](https://docs.decentro.tech/docs/kyc-and-onboarding-identities.md): Unleash the power of connectivity to CKYC, and DigiLocker - forging a unified and robust identity verification solution.
+- [Verification Services](https://docs.decentro.tech/docs/kyc-and-onboarding-identities-verification-services.md): 🔐✨ Elevate your identity verification game across consumers, employees, and businesses – forging trust and compliance seamlessly.
+- [Customer Verification](https://docs.decentro.tech/docs/kyc-and-onboarding-identities-verification-services-customer-verification.md)
+- [Business Verification](https://docs.decentro.tech/docs/kyc-and-onboarding-identities-verification-services-business-verification.md)
+- [Employment Verification](https://docs.decentro.tech/docs/kyc-and-onboarding-identities-verification-services-employment-verification.md)
+- [Professional Verification](https://docs.decentro.tech/docs/kyc-and-onboarding-identities-verification-services-professional-verification.md): An extension of the Employment Verification stack for deeper insights
+- [Bank Verification](https://docs.decentro.tech/docs/kyc-and-onboarding-bank-verification.md): This page gives you an overview of the bank account validation capabilities of Decentro.
+- [DigiLocker Services](https://docs.decentro.tech/docs/kyc-and-onboarding-identities-digilocker-services.md): ✅ Ditch the Paper Chase with DigiLocker: Your Secure Digital Document Vault
+- [DigiLocker Suite](https://docs.decentro.tech/docs/kyc-and-onboarding-identities-digilocker-services-digilocker-suite.md): ✅ Ditch the Paper Chase with DigiLocker: Your Secure Digital Document Vault
+- [SSO DigiLocker Suite](https://docs.decentro.tech/docs/kyc-and-onboarding-identities-digilocker-services-sso-digilocker-suite.md): ✅ Ditch the Paper Chase with DigiLocker: Your Secure Digital Document Vault
+- [CKYC Services](https://docs.decentro.tech/docs/kyc-and-onboarding-identities-ckyc-services.md): Introducing CKYC Services – Your Gateway to Comprehensive KYC. Streamlined record retrieval, automated compliance checks, and hassle-free data uploads for a seamless KYC process.
+- [CKYC Search](https://docs.decentro.tech/docs/kyc-and-onboarding-identities-ckyc-services-ckyc-search.md)
+- [CKYC Download](https://docs.decentro.tech/docs/kyc-and-onboarding-identities-ckyc-services-ckyc-download.md)
+- [CKYC Upload](https://docs.decentro.tech/docs/kyc-and-onboarding-identities-ckyc-services-ckyc-upload.md): 💫 🧙‍♂️ One solution to create them all, one solution to find them. One solution to bring them all, and in the registry bind them.
+- [Developer Hub](https://docs.decentro.tech/docs/kyc-and-onboarding-developer-hub.md): Your Gateway to Streamlined Integration and Rapid Market Deployment
+- [CKYC Sandbox](https://docs.decentro.tech/docs/kyc-and-onboarding-sandbox-ckyc.md): This section explains how to simulate various scenarios as part of the CKYC Search API of Decentro.
+- [SDKs](https://docs.decentro.tech/docs/kyc-and-onboarding-developer-hub-sdks.md)
+- [Flutter SDK](https://docs.decentro.tech/docs/kyc-and-onboarding-developer-hub-client-side-sdks-flutter.md)
+- [React Native SDK](https://docs.decentro.tech/docs/kyc-and-onboarding-developer-hub-client-side-sdks-react-native.md)
+- [FAQs - KYC & Onboarding](https://docs.decentro.tech/docs/kyc-faqs.md)
+- [Bytes - Overview and Guide](https://docs.decentro.tech/docs/bytes-overview-and-guide.md): Comprehensive module that empowers businesses to leverage alternative data for identity verification, fraud detection, and financial decision-making.
+- [Alternate Data Suite](https://docs.decentro.tech/docs/bytes-alternate-data-suite.md)
+- [ID Converters](https://docs.decentro.tech/docs/id-converters.md): Facilitates seamless mapping between various identification forms, aiding in compliance and fraud prevention.
+- [Credit Bureau](https://docs.decentro.tech/docs/bytes-credit-bureau.md)
+- [FAQs - Bytes](https://docs.decentro.tech/docs/bytes-faqs.md)
+- [Scanner - Overview and Guide](https://docs.decentro.tech/docs/scanner-overview-and-guide.md): The Scanner module is an advanced API suite that enhances data verification and fraud detection through machine learning and computer vision, ensuring robust compliance and security for businesses.
+- [User Intelligence Suite](https://docs.decentro.tech/docs/scanner-user-intelligence-suite.md): Score your customers between 100 to 1000 for customer profiling, segmentation, underwriting and risk analysis purposes.
+- [Data Forensics](https://docs.decentro.tech/docs/kyc-and-onboarding-farsight-data-forensics.md)
+- [Phonetic Name Matching](https://docs.decentro.tech/docs/kyc-and-onboarding-farsight-data-forensics-phonetic-name-matching.md)
+- [Regular Text Matching](https://docs.decentro.tech/docs/kyc-and-onboarding-farsight-data-forensics-regular-text-matching.md)
+- [Geolocation Matching](https://docs.decentro.tech/docs/kyc-and-onboarding-farsight-data-forensics-geolocation-matching.md)
+- [Document Forensics](https://docs.decentro.tech/docs/kyc-and-onboarding-farsight-document-forensics.md)
+- [Document Classification](https://docs.decentro.tech/docs/kyc-and-onboarding-farsight-document-forensics-document-classification.md)
+- [Document Extraction](https://docs.decentro.tech/docs/kyc-and-onboarding-farsight-document-forensics-document-extraction.md)
+- [Document Quality](https://docs.decentro.tech/docs/kyc-and-onboarding-farsight-document-forensics-document-quality.md)
+- [Aadhaar Masking](https://docs.decentro.tech/docs/kyc-and-onboarding-farsight-document-forensics-aadhaar-masking.md)
+- [Face Forensics](https://docs.decentro.tech/docs/kyc-and-onboarding-farsight-face-forensics.md): Explore the Face Forensics sub-group within Decentro Farsight
+- [Passive Liveness](https://docs.decentro.tech/docs/kyc-and-onboarding-farsight-face-forensics-passive-liveness.md)
+- [Face Match](https://docs.decentro.tech/docs/kyc-and-onboarding-farsight-face-forensics-face-match.md)
+- [FAQs - Scanner](https://docs.decentro.tech/docs/scanner-faqs.md)
+- [Payments - Overview & Guide](https://docs.decentro.tech/docs/payments-overview-and-guide.md): This page gives you an overview of Decentro's payments stack spanning multiple capabilities.
+- [Collections](https://docs.decentro.tech/docs/payments-collections.md): This page gives you an overview of Decentro's collections capabilities spanning UPI and Virtual Accounts.
+- [Collections v3](https://docs.decentro.tech/docs/payments-collections-v3.md): This page gives you an overview of Decentro's collections capabilities on its v3 Payment Aggregator stack.
+- [Merchant Onboarding Process](https://docs.decentro.tech/docs/payments-collections-pa-onboarding.md): This page gives you an overview of the Decentro's merchant onboarding requirement on its payments stack.
+- [UPI Collections - Configurations and Status Values](https://docs.decentro.tech/docs/upi-collection-v3-configurations-and-status-values.md): An overview of the various configurations available to our merchants, the status values propagated by our system, and examples of how they are linked.
+- [UPI Collections - Payment Modes](https://docs.decentro.tech/docs/upi-collection-flows.md)
+- [Offline QR & Push to UPI ID](https://docs.decentro.tech/docs/upi-collections-offline-qr.md): This page gives you an overview of Decentro's Offline Static QR Code based payments capability
+- [E-NACH](https://docs.decentro.tech/docs/e-nach-1.md)
+- [UPI Autopay](https://docs.decentro.tech/docs/upi-autopay.md): This page gives you and overview of Decentro's recurring collection capabilities through the UPI Auto-pay stack.
+- [Virtual Account collections - Ecollect](https://docs.decentro.tech/docs/virtual-account-collections-ecollect.md): The E collect stack offering of Decentro allows merchants to seamlessly collect and manage customer funds in virtual accounts.
+- [Collections - Simulation Data](https://docs.decentro.tech/docs/payments-collections-simulation_data.md): This page gives an overview of using testbed data to simulate multiple scenarios from a collections stack perspective.
+- [Collections FAQs](https://docs.decentro.tech/docs/faqs.md): This page covers all the FAQs pertaining to Decentro's collections platform.
+- [Netbanking](https://docs.decentro.tech/docs/netbanking20.md)
+- [UPI Collections v2](https://docs.decentro.tech/docs/upi-collections-v2.md)
+- [Payouts](https://docs.decentro.tech/docs/payments-direct-payouts.md): This page will give you an overview of the Decentro's capabilities on the payouts stack.
+- [Funds Loading](https://docs.decentro.tech/docs/funds-loading.md): This page will give you an understanding of how to load funds to Decentro's wallet/virtual account.
+- [Initiate Payout](https://docs.decentro.tech/docs/initiate-payout.md): This page will give you an understanding of how to undertake payouts using Decentro's stack.
+- [Manage Beneficiary](https://docs.decentro.tech/docs/manage-beneficiary.md): This page will give you an understanding of how to undertake payouts using the beneficiary capability.
+- [Get Transaction Status](https://docs.decentro.tech/docs/get-transaction-status.md): This page gives you an overview of the status check capability for Decentro's payouts stack.
+- [Bulk Payouts CSV](https://docs.decentro.tech/docs/payments-batch-payout-csv.md): This page gives you an overivew of Decentro's bulk payouts capabilities.
+- [Bulk Payouts JSON](https://docs.decentro.tech/docs/batch-payouts-json.md): This page gives you an overivew of Decentro's bulk payouts capabilities.
+- [Payout Error Messages](https://docs.decentro.tech/docs/payments-payouts-errormessages.md): This page gives you an overview of the error messages propagated as part of the payouts stack.
+- [Direct Payouts - Simulation Data](https://docs.decentro.tech/docs/direct-payouts-simulation-data.md): This page gives you the overview of Decentro's simulation data for testing payouts capabilities.
+- [Payouts FAQs](https://docs.decentro.tech/docs/payments-payouts-faqs.md)
+- [User Verification](https://docs.decentro.tech/docs/user-verification.md): This page gives you an overview of Decentro's user verification capabilities.
+- [User verification v2](https://docs.decentro.tech/docs/user-verification-v2.md): This guide gives an overview of Decentro's API pertaining to user verification suite.
+- [Validate Bank Account](https://docs.decentro.tech/docs/payments-validate-bank-account.md): This page gives you an overview of the bank account validation capabilities of Decentro.
+- [Bulk Validate Bank Account](https://docs.decentro.tech/docs/payments-bulk-validate-bank-account.md): This module can be used to validate large number of accounts to individuals or businesses using standard modes.
+- [Validate Bank Account Error Messages](https://docs.decentro.tech/docs/user-verifications-validate-bank-account-error-messages.md)
+- [VerifyPay](https://docs.decentro.tech/docs/verifypay.md): Validate a UPI VPA via a penny drop
+- [Reverse penny pull](https://docs.decentro.tech/docs/reverse-penny-pull.md)
+- [User verification v3](https://docs.decentro.tech/docs/user-verification-v3.md): This page gives you an overview of Decentro's user verification capabilities.
+- [Reverse Penny Drop/Penny Pull](https://docs.decentro.tech/docs/reverse-penny-drop-pa.md)
+- [Validate Bank Account v3](https://docs.decentro.tech/docs/validate-bank-account-v3-1.md): All of Validate Bank Account - enhanced with smarter routing, higher success rates, and zero configuration hassle.
+- [Simulation Data - User verification](https://docs.decentro.tech/docs/simulation-data.md): This page gives the simulation data for Penny Pull provided by Decentro as part of the user verification stack.
+- [FAQs - User verification](https://docs.decentro.tech/docs/payments-userverification-pennypull-faqs.md): This page answers all the key questions pertaining to Decentro's penny pull/reverse penny drop.
+- [Split Settlements](https://docs.decentro.tech/docs/overview-split-settlements.md): This page gives the overview of split settlement and how it works
+- [Split Settlement Rule Configuration](https://docs.decentro.tech/docs/split-settlement-rule-configuration.md): This page gives the further working of split settlements
+- [FAQs - Split Settlements](https://docs.decentro.tech/docs/faqs-split-settlements.md): This page covers all the FAQs pertaining to Decentro's ENACH platform.
+- [FAQs - Payments](https://docs.decentro.tech/docs/payments-faqs.md)
+- [Virtual Accounts - Overview & Guide](https://docs.decentro.tech/docs/virtual_accounts-overview-and-guide.md)
+- [Virtual Accounts Flow](https://docs.decentro.tech/docs/virtual-accounts-flow.md): This page gives you the process flow of using our virtual accounts stack
+- [Account v2](https://docs.decentro.tech/docs/virtual_accounts-account-v2.md)
+- [Information V1](https://docs.decentro.tech/docs/virtual_accounts-information.md): Fetch virtual account details created for your platform, including linked information, customer data, and more with Decentro.
+- [Information v2](https://docs.decentro.tech/docs/virtual_accounts-information-v2.md): Access virtual account data effortlessly—retrieve all accounts, linked details, and customer insights with Decentro’s API.
+- [Callbacks](https://docs.decentro.tech/docs/virtual_accounts-callbacks.md)
+- [VA Balance Settlement](https://docs.decentro.tech/docs/virtual_accounts-va-balance-settlement.md)
+- [Whitelist Remitter Accounts](https://docs.decentro.tech/docs/whitelisting-remitter-accounts.md)
+- [FAQs - Virtual Accounts](https://docs.decentro.tech/docs/virtual_accounts-faqs.md)
+- [Ledgers - Overview & Guide](https://docs.decentro.tech/docs/ledgers-overview-and-guide.md): Streamline money movement and transactions with Decentro’s scalable Ledgers. Built for growth and seamless customer experiences.
+- [Journals](https://docs.decentro.tech/docs/ledgers-journals.md)
+- [Ledger Accounts](https://docs.decentro.tech/docs/ledgers.md)
+- [Transactions](https://docs.decentro.tech/docs/ledgers-transactions.md)
+- [FAQs - Ledgers](https://docs.decentro.tech/docs/ledgers-faqs.md): Explore FAQs about Decentro’s Ledger module. Learn how closed-loop ledgers simplify transaction reconciliation, balance management, and data tracking.
+- [Organisation Master List](https://docs.decentro.tech/docs/knowledge-base-digilocker-organisation-ids.md)
+- [Document Master List](https://docs.decentro.tech/docs/knowledge-base-digilocker-document-codes.md)
+- [Static IP Address Solution](https://docs.decentro.tech/docs/static-ip-address-solution.md)
+- [CKYC Responses Master List](https://docs.decentro.tech/docs/ckyc-responses-master-list.md): This page contains official master lists for `constitutionType`, `identityType`, `permPoa` and `imageCode` parameters from CKYC.
+- [CKYCR Registration Eligibility](https://docs.decentro.tech/docs/ckycr-registration-eligibility.md)
+- [Support](https://docs.decentro.tech/docs/decentro-support.md)
+- [Decentro FAQs](https://docs.decentro.tech/docs/decentro-faqs.md)
+
+## API Reference
+- [Developer Quickstart](https://docs.decentro.tech/reference/kyc-developer-quickstart.md)
+- [Digilocker UIStreams](https://docs.decentro.tech/reference/kyc-and-onboarding-api-reference-workflows-uistreams-atomic-uistreams.md)
+- [HyperStreams](https://docs.decentro.tech/reference/kyc-and-onboarding-api-reference-workflows-hyperstreams.md)
+- [CKYC Prefill](https://docs.decentro.tech/reference/kyc-and-onboarding-api-reference-workflows-hyperstreams-ckyc-prefill.md)
+- [Employment Verification](https://docs.decentro.tech/reference/kyc-and-onboarding-api-reference-workflows-hyperstreams-company-employment-verification.md)
+- [Advanced OCR](https://docs.decentro.tech/reference/advanced-ocr.md)
+- [Customer Verification Validate API](https://docs.decentro.tech/reference/kyc-and-onboarding-api-reference-identities-verification-services-customer-verification-validate-api.md)
+- [Aadhaar OVSE: QR Code Intent Flow](https://docs.decentro.tech/reference/aadhaar-ovse-qrcode-intent.md)
+- [Business Verification Validate API](https://docs.decentro.tech/reference/kyc-and-onboarding-api-reference-identities-verification-services-business-verification-validate-api.md)
+- [Shop Establishment](https://docs.decentro.tech/reference/shop-establishment.md)
+- [Professional Verification](https://docs.decentro.tech/reference/kyc-and-onboarding-api-reference-identities-verification-services-professional-verification.md): An extension of the Employment Verification stack for deeper insights
+- [Chartered Accountants](https://docs.decentro.tech/reference/kyc-and-onboarding-api-reference-identities-verification-services-professional-verification-icai.md)
+- [National Medical Council](https://docs.decentro.tech/reference/kyc-and-onboarding-api-reference-identities-verification-services-professional-verification-nmc.md)
+- [Company Secretary](https://docs.decentro.tech/reference/kyc-and-onboarding-api-reference-identities-verification-services-professional-verification-icsi.md)
+- [Employer Domain Verification w/o OTP](https://docs.decentro.tech/reference/kyc-and-onboarding-api-reference-identities-verification-services-employment-verification-employer-domain-verification-without-otp.md)
+- [SSO DigiLocker APIs](https://docs.decentro.tech/reference/kyc-and-onboarding-api-reference-identities-digilocker-services-sso-digilocker-apis.md)
+- [SSO DigiLocker Initiate Session API](https://docs.decentro.tech/reference/kyc_api-sso-digilocker-session.md)
+- [SSO DigiLocker eAadhaar API](https://docs.decentro.tech/reference/kyc_api-sso-digilocker-eaadhaar.md)
+- [Issued Files](https://docs.decentro.tech/reference/kyc_api-sso-digilocker-issued-files.md)
+- [Download File](https://docs.decentro.tech/reference/kyc_api-sso-digilocker-download-file.md)
+- [SSO DigiLocker File Data API](https://docs.decentro.tech/reference/kyc_api-sso-digilocker-file-data.md)
+- [Pull File](https://docs.decentro.tech/reference/kyc_api-sso-digilocker-pull-file.md)
+- [Revoke Token](https://docs.decentro.tech/reference/kyc_api-sso-digilocker-revoke-token.md)
+- [DigiLocker APIs](https://docs.decentro.tech/reference/kyc-and-onboarding-api-reference-identities-digilocker-services-digilocker-apis.md)
+- [Initiate Session](https://docs.decentro.tech/reference/kyc_api-digilocker-initiate-session.md)
+- [Generate Access Token](https://docs.decentro.tech/reference/digilocker-generate-access-token.md)
+- [DigiLocker Issued Files API](https://docs.decentro.tech/reference/kyc_api-digilocker-get-issued-files.md)
+- [eAadhaar](https://docs.decentro.tech/reference/kyc_api-digilocker-get-e-aadhaar.md)
+- [Download File](https://docs.decentro.tech/reference/kyc_api-digilocker-download-file.md)
+- [Pull & Link File](https://docs.decentro.tech/reference/kyc_api-digilocker-pull-file.md)
+- [DigiLocker File Data API](https://docs.decentro.tech/reference/kyc_api-digilocker-file-data.md)
+- [Verify Mobile](https://docs.decentro.tech/reference/digilocker-verify-mobile.md)
+- [CKYC Search API](https://docs.decentro.tech/reference/kyc-and-onboarding-api-reference-identities-ckyc-services-search.md)
+- [CKYC Download Generate OTP API](https://docs.decentro.tech/reference/ckyc-download-generate-otp-api.md)
+- [CKYC Download Validate OTP API](https://docs.decentro.tech/reference/ckyc-download-validate-otp-api.md)
+- [CKYC Bulk Download](https://docs.decentro.tech/reference/ckyc-bulk-download.md)
+- [CKYC Bulk Search API](https://docs.decentro.tech/reference/ckyc-bulk-search-api.md)
+- [CKYC Upload : Legal Entities](https://docs.decentro.tech/reference/ckyc-upload-legal-entity.md)
+- [CKYC Upload For Individuals](https://docs.decentro.tech/reference/kyc-and-onboarding-api-reference-identities-ckyc-services-upload-individuals.md)
+- [CKYC Upload Status](https://docs.decentro.tech/reference/get-ckyc-upload-status.md)
+- [CKYC Download Validate OTP API](https://docs.decentro.tech/reference/ckyc-download-individual-validate-otp-api.md)
+- [CKYC Search : Individual](https://docs.decentro.tech/reference/ckyc-search2-individual.md)
+- [CKYC Download: Individual](https://docs.decentro.tech/reference/ckyc-download2-individual.md)
+- [Download PDF Files](https://docs.decentro.tech/reference/kyc-and-onboarding-api-reference-utilities-download-pdf-files.md)
+- [JWT](https://docs.decentro.tech/reference/jwt.md)
+- [Developer Quickstart](https://docs.decentro.tech/reference/bytes-developer-quickstart.md)
+- [Customer Data Pull API](https://docs.decentro.tech/reference/financial_api-customer-data-pull.md): This API is used to fetch customer data using their name and mobile or an ID document
+- [Credit Report Summary](https://docs.decentro.tech/reference/financial_api-generate-credit-report.md)
+- [Credit Report API](https://docs.decentro.tech/reference/credit-report.md)
+- [Credit Score](https://docs.decentro.tech/reference/bytes_credit-score.md)
+- [PAN to GSTIN](https://docs.decentro.tech/reference/api-reference-kyc-and-onboarding-identities-verification-services-id-converters-pan-to-gstin.md)
+- [PAN to UDYAM](https://docs.decentro.tech/reference/pan-to-udyam.md)
+- [RC to Chasis](https://docs.decentro.tech/reference/rc-to-chasis.md)
+- [Chassis to RC](https://docs.decentro.tech/reference/chassis-to-rc.md)
+- [GSTIN to CIN](https://docs.decentro.tech/reference/gstin-to-cin.md)
+- [Alternate Data Suite](https://docs.decentro.tech/reference/bytes-alternate-data.md)
+- [Social Intelligence](https://docs.decentro.tech/reference/bytes-alternate-data-social-intelligence.md)
+- [Phone Tenure](https://docs.decentro.tech/reference/bytes-alternate-data-phone-tenure.md)
+- [Company Financials](https://docs.decentro.tech/reference/bytes-alternate-data-company-financials.md)
+- [Developer Quickstart](https://docs.decentro.tech/reference/scanner-developer-quickstart.md)
+- [Passive Image Liveness](https://docs.decentro.tech/reference/kyc-and-onboarding-api-reference-farsight-face-forensics-passive-liveness-v3.md)
+- [Passive Video Liveness](https://docs.decentro.tech/reference/kyc_api-liveness-verification.md)
+- [Face Match](https://docs.decentro.tech/reference/kyc-and-onboarding-api-reference-farsight-face-forensics-face-match-v3.md)
+- [Aadhaar UID Masking](https://docs.decentro.tech/reference/kyc-and-onboarding-api-reference-farsight-document-forensics-aadhaar-uid-masking.md)
+- [Document Extraction](https://docs.decentro.tech/reference/kyc-and-onboarding-api-reference-farsight-document-forensics-document-extraction.md)
+- [Document Extraction v2](https://docs.decentro.tech/reference/document-extraction-v2.md)
+- [Document Classification](https://docs.decentro.tech/reference/kyc-and-onboarding-api-reference-farsight-document-forensics-id-classification.md)
+- [Document Quality](https://docs.decentro.tech/reference/document-quality.md)
+- [Match Engine](https://docs.decentro.tech/reference/kyc-and-onboarding-api-reference-farsight-data-forensics-match-engine.md): 🏏 If strings had a cricket "match", our API would be the third umpire. Always precise, always unbiased!
+- [Omniscore: Unified User Risk Score for Fraud Detection](https://docs.decentro.tech/reference/omniscore.md)
+- [Omniscore Advance](https://docs.decentro.tech/reference/omniscore-advance.md)
+- [Collections](https://docs.decentro.tech/reference/collections-v3.md): APIs pertaining to Decentro's PA stack.
+- [Generate Credentials v3](https://docs.decentro.tech/reference/testing-credentials-v3.md): Clients can use this API to generate a JSON Web Token for secure access to all v3 APIs as an alternative to client_id & client_secret.
+- [UPI Collections V3](https://docs.decentro.tech/reference/collection-v3.md): This set of APIs from Decentro are designed to help platforms facilitate UPI collections.
+- [Generate Payment Link](https://docs.decentro.tech/reference/payments_api-collectionsv3-paymentlink.md): This API allows the platform to create a payment link/intent flow using Decentro's UPI stack.
+- [Generate Static QR](https://docs.decentro.tech/reference/generate-static-qr.md): This API allows the platform to create a Static QR flow using Decentro's UPI stack.
+- [Generate Dynamic QR](https://docs.decentro.tech/reference/payments_api-collectionsv3-dynamicqr.md): This API allows the platform to create a dynamic QR code using Decentro's UPI stack.
+- [Issue Collect Request](https://docs.decentro.tech/reference/payments_v3-collectrequest.md)
+- [Get Transaction Status Basic](https://docs.decentro.tech/reference/get-transaction-status-basic.md): This API allows the platform to fetch the status of a transaction intiated through a payment link/collect request/dynamic QR code/ UPI Autopay(Refunds only).
+- [Get Transaction Status Advance](https://docs.decentro.tech/reference/get-transaction-status-advance.md): This API allows the platform to fetch the status of a each attempt made by the user on a particular Payment link/Dynamic QR transaction/ UPI Autopay(Refunds only).
+- [Issue Refund](https://docs.decentro.tech/reference/payments_api-collectionsv3-refund.md): This API enabled you to issue refunds for a successful payment.
+- [Release/Capture API](https://docs.decentro.tech/reference/release-capture-api.md): This API is under development. Details will be added once the APIs are signed off in staging/QA.
+- [Terminal Transaction Status Callback/Webhook](https://docs.decentro.tech/reference/payments_api-collectionsv3-statuscallback.md): This callback is used by Decentro to trigger the status of a transaction to pre-configured endpoint of the platform.
+- [Account Balance Callback/Webhook](https://docs.decentro.tech/reference/payments_api-collectionsv3-balancecallback.md)
+- [Virtual Account Collections v3](https://docs.decentro.tech/reference/virtual-account-collections.md): This set of APIs from Decentro are designed to help platforms facilitate virtual account based collections.
+- [Create Virtual Account](https://docs.decentro.tech/reference/payments_api-virtualaccounts3-create-va.md): This API is an updated version of creating a virtual account on Decentro's v3 stack.
+- [Get Virtual Account Statement](https://docs.decentro.tech/reference/payments_api-virtualaccounts3-statement.md): This API can be used by platforms to fetch the statement of a virtual account.
+- [Get Balance](https://docs.decentro.tech/reference/payments_api-virtualaccounts3-balance.md): This API lets the platform fetch the current balance of a virtual account.
+- [Get Virtual Account Detail](https://docs.decentro.tech/reference/get-virtual-account-details.md): This API allows clients to fetch the details of their virtual accounts with Decentro
+- [Remitter whitelisting API](https://docs.decentro.tech/reference/remitter-whitelisting-1.md): The API can be used by clients to request whitelisting of a remitter's account for VA based collections.
+- [Remitter whitelisting Callback](https://docs.decentro.tech/reference/remitter-whitelisting-callback.md): This callback is to inform the clients about the final status of the account whitelisting request to Decentro.
+- [Pre-Deposit Check callback](https://docs.decentro.tech/reference/pre-deposit-check-callback-1.md): This callback allows clients to validate a transaction before the actual fund movement happens in the virtual account. The client can accept or reject incoming funds via this callback.
+- [Virtual Transfer API](https://docs.decentro.tech/reference/virtual-transfer-api.md): This API enables merchants to seamlessly transfer funds between virtual accounts (VAs).
+- [Simulate E-collect Transaction (Staging) - PA platform](https://docs.decentro.tech/reference/simulate-e-collect-transaction-staging.md): This API can be used in our Staging environment to simulate an incoming E-Collect Transaction for a specific Virtual Account
+- [ENACH V3](https://docs.decentro.tech/reference/enach-v3-stack.md): This page gives you an overview of the APIs provided by Decentro's ENACH V3 platform.
+- [Enach Supported Banks](https://docs.decentro.tech/reference/enach-v3-supported-banks.md): This API allows the platform to check if a bank is supported on the ENACH V3 stack.
+- [Enach Mandate Registration](https://docs.decentro.tech/reference/enach-v3-mandate-registration.md): This API allows the platform to initiate a mandate registration using Decentro's ENACH V3 stack.
+- [Enach Registration Callback](https://docs.decentro.tech/reference/enach-v3-registration-callback.md): This callback is triggered by Decentro to the platform when a mandate is registered successfully.
+- [Enach Mandate Registration Status](https://docs.decentro.tech/reference/enach-v3-mandate-registration-status.md): This API allows the platform to check the status of a mandate registration using Decentro's ENACH V3 stack.
+- [Enach Mandate Execution](https://docs.decentro.tech/reference/enach-v3-mandate-execution.md): This API allows the platform to initiate a presentation using Decentro's ENACH V3 stack.
+- [Enach Mandate Execution Callback](https://docs.decentro.tech/reference/enach-v3-mandate-execution-callback.md): This callback is triggered by Decentro to the platform when a mandate presented is executed.
+- [Enach Mandate Execution Status](https://docs.decentro.tech/reference/enach-v3-mandate-execution-status.md): This API allows the platform to check the status of a mandate presentation using Decentro's ENACH V3 stack.
+- [Enach - Mandate Management API](https://docs.decentro.tech/reference/enach-mandate-management-api.md): This API is used to manage the mandate. Merchants can perform the actions like cancel the mandate.
+- [Enach Presentation Cancel API](https://docs.decentro.tech/reference/enach-presentation-cancel-api.md): This API is used to cancel eNACH presentations that are in the "Initiated" status.
+- [Enach Supported Frequencies](https://docs.decentro.tech/reference/enach-supported-frequencies.md)
+- [Enach Supported Category Codes](https://docs.decentro.tech/reference/enach-supported-category-codes.md)
+- [Bulk Execution API - JSON](https://docs.decentro.tech/reference/bulk-presentation-api-json.md): This API allows clients to initiate bulk mandate execution requests for eNach mandates
+- [Bulk Execution API - CSV](https://docs.decentro.tech/reference/bulk-execution-api-csv.md): This API allows clients to initiate bulk mandate execution requests for eNach mandates via csv
+- [Bulk Execution Status Check](https://docs.decentro.tech/reference/bulk-execution-status-check.md): This API allows you to check the execution status of individual records from a previously submitted bulk mandate presentation request.
+- [NPCI Error Codes - Enach Mandate Registration](https://docs.decentro.tech/reference/enach-mandate-registration-npci-error-codes.md)
+- [NPCI Error Codes - Enach Mandate Presentation](https://docs.decentro.tech/reference/npci-error-codes-mandate-presentation.md)
+- [UPI Autopay V3](https://docs.decentro.tech/reference/payments_api-upi-autopay.md): This page gives you an overview of the APIs provided by Decentro's UPI Autopay platform.
+- [Create Mandate API](https://docs.decentro.tech/reference/payments_api-upi-autopay-create-mandate.md): This API is used to create a UPI based mandate.
+- [Mandate Status Callback](https://docs.decentro.tech/reference/payments_api-upi-autopay-registration-callback.md): This callback is triggered by Decentro to the platform when the customer approves the mandate request on the PSP app.
+- [Get Mandate Status](https://docs.decentro.tech/reference/payments_api-upi-autopay-get-mandate-status.md): This API is used to get the status of a mandate registration which was created using the Create Mandate API.
+- [Pre Debit Notification](https://docs.decentro.tech/reference/payments_api-upi-autopay-pre-debit-notification.md): This API is used to initiate a pre-debit notification at least 24 hours before presenting the actual mandate.
+- [Pre-Debit Notification Callback](https://docs.decentro.tech/reference/upi-autopay-mandate-pre-debit-notification-callback.md): This callback is triggered by Decentro to the platform when a debit request is executed
+- [Get Pre-debit Notification Status](https://docs.decentro.tech/reference/upi-autopay-get-mandate-pre-debit-notification-status.md): This API is used to get the status of pre- debit notification
+- [Mandate Presentation API](https://docs.decentro.tech/reference/payments_api-upi-autopay-mandate-presentation.md): This API is used to execute a registered UPI based mandate that is created using the Create Mandate API.
+- [Mandate Presentation Callback](https://docs.decentro.tech/reference/payments_api-upi-auto-pay-presentation-callback.md): This callback is triggered by Decentro to the platform when a debit request is executed
+- [Get Mandate Presentation Status](https://docs.decentro.tech/reference/payments_api-get-mandate-execution-status.md): This API is used to get the status of a mandate presentation.
+- [Mandate Management API](https://docs.decentro.tech/reference/upi-autopay-mandate-management-api.md): This API is used to manage the mandate. Merchants can perform the actions like cancel and update mandate.
+- [UPI Autopay SDK - Android](https://docs.decentro.tech/reference/upi-autopay-sdk-android.md): Autopay android SDK integration guide
+- [Settlements V3](https://docs.decentro.tech/reference/payments_api-settlementsv3.md): This set of APIs help the platform simplify their settlement reconciliation experience.
+- [Manage VA Settlement](https://docs.decentro.tech/reference/payments_api-settlementsv3-manage-settlement.md): This API allows the platform to manage the settlement account to where the virtual account settlements are performed.
+- [Settlement Status Callback/Webhook](https://docs.decentro.tech/reference/payments_api-settlementsv3-callback.md): This callback is used by Decentro to trigger the status of a settlement to pre-configured endpoint of the platform.
+- [Get Settlement Account Details](https://docs.decentro.tech/reference/get-settlement-account-details.md)
+- [Split Settlements V3](https://docs.decentro.tech/reference/manage-split-settlements.md)
+- [Add Split Settlement Rule API](https://docs.decentro.tech/reference/add-split-settlement-rule-api.md)
+- [Update Split Settlement Rule API](https://docs.decentro.tech/reference/update-split-settlement-rule-api.md)
+- [Get Split Settlement Rule API](https://docs.decentro.tech/reference/get-split-settlement-rule-api.md)
+- [Set Default Split Settlement Rule Configuration](https://docs.decentro.tech/reference/set-default-split-settlement-rule-configuration.md)
+- [ENACH v2](https://docs.decentro.tech/reference/payments_api-enach.md): This page gives you an overview of the APIs provided by Decentro's ENACH platform.
+- [ENACH Supported Banks](https://docs.decentro.tech/reference/payments_api-enach-supported-banks.md): This API allows the platform to check if a bank is supported on the ENACH stack.
+- [ENACH Mandate Registration](https://docs.decentro.tech/reference/payments_api-enach-mandate-registration.md): This API allows the platform to initiate a mandate registration using Decentro's ENACH stack.
+- [ENACH Registration Callback](https://docs.decentro.tech/reference/enach-registration-callback.md): This callback is triggered by Decentro to the platform when a mandate is registered successfully.
+- [ENACH Mandate Registration Status](https://docs.decentro.tech/reference/payments_api-enach-mandate-status.md): This API allows the platform to check the status of a mandate registration using Decentro's ENACH stack.
+- [ENACH Mandate Execution](https://docs.decentro.tech/reference/payments_api-enach-mandate-execution.md): This API allows the platform to initiate a presentation using Decentro's ENACH stack.
+- [ENACH Mandate Execution Callback](https://docs.decentro.tech/reference/enach-execution-callback.md): This callback is triggered by Decentro to the platform when a mandate presented is executed.
+- [ENACH Mandate Execution Status](https://docs.decentro.tech/reference/payments_api-enach-mandate-execution-status.md): This API allows the platform to check the status of a mandate presentation using Decentro's ENACH V2 stack.
+- [Netbanking](https://docs.decentro.tech/reference/netbanking-2.md): This set of APIs from Decentro are designed to help platforms facilitate Netbanking collections.
+- [Generate Netbanking Dynamic QR](https://docs.decentro.tech/reference/generate-netbanking-qr.md)
+- [Generate Netbanking Web Redirection Link (Netbanking 1.0)](https://docs.decentro.tech/reference/generate-netbanking-redirection.md)
+- [Generate Netbanking Intent Link](https://docs.decentro.tech/reference/generate-netbanking-intent-link.md)
+- [Get Netbanking Transaction Status](https://docs.decentro.tech/reference/get-netbanking-status.md): This API allows the platform to fetch the status of a transaction intiated through a payment link/collect request/dynamic QR code/ UPI Autopay(Refunds only).
+- [Netbanking Terminal Transaction Status Callback/Webhook](https://docs.decentro.tech/reference/netbanking-terminal-transaction-status-callbackwebhook.md): This callback is used by Decentro to trigger the status of a transaction to pre-configured endpoint of the platform.
+- [Payouts V3](https://docs.decentro.tech/reference/payments_api-payouts-v3.md)
+- [Initiate Payout](https://docs.decentro.tech/reference/payments_api-initiate-payout-v3.md)
+- [Transaction Status Callback](https://docs.decentro.tech/reference/payments_api-payout-transaction-status-callback.md)
+- [Get Transaction Status](https://docs.decentro.tech/reference/payments_api-get-transaction-status-v3.md)
+- [Payouts V2](https://docs.decentro.tech/reference/payments_api-payouts-v2.md)
+- [Manage Beneficiaries v2](https://docs.decentro.tech/reference/payments_api-manage-beneficiaries-v2.md)
+- [Get Beneficiary Details](https://docs.decentro.tech/reference/payments_api-get-beneficiary-details.md)
+- [Direct Payouts - Initiate Payout](https://docs.decentro.tech/reference/payments_api-initiate-payout.md)
+- [Transaction Status Callback v2](https://docs.decentro.tech/reference/payments_api-transaction-callbacks.md): This callback is triggered by Decentro to a custom end-point of the platform for each incoming and outgoing transaction initiated through Decentro, once it reaches its terminal status.
+- [Direct Payouts - Get Transaction Status](https://docs.decentro.tech/reference/payments_api-get-transaction-status.md)
+- [Bulk Payout CSV API](https://docs.decentro.tech/reference/batch-payout-csv.md): This API allows the platform to undertake payouts to multiple beneficiaries using a simple CSV upload.
+- [Bulk Payout JSON API](https://docs.decentro.tech/reference/batch-payout-json.md)
+- [Bulk Get Transaction Status API](https://docs.decentro.tech/reference/payments_api-batch-get-transaction-status.md)
+- [Reverse Penny Drop/Penny Pull - Intent API](https://docs.decentro.tech/reference/penny-pull-intent-api-pa.md): This API allows the platform to create an Intent link using Decentro's Penny pull stack.
+- [VerifyPay (V3)](https://docs.decentro.tech/reference/verifypay-V3.md): Validate a UPI VPA via a penny drop
+- [Validate Bank Account (V3)](https://docs.decentro.tech/reference/validate-bank-account-v3.md): Updated Validate Bank Account with smart provider selection.
+- [Get Status - Verification  Request (V3)](https://docs.decentro.tech/reference/v3-get-verification-status.md): This API allows the platform to fetch the status of a verfication request  intiated through the Mobile to Account (V3) API.
+- [VerifyPay](https://docs.decentro.tech/reference/verify_pay.md): Validate a UPI VPA via a penny drop
+- [Validate Bank Account (Penniless / Penny Drop)](https://docs.decentro.tech/reference/payments_api-validate-bank-account.md)
+- [Bulk Validate Bank Account (Penniless /Penny Drop)](https://docs.decentro.tech/reference/payments_api-bulk-validate-bank-account.md)
+- [Penny Pull - Transaction Status Callback](https://docs.decentro.tech/reference/payments-userverification-pennypull-callback.md): This callback is used by Decentro to trigger the status of a transaction to pre-configured endpoint of the platform.
+- [Penny Pull - Get Transaction Status API](https://docs.decentro.tech/reference/payments-userverification-pennypull-gts.md): This API is used to check the status of a Penny pull Intent link using Decentro transaction ID.
+- [Penny Pull - Intent API](https://docs.decentro.tech/reference/payments-userverification-pennypull-createintent.md): This API allows the platform to create an Intent link using Decentro's Penny pull stack.
+- [BBPS Services](https://docs.decentro.tech/reference/neowise-bbps.md): This page gives an overview of Decentro's APIs that power its BBPS capabilities.
+- [Operator List](https://docs.decentro.tech/reference/neowise-bbps-operator-list.md)
+- [Operator Icons](https://docs.decentro.tech/reference/neowise-bbps-operator-icons.md): This API allows the platform to fetch the icon of a biller available on BBPS network.
+- [Telecom Plans](https://docs.decentro.tech/reference/neowise-bbps-telecom-plans.md)
+- [Recharge Plan](https://docs.decentro.tech/reference/neowise-bbps-recharge-plans.md): Use this API to fetch recharge plans based on the Operator ID and Circle ID.
+- [Recharge Plan with Plan Type](https://docs.decentro.tech/reference/recharge-plan-type.md): Use this API to fetch recharge plans based on the Operator ID, Circle ID, and Plan Type.
+- [View Bill](https://docs.decentro.tech/reference/neowise-bbps-view-bill.md)
+- [Validate Plan](https://docs.decentro.tech/reference/neowise-bbps-validate-plan.md)
+- [BBPS - Get Balance](https://docs.decentro.tech/reference/neowise-bbps-get-balance.md): User this API to fetch the Balance
+- [Create Recharge](https://docs.decentro.tech/reference/neowise-bbps-create-recharge.md)
+- [BBPS - Get Transaction Status](https://docs.decentro.tech/reference/neowise-bbps-transaction-status.md)
+- [Create a Virtual Account](https://docs.decentro.tech/reference/virtual_accounts_api-create-a-virtual-account-v2.md): This API is an updated version of creating a virtual account
+- [Update virtual account](https://docs.decentro.tech/reference/update-virtual-account.md)
+- [Load / Unload Virtual Account](https://docs.decentro.tech/reference/virtual_accounts_api-load-unload-va.md)
+- [Simulate E-collect Transaction (Staging) - Payouts platform](https://docs.decentro.tech/reference/simulate-e-collect-transaction-staging-payouts-platform.md)
+- [Get All Linked Accounts](https://docs.decentro.tech/reference/virtual_accounts_api-get-all-linked-accounts.md)
+- [Get Virtual Account Details](https://docs.decentro.tech/reference/virtual_accounts_api-get-the-account-details.md): This API can be used to fetch the details of a specific virtual account
+- [Virtual Accounts - Get Balance V1](https://docs.decentro.tech/reference/virtual_accounts_api-get-balance.md)
+- [Virtual Accounts - Get Statement V1](https://docs.decentro.tech/reference/virtual_accounts_api-get-statement.md)
+- [Get Whitelisted Remitter Accounts](https://docs.decentro.tech/reference/virtual_accounts-get_whitelisted_remitter_account.md)
+- [Virtual Accounts - Get Balance V2](https://docs.decentro.tech/reference/virtual_accounts_api-get-balance-v2.md): This API is an updated version of fetching the balance of a virtual account
+- [Account Balance](https://docs.decentro.tech/reference/virtual_accounts_api-account-balance.md): This callback is triggered at a virtual account level every time there's a change in the balance
+- [Pre-Deposit Check](https://docs.decentro.tech/reference/payments_api-pre-deposit-check.md): This callback is triggered by Decentro to a custom endpoint if the platform has subscribed to it. If you reject the callback, the transaction is refunded to the source or else accepted.
+- [Create Journal](https://docs.decentro.tech/reference/create-journal.md)
+- [Journal Details](https://docs.decentro.tech/reference/journal-details.md)
+- [All Journals](https://docs.decentro.tech/reference/all-journals.md): This API can be used to fetch the details of all journals associated with a platform.
+- [Update Journal](https://docs.decentro.tech/reference/update-journal.md): This API is used to update a Journal created
+- [Create Ledger Account](https://docs.decentro.tech/reference/create-ledger-account.md)
+- [Ledger Account Details](https://docs.decentro.tech/reference/ledger-account-details.md)
+- [All Ledger Accounts](https://docs.decentro.tech/reference/all-ledger-accounts.md)
+- [Account Statement](https://docs.decentro.tech/reference/account-statement.md): This API helps you fetch the list of transactions against a Ledger account
+- [Update Ledger Account](https://docs.decentro.tech/reference/update-ledger-account.md): This API is used to update the status of a Ledger account
+- [Ledger Account Balance](https://docs.decentro.tech/reference/get-ledger-account-balance.md): This API allows platforms to fetch the different types of ledger account balances for an existing ledger account.
+- [Create Transaction](https://docs.decentro.tech/reference/create-transaction.md): This API is used to pass a transaction entry into a ledger account.
+- [Update Transaction](https://docs.decentro.tech/reference/update-transaction.md): This API is used to update a transaction entry created against a ledger account.
+- [Search Using IFSC](https://docs.decentro.tech/reference/common-search-using-ifsc.md)
+- [Search Using Branch Name](https://docs.decentro.tech/reference/common-search-using-branch-name.md)
+- [Get Response Code Details](https://docs.decentro.tech/reference/common-get-response-code-details.md)
+- [Get Bank Code](https://docs.decentro.tech/reference/common-get-bank-code.md)
+- [Get Merchant Category Code](https://docs.decentro.tech/reference/common-get-merchant-category-code.md)
+- [Get Business Type Code](https://docs.decentro.tech/reference/common-get-business-type-code.md)
+- [Get State Code](https://docs.decentro.tech/reference/common-get-state-code.md)
+
+## Pages
+- [Validation Regexes Master](https://docs.decentro.tech/page/validation-regexes-master.md)
+
+## Changelog
+- [Flow Advisory | Autopay Mandates | Version 1.1.3](https://docs.decentro.tech/changelog/flow-advisory-autopay-mandates-version-113.md)
+- [Flow Advisory | Autopay Mandates | Version 1.1.2](https://docs.decentro.tech/changelog/flow-advisory-autopay-mandates-version-111.md)
+- [Flow Advisory | eNach Mandates | Version 1.1.1](https://docs.decentro.tech/changelog/flow-advisory-enach-mandates-111.md)
+- [Flow Release Notes | Version 3.9.2](https://docs.decentro.tech/changelog/flow-release-notes-392.md)
+- [Flow Release Notes | Version 3.9.1](https://docs.decentro.tech/changelog/flow-release-notes-391.md)
+- [Flow Release Notes | Version 3.9.0](https://docs.decentro.tech/changelog/flow-release-notes-390-1.md)
+- [Flow Release Notes | Version 3.8.9](https://docs.decentro.tech/changelog/flow-release-notes-389.md)
+- [Fabric Release Notes | Version 6.8](https://docs.decentro.tech/changelog/fabric-release-notes-version-68.md)
+- [Flow Release Notes | Version 3.8.8](https://docs.decentro.tech/changelog/flow-release-notes-388.md)
+- [Flow Release Notes | Version 3.8.7](https://docs.decentro.tech/changelog/flow-release-notes-387.md)

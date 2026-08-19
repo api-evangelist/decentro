@@ -1,0 +1,120 @@
+{
+  "item": [
+    {
+      "id": "7fd8eb3e-9d8c-4d80-a53c-03b2a4541666",
+      "name": "Verification",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "33d7cd5a-c688-4328-bf89-218e6674ce9e",
+          "name": "Validate against public registry",
+          "request": {
+            "name": "Validate against public registry",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "kyc",
+                "public_registry",
+                "validate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e709715a-dc21-4565-be14-9180f08d7d16",
+              "name": "Validation result.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "kyc",
+                    "public_registry",
+                    "validate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "client_secret",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://in.decentro.tech",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "client_secret"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "e0802741-08c4-4ed1-a976-5eafade23b3a",
+    "name": "Decentro KYC & Onboarding Accounts Verification API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Decentro's KYC & Onboarding API provides identity verification, customer onboarding workflows, and document/face forensics for Indian financial services.\n\nContact Support:\n Name: Decentro",
+      "type": "text/plain"
+    }
+  }
+}

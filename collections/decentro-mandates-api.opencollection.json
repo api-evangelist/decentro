@@ -1,0 +1,48 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Decentro KYC & Onboarding Accounts Mandates API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "client_secret",
+      "value": "{{client_secret}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Mandates",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Register an ENACH mandate",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://in.decentro.tech/v2/payments/enach/register"
+          },
+          "docs": "Register an ENACH mandate"
+        },
+        {
+          "info": {
+            "name": "Register a UPI Autopay mandate",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://in.decentro.tech/v2/payments/upi-autopay/mandate"
+          },
+          "docs": "Register a UPI Autopay mandate"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

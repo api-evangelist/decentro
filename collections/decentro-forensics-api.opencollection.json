@@ -1,0 +1,48 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Decentro KYC & Onboarding Accounts Forensics API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "client_secret",
+      "value": "{{client_secret}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Forensics",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Classify document",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://in.decentro.tech/v2/kyc/forensics/document_classification"
+          },
+          "docs": "Classify document"
+        },
+        {
+          "info": {
+            "name": "Face match",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://in.decentro.tech/v2/kyc/forensics/face_match"
+          },
+          "docs": "Face match"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

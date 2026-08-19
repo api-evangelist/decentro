@@ -1,0 +1,48 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Decentro KYC & Onboarding Accounts Collections API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "client_secret",
+      "value": "{{client_secret}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Collections",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Generate UPI collection link",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://in.decentro.tech/v2/payments/upi/link"
+          },
+          "docs": "Generate UPI collection link"
+        },
+        {
+          "info": {
+            "name": "Generate dynamic UPI QR",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://in.decentro.tech/v2/payments/upi/qr"
+          },
+          "docs": "Generate dynamic UPI QR"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

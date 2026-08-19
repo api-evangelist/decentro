@@ -1,7 +1,7 @@
 {
   "opencollection": "1.0.0",
   "info": {
-    "name": "Decentro Virtual Accounts API",
+    "name": "Decentro KYC & Onboarding Accounts Virtual Accounts API",
     "version": "1.0"
   },
   "request": {
