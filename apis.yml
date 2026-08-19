@@ -30,7 +30,7 @@ tags:
   - Virtual Accounts
 created: '2025-02-24'
 modified: '2026-05-19'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 description: >-
   Decentro is a banking-as-a-service platform that provides businesses with seamless integration to Indian banking
   infrastructure - including payments (UPI, IMPS, NEFT, RTGS), virtual accounts, KYC, ledger primitives, and
