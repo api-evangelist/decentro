@@ -20,6 +20,16 @@ access: 3rd-Party
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/decentro.png
 tags:
   - Banking
+  - Banking as a Service
+  - Fintech
+  - India
+  - KYC
+  - Ledger
+  - Payments
+  - UPI
+  - Virtual Accounts
+tags_raw:
+  - Banking
   - Banking-as-a-Service
   - FinTech
   - India
@@ -79,6 +89,8 @@ apis:
   humanURL: https://docs.decentro.tech/
   baseURL: https://in.decentro.tech
   tags:
+  - Account
+  tags_raw:
   - Accounts
   properties:
   - type: OpenAPI
@@ -95,6 +107,8 @@ apis:
   humanURL: https://docs.decentro.tech/
   baseURL: https://in.decentro.tech
   tags:
+  - Collection
+  tags_raw:
   - Collections
   properties:
   - type: OpenAPI
@@ -175,6 +189,8 @@ apis:
   humanURL: https://docs.decentro.tech/
   baseURL: https://in.decentro.tech
   tags:
+  - Settlement
+  tags_raw:
   - Settlements
   properties:
   - type: OpenAPI
@@ -191,6 +207,8 @@ apis:
   humanURL: https://docs.decentro.tech/
   baseURL: https://in.decentro.tech
   tags:
+  - Transaction
+  tags_raw:
   - Transactions
   properties:
   - type: OpenAPI
