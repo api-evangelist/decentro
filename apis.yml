@@ -248,6 +248,9 @@ apis:
   - type: Rules
     url: rules/decentro-payments-api-rules.yml
 common:
+  - type: CapabilityMap
+    url: capabilities/decentro-capability-edges.yml
+    name: Decentro Business Capability Map
   - type: AgenticAccess
     url: agentic-access/decentro-agentic-access.yml
   - type: DomainSecurity

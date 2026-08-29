@@ -1,0 +1,83 @@
+slug: decentro
+provider: Decentro
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Banking & Capital Markets
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 7
+edges:
+- tag: KYC
+  spec_file: decentro-kyc-api-openapi.yml
+  capability_id: BC-1300.20
+  capability_id_l1: BC-1300
+  capability_name: KYC & Customer Due Diligence Management
+  confidence: 0.92
+  evidence: POST /v2/kyc/identities/aadhaar/otp/generate  Generate Aadhaar OTP; POST /v2/kyc/digilocker/initialize  Initialize
+    DigiLocker session
+  reason: Aadhaar OTP verification and DigiLocker document retrieval are canonical Indian KYC / customer
+    due diligence identity-verification steps for financial services.
+- tag: Payouts
+  spec_file: decentro-payouts-api-openapi.yml
+  capability_id: BC-1340.20
+  capability_id_l1: BC-1340
+  capability_name: Payment Processing Management
+  confidence: 0.88
+  evidence: POST /v2/payments/transfer  createPayout  Disburse a payout; GET /v2/payments/transfer/status  Get
+    payout status
+  reason: Disbursing fund transfers over Indian rails (UPI/IMPS/NEFT/RTGS) and tracking their status is
+    payment initiation and processing.
+- tag: Mandates
+  spec_file: decentro-mandates-api-openapi.yml
+  capability_id: BC-1340.10
+  capability_id_l1: BC-1340
+  capability_name: Payment Initiation Management
+  confidence: 0.85
+  evidence: POST /v2/payments/enach/register  Register an ENACH mandate; POST /v2/payments/upi-autopay/mandate  Register
+    a UPI Autopay mandate
+  reason: ENACH and UPI Autopay mandate registration is direct-debit payment authorisation setup — payment
+    instruction/authorisation capture within payments management.
+- tag: Virtual Accounts
+  spec_file: decentro-virtual-accounts-api-openapi.yml
+  capability_id: BC-1330.10
+  capability_id_l1: BC-1330
+  capability_name: Deposit Account Management
+  confidence: 0.85
+  evidence: POST /v2/banking/account  Create a virtual account; GET /v2/banking/account/balance; GET /v2/banking/account/statement
+  reason: Creation and servicing of virtual bank accounts with balance and statement retrieval is deposit/current-account
+    management in a banking-as-a-service context.
+- tag: Forensics
+  spec_file: decentro-forensics-api-openapi.yml
+  capability_id: BC-1300.20
+  capability_id_l1: BC-1300
+  capability_name: KYC & Customer Due Diligence Management
+  confidence: 0.75
+  evidence: POST /v2/kyc/forensics/document_classification  Classify document; POST /v2/kyc/forensics/face_match  Face
+    match — 'document/face forensics for Indian financial services'
+  reason: Document classification and face match under the /kyc/ path are identity-verification controls
+    used in customer due diligence for banking onboarding. Could arguably be fraud detection, but the
+    path and description place it in KYC/onboarding.
+- tag: Settlements
+  spec_file: decentro-settlements-api-openapi.yml
+  capability_id: BC-1340.20
+  capability_id_l1: BC-1340
+  capability_name: Payment Processing Management
+  confidence: 0.7
+  evidence: POST /v2/payments/refund  issueRefund  Issue a refund
+  reason: The single operation issues a payment refund, which is payment processing rather than clearing/settlement
+    despite the tag name; mapping to the L1 payments capability with the processing L2 at moderate confidence.
+- tag: Verification
+  spec_file: decentro-verification-api-openapi.yml
+  capability_id: BC-1300.20
+  capability_id_l1: BC-1300
+  capability_name: KYC & Customer Due Diligence Management
+  confidence: 0.7
+  evidence: POST /v2/kyc/public_registry/validate  validatePublicRegistry  Validate against public registry
+  reason: Validation against public registries under the /kyc/ namespace is a customer due-diligence verification
+    check; single generic operation limits confidence.
