@@ -1,34 +1,47 @@
 {
   "provider": "decentro",
   "sources": [
-    "decentro-accounts-api-openapi.yml",
-    "decentro-collections-api-openapi.yml",
+    "_original/decentro-ledger-api-openapi.yml",
+    "_original/decentro-payments-api-openapi.yml",
     "decentro-forensics-api-openapi.yml",
-    "decentro-journals-api-openapi.yml",
     "decentro-kyc-api-openapi.yml",
-    "decentro-mandates-api-openapi.yml",
-    "decentro-payouts-api-openapi.yml",
-    "decentro-settlements-api-openapi.yml",
-    "decentro-transactions-api-openapi.yml",
     "decentro-verification-api-openapi.yml",
     "decentro-virtual-accounts-api-openapi.yml"
   ],
   "outputs": [
     "decentro-accounts-api-openapi.yml",
-    "decentro-collections-api-openapi.yml",
-    "decentro-forensics-api-openapi.yml",
     "decentro-journals-api-openapi.yml",
-    "decentro-kyc-api-openapi.yml",
+    "decentro-transactions-api-openapi.yml",
+    "decentro-collections-api-openapi.yml",
     "decentro-mandates-api-openapi.yml",
     "decentro-payouts-api-openapi.yml",
     "decentro-settlements-api-openapi.yml",
-    "decentro-transactions-api-openapi.yml",
+    "decentro-forensics-api-openapi.yml",
+    "decentro-kyc-api-openapi.yml",
     "decentro-verification-api-openapi.yml",
     "decentro-virtual-accounts-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
-  "warnings": [],
-  "notes": [],
-  "skipped": []
+  "warnings": [
+    "decentro-forensics-api-openapi.yml: previously refined output kept for 2 operation(s) no archived document covers (e.g. /v2/kyc/forensics/document_classification post, /v2/kyc/forensics/face_match post); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
+    "decentro-kyc-api-openapi.yml: previously refined output kept for 3 operation(s) no archived document covers (e.g. /v2/kyc/digilocker/initialize post, /v2/kyc/identities/aadhaar/otp/generate post, /v2/kyc/identities/aadhaar/otp/validate post); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
+    "decentro-verification-api-openapi.yml: previously refined output kept for 1 operation(s) no archived document covers (e.g. /v2/kyc/public_registry/validate post); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
+    "decentro-virtual-accounts-api-openapi.yml: previously refined output kept for 5 operation(s) no archived document covers (e.g. /v2/banking/account post, /v2/banking/account/balance get, /v2/banking/account/statement get); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth."
+  ],
+  "notes": [
+    "sourced from openapi/_original/ (2 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "decentro-ledger-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "decentro-payments-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "decentro-accounts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "decentro-collections-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "decentro-journals-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "decentro-mandates-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "decentro-payouts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "decentro-settlements-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "decentro-transactions-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
