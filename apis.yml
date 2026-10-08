@@ -251,6 +251,12 @@ apis:
   - type: Rules
     url: rules/decentro-payments-api-rules.yml
 common:
+  - type: Plans
+    url: plans/decentro-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/decentro-rate-limits.yml
+  - type: FinOps
+    url: finops/decentro-finops.yml
   - type: CapabilityMap
     url: capabilities/decentro-capability-edges.yml
     name: Decentro Business Capability Map
