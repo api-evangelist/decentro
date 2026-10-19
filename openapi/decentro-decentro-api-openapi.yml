@@ -1,0 +1,250 @@
+openapi: 3.2.0
+info:
+  title: Decfin Staging Decentro API
+  version: '1.0'
+servers:
+- url: https://staging.api.decentro.tech
+security:
+- {}
+tags:
+- name: Decentro
+paths:
+  /decentro/bulk/enach_mandate_presentation:
+    post:
+      summary: Bulk Execution API - JSON
+      description: This API allows clients to initiate bulk mandate execution requests for eNach mandates
+      operationId: bulk-presentation-api-json
+      parameters:
+      - name: client-id
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: client-secret
+        in: header
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - reference_id
+              - input_type
+              - input
+              properties:
+                reference_id:
+                  type: string
+                  description: A specific unique ID assigned by the platform for the API hit.
+                input_type:
+                  type: string
+                  description: This param value defines the type of the input. Accepted values are csv & json.
+                  default: Json
+                input:
+                  type: object
+                  description: This object can accept any number of presentations records.
+                  required:
+                  - reference_id
+                  - decentro_mandate_id
+                  - debit_date
+                  - amount
+                  properties:
+                    reference_id:
+                      type: string
+                      description: A specific unique ID assigned by you for this transaction.
+                    decentro_mandate_id:
+                      type: string
+                      description: The unique identifier propagated by Decentro in the mandate registration API.
+                    debit_date:
+                      type: string
+                      description: The date when the funds need to be debited from the payer's account.
+                      format: date
+                    amount:
+                      type: number
+                      description: The amount that needs to be debited and needs to be lesser than or equal to the registration amount.
+                      format: float
+            examples:
+              Success:
+                value:
+                  reference_id: '{{$randomUUID}}'
+                  input_type: json
+                  input:
+                  - reference_id: ggfagdgdsfhdsgsddgsdagg
+                    decentro_mandate_id: '1004'
+                    debit_date: '2025-05-25'
+                    amount: '10000'
+                  - reference_id: ahssgdfdvdsfjgsghagsf
+                    decentro_mandate_id: '1004'
+                    debit_date: '2025-05-16'
+                    amount: '10000'
+              Failure - Invalid input type:
+                value:
+                  reference_id: '{{$randomUUID}}'
+                  input_type: P
+                  input:
+                  - reference_id: ggfagdgdsfhdsgsddgsdagg
+                    decentro_mandate_id: '1004'
+                    debit_date: '2025-05-25'
+                    amount: '10000'
+                  - reference_id: ggfagdgdsfhdsgsddgsdagg
+                    decentro_mandate_id: '1004'
+                    debit_date: '2025-05-16'
+                    amount: '10000'
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Success:
+                  value: "{\n    \"status\": \"SUCCESS\",\n    \"download_url\": \"https://staging.api.decentro.tech/XXX/XXX/XXX/XXX\",\n    \"decentroTxnId\": \"C09MAWWXXXXXXXXXXXXXXX7SUEVZ3F947QQ\",\n    \"message\": \"Enach Mandate Presentation initiated successfully.\"\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: SUCCESS
+                  download_url:
+                    type: string
+                    example: https://staging.api.decentro.tech/XXX/XXX/XXX/XXX
+                  decentroTxnId:
+                    type: string
+                    example: C09MAWWXXXXXXXXXXXXXXX7SUEVZ3F947QQ
+                  message:
+                    type: string
+                    example: Enach Mandate Presentation initiated successfully.
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Failure - Missing reference id:
+                  value: "{\n    \"error\": {\n        \"response_key\": \"missing_reference_id\",\n        \"message\": \"Missing reference id in the request\"\n    },\n    \"status\": \"FAILURE\"\n}"
+                Failure - Invalid input type:
+                  value: "{\n    \"error\": {\n        \"response_key\": \"invalid_input_file_type\",\n        \"message\": \"Invalid input file type. Hint: File type may be CSV or JSON\"\n    },\n    \"status\": \"FAILURE\"\n}"
+              schema:
+                oneOf:
+                - title: Failure - Missing reference id
+                  type: object
+                  properties:
+                    error:
+                      type: object
+                      properties:
+                        response_key:
+                          type: string
+                          example: missing_reference_id
+                        message:
+                          type: string
+                          example: Missing reference id in the request
+                    status:
+                      type: string
+                      example: FAILURE
+                - title: Failure - Invalid input type
+                  type: object
+                  properties:
+                    error:
+                      type: object
+                      properties:
+                        response_key:
+                          type: string
+                          example: invalid_input_file_type
+                        message:
+                          type: string
+                          example: 'Invalid input file type. Hint: File type may be CSV or JSON'
+                    status:
+                      type: string
+                      example: FAILURE
+      deprecated: false
+      tags:
+      - Decentro
+  //decentro/bulk/enach_mandate_presentation:
+    post:
+      summary: Bulk Execution API - CSV
+      description: This API allows clients to initiate bulk mandate execution requests for eNach mandates via csv
+      operationId: bulk-execution-api-csv
+      parameters:
+      - name: client-id
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: client-secret
+        in: header
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - input
+              - reference_id
+              - input_type
+              properties:
+                input:
+                  type: string
+                  description: CSV file containing mandate presentation data
+                  format: binary
+                reference_id:
+                  type: string
+                  description: Unique identifier for this bulk request
+                input_type:
+                  type: string
+                  description: Accepted values are json & csv. If file uploading, then it has to be "csv"
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Success:
+                  value: "{\n    \"status\": \"SUCCESS\",\n    \"download_url\": \"https://staging.api.decentro.tech/XXXXX\",\n    \"decentroTxnId\": \"CD6OTXXXXXXXXXXXMSTJIPFWTK60J\",\n    \"message\": \"Enach Mandate Presentation initiated successfully.\"\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: SUCCESS
+                  download_url:
+                    type: string
+                    example: https://staging.api.decentro.tech/XXXXX
+                  decentroTxnId:
+                    type: string
+                    example: CD6OTXXXXXXXXXXXMSTJIPFWTK60J
+                  message:
+                    type: string
+                    example: Enach Mandate Presentation initiated successfully.
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Failure - Missing Input File:
+                  value: "{\n    \"error\": {\n        \"response_key\": \"missing_input_file\",\n        \"message\": \"Missing input file in the request\"\n    },\n    \"status\": \"FAILURE\"\n}"
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      response_key:
+                        type: string
+                        example: missing_input_file
+                      message:
+                        type: string
+                        example: Missing input file in the request
+                  status:
+                    type: string
+                    example: FAILURE
+      deprecated: false
+      tags:
+      - Decentro
+x-readme:
+  headers: []
+  explorer-enabled: true
+  proxy-enabled: true
+x-readme-fauxas: true

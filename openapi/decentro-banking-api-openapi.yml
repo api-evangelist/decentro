@@ -1,0 +1,3152 @@
+openapi: 3.2.0
+info:
+  title: Decfin Staging Banking API
+  version: '1.0'
+servers:
+- url: https://staging.api.decentro.tech
+security:
+- {}
+tags:
+- name: Banking
+paths:
+  /v3/banking/account/virtual:
+    post:
+      summary: Create Virtual Account
+      description: This API is an updated version of creating a virtual account on Decentro's v3 stack.
+      operationId: payments_api-virtualaccounts3-create-va
+      parameters:
+      - name: client_id
+        in: header
+        description: Decentro assigned client_id during onboarding.
+        required: true
+        schema:
+          type: string
+      - name: client_secret
+        in: header
+        description: Decentro assigned client_secret during on boarding.
+        required: true
+        schema:
+          type: string
+      - name: x_on_behalf_of
+        in: header
+        description: Optional header that allows parent merchant to consume the API on behalf of sub-merchant.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - reference_id
+              - consumer_urn
+              - customer_va_identifier
+              properties:
+                reference_id:
+                  type: string
+                  description: A unique ID assigned by clients for every API request.
+                consumer_urn:
+                  type: string
+                  description: A unique identifier assigned to each merchant by Decentro during Onboarding
+                name:
+                  type: string
+                  description: Virtual account holder name to be put against the account.
+                customer_va_identifier:
+                  type: string
+                  description: Unique customer identifier to be saved against the virtual account.
+                custom_va_number:
+                  type: string
+                  description: custom virtual account suffix as requested by the platform. If not passed, Decentro creates a VA number at its end.
+                block_va_auto_settlement:
+                  type: string
+                  description: This flag, if set of true, will not settle the balances held in this virtual account to the settlement account. Default - False
+                  default: 'False'
+            examples:
+              'Success: Pass Custom Virtual Account Number':
+                value:
+                  reference_id: 0000-0000-0001
+                  consumer_urn: B15CDC6B444B4B7781D5A74F1E96A239
+                  name: jhon
+                  customer_va_identifier: abc12345
+                  custom_va_number: '000054321'
+                  block_va_auto_settlement: false
+              'Success: Decentro creates Virtual Account Number':
+                value:
+                  reference_id: 0000-0000-0002
+                  consumer_urn: B15CDC6B444B4B7781D5A74F1E96A239
+                  name: test
+                  customer_va_identifier: xyz12345
+                  block_va_auto_settlement: false
+              'Failure: Virtual Account not created':
+                value:
+                  reference_id: 0000-0000-0003
+                  consumer_urn: B15CDC6B444B4B7781D5A74F1E96A239
+                  name: test
+                  customer_va_identifier: xyurt5649
+                  custom_va_number: '000054321'
+                  block_va_auto_settlement: false
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                'Success: Pass Custom Virtual Account Number':
+                  value: "{\n    \"decentro_txn_id\": \"E3335083304D418FA8E340BE63CB29B5\",\n    \"api_status\": \"SUCCESS\",\n    \"message\": \"Virtual accounts created successfully.\",\n    \"data\": {\n        \"account_details\": [\n            {\n                \"custom_va_number\": \"000054321\",\n                \"virtual_account_number\": \"4625250000054321\",\n                \"virtual_account_ifsc\": \"YESB0CMSNOC\",\n                \"virtual_account_status\": \"ACTIVE\",\n                \"transfer_type_enabled\": [\n                    \"IMPS\",\n                    \"NEFT\",\n                    \"RTGS\"\n                ]\n            }\n        ]\n    },\n    \"response_key\": \"success_virtual_account_created\"\n}"
+                'Success: Decentro creates Virtual Account Number':
+                  value: "{\n    \"decentro_txn_id\": \"C4E4657C305841EBB576A4575F0BB67B\",\n    \"api_status\": \"SUCCESS\",\n    \"message\": \"Virtual accounts created successfully.\",\n    \"data\": {\n        \"account_details\": [\n            {\n                \"custom_va_number\": \"1951911673\",\n                \"virtual_account_number\": \"4625251951911673\",\n                \"virtual_account_ifsc\": \"YESB0CMSNOC\",\n                \"virtual_account_status\": \"ACTIVE\",\n                \"transfer_type_enabled\": [\n                    \"IMPS\",\n                    \"NEFT\",\n                    \"RTGS\"\n                ]\n            }\n        ]\n    },\n    \"response_key\": \"success_virtual_account_created\"\n}"
+              schema:
+                oneOf:
+                - title: 'Success: Pass Custom Virtual Account Number'
+                  type: object
+                  properties:
+                    decentro_txn_id:
+                      type: string
+                      example: E3335083304D418FA8E340BE63CB29B5
+                    api_status:
+                      type: string
+                      example: SUCCESS
+                    message:
+                      type: string
+                      example: Virtual accounts created successfully.
+                    data:
+                      type: object
+                      properties:
+                        account_details:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              custom_va_number:
+                                type: string
+                                example: '000054321'
+                              virtual_account_number:
+                                type: string
+                                example: '4625250000054321'
+                              virtual_account_ifsc:
+                                type: string
+                                example: YESB0CMSNOC
+                              virtual_account_status:
+                                type: string
+                                example: ACTIVE
+                              transfer_type_enabled:
+                                type: array
+                                items:
+                                  type: string
+                                  example: IMPS
+                    response_key:
+                      type: string
+                      example: success_virtual_account_created
+                - title: 'Success: Decentro creates Virtual Account Number'
+                  type: object
+                  properties:
+                    decentro_txn_id:
+                      type: string
+                      example: C4E4657C305841EBB576A4575F0BB67B
+                    api_status:
+                      type: string
+                      example: SUCCESS
+                    message:
+                      type: string
+                      example: Virtual accounts created successfully.
+                    data:
+                      type: object
+                      properties:
+                        account_details:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              custom_va_number:
+                                type: string
+                                example: '1951911673'
+                              virtual_account_number:
+                                type: string
+                                example: '4625251951911673'
+                              virtual_account_ifsc:
+                                type: string
+                                example: YESB0CMSNOC
+                              virtual_account_status:
+                                type: string
+                                example: ACTIVE
+                              transfer_type_enabled:
+                                type: array
+                                items:
+                                  type: string
+                                  example: IMPS
+                    response_key:
+                      type: string
+                      example: success_virtual_account_created
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                'Failure: Virtual Account not created':
+                  value: "{\n    \"decentro_txn_id\": \"A9AA820450534889BEC47611108C34BC\",\n    \"api_status\": \"FAILURE\",\n    \"message\": \"Provided custom VA number already exists. Please provide a unique value.\",\n    \"response_key\": \"error_duplicate_custom_va_number\"\n}"
+              schema:
+                type: object
+                properties:
+                  decentro_txn_id:
+                    type: string
+                    example: A9AA820450534889BEC47611108C34BC
+                  api_status:
+                    type: string
+                    example: FAILURE
+                  message:
+                    type: string
+                    example: Provided custom VA number already exists. Please provide a unique value.
+                  response_key:
+                    type: string
+                    example: error_duplicate_custom_va_number
+      deprecated: false
+      tags:
+      - Banking
+    get:
+      summary: Get Virtual Account Detail
+      description: This API allows clients to fetch the details of their virtual accounts with Decentro
+      operationId: get-virtual-account-details
+      parameters:
+      - name: client_id
+        in: header
+        description: Decentro assigned client_id during onboarding.
+        schema:
+          type: string
+      - name: client_secret
+        in: header
+        description: Decentro assigned client_secret during onboarding.
+        schema:
+          type: string
+      - name: x_on_behalf_of
+        in: header
+        description: Optional header that allows parent merchant to consume the API on behalf of sub-merchant.
+        schema:
+          type: string
+      - name: consumer_urn
+        in: query
+        description: A unique identifier assigned to each merchant by Decentro during Onboarding
+        schema:
+          type: string
+      - name: page
+        in: query
+        description: The page number for viewing the virtual account details. Should be a valid positive integer.
+        required: true
+        schema:
+          type: string
+      - name: virtual_account_number
+        in: query
+        description: Virtual account number as requested by the platform.
+        schema:
+          type: string
+      - name: custom_va_number
+        in: query
+        description: 'The suffix part of the VA that uniquely identifies each VA. It can be from 6 -10 digit. Eg: va_suffix will be 000001 for virtual account number 46525000001'
+        schema:
+          type: string
+      - name: customer_va_identifier
+        in: query
+        description: Unique customer identifier that is mapped against the virtual account.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                'Success: Virtual account details':
+                  value: "{\n    \"decentro_txn_id\": \"2110F0CD6FCC4722968688ABA787183C\",\n    \"api_status\": \"SUCCESS\",\n    \"message\": \"Virtual accounts retrieved successfully.\",\n    \"data\": {\n        \"virtual_accounts\": [\n            {\n                \"virtual_account_number\": \"4625250000004321\",\n                \"custom_va_number\": \"00004321\",\n                \"block_va_auto_settlement\": false,\n                \"name\": \"test\",\n                \"customer_va_identifier\": \"b3a26908-xxxxxxxx-ba65-6bc423c14772\",\n                \"status\": \"ACTIVE\",\n                \"va_created_on\": \"2025-01-10 12:31:20\",\n                \"bank_provider\": \"YESB\",\n                \"current_balance\": 15000.0,\n                \"settlement_account_details\": [\n                    {\n                        \"settlement_account_urn\": \"E153669400D64D1AA28E97D25E6B9CC5\",\n                        \"account_number\": \"007881300004451\",\n                        \"account_ifsc\": \"YESB0000078\"\n                    }\n                ],\n                \"whitelisted_account_details\": [\n                    {\n                        \"account_number\": \"002281300011235\",\n                        \"account_ifsc\": \"YESB0000022\",\n                        \"remitter_relationship\": \"test demo 1\"\n                    },\n                    {\n                        \"account_number\": \"00361001000589\",\n                        \"account_ifsc\": \"MSNU0000036\",\n                        \"remitter_relationship\": \"test dmeo 2\"\n                    },\n                    {\n                        \"account_number\": \"00361001000589\",\n                        \"account_ifsc\": \"MSNU0000036\",\n                        \"remitter_relationship\": \"Vraj demo 3\"\n                    }\n                ]\n            }\n        ],\n        \"page_count\": 1,\n        \"total_page_count\": 1,\n        \"total_count\": 1\n    }\n}"
+                'Success: Virtual account details on multiple page':
+                  value: "{\n    \"decentro_txn_id\": \"5089F6E0F34342E397A4D116440A5EE4\",\n    \"api_status\": \"SUCCESS\",\n    \"message\": \"Virtual accounts retrieved successfully.\",\n    \"data\": {\n        \"virtual_accounts\": [\n            {\n                \"virtual_account_number\": \"4625250067981922\",\n                \"custom_va_number\": \"67981922\",\n                \"block_va_auto_settlement\": true,\n                \"name\": \"name Test\",\n                \"customer_va_identifier\": \"26237\",\n                \"status\": \"ACTIVE\",\n                \"va_created_on\": \"2025-01-10 12:31:20\",\n                \"bank_provider\": \"YESB\",\n                \"current_balance\": 15000.0,\n                \"settlement_account_details\": [\n                    {\n                        \"settlement_account_urn\": \"E153669400D64D1AA28E97D25E6B9CC5\",\n                        \"account_number\": \"007881300004451\",\n                        \"account_ifsc\": \"YESB0000078\"\n                    }\n                ],\n                \"whitelisted_account_details\": [\n                    {\n                        \"account_number\": \"002281300011235\",\n                        \"account_ifsc\": \"YESB0000022\",\n                        \"remitter_relationship\": \"test ecollect 2\"\n                    },\n                    {\n                        \"account_number\": \"00361001000589\",\n                        \"account_ifsc\": \"MSNU0000036\",\n                        \"remitter_relationship\": \"test ecollect 1\"\n                    },\n                    {\n                        \"account_number\": \"00361001000589\",\n                        \"account_ifsc\": \"MSNU0000036\",\n                        \"remitter_relationship\": \"Ecollect\"\n                    }\n                ]\n            },\n            {\n                \"virtual_account_number\": \"4625250086391789\",\n                \"custom_va_number\": \"86391789\",\n                \"block_va_auto_settlement\": true,\n                \"name\": \"Robot Test\",\n                \"customer_va_identifier\": \"91991\",\n                \"status\": \"ACTIVE\",\n                \"va_created_on\": \"2025-01-10 12:31:20\",\n                \"bank_provider\": \"YESB\",\n                \"current_balance\": 15000.0,\n                \"settlement_account_details\": [\n                    {\n                        \"settlement_account_urn\": \"E153669400D64D1AA28E97D25E6B9CC5\",\n                        \"account_number\": \"007881300004451\",\n                        \"account_ifsc\": \"YESB0000078\"\n                    }\n                ],\n                \"whitelisted_account_details\": [\n                    {\n                        \"account_number\": \"002281300011235\",\n                        \"account_ifsc\": \"YESB0000022\",\n                        \"remitter_relationship\": \"test ecollect 1\"\n                    },\n                    {\n                        \"account_number\": \"00361001000589\",\n                        \"account_ifsc\": \"MSNU0000036\",\n                        \"remitter_relationship\": \"test ecollect 2\"\n                    },\n                    {\n                        \"account_number\": \"00361001000589\",\n                        \"account_ifsc\": \"MSNU0000036\",\n                        \"remitter_relationship\": \"Ecollect\"\n                    }\n                ]\n            },\n            {\n                \"virtual_account_number\": \"4625250043839683\",\n                \"custom_va_number\": \"43839683\",\n                \"block_va_auto_settlement\": true,\n                \"name\": \"Test\",\n                \"customer_va_identifier\": \"13161\",\n                \"status\": \"ACTIVE\",\n                \"va_created_on\": \"2025-01-10 12:31:20\",\n                \"bank_provider\": \"YESB\",\n                \"current_balance\": 15000.0,\n                \"settlement_account_details\": [\n                    {\n                        \"settlement_account_urn\": \"E153669400D64D1AA28E97D25E6B9CC5\",\n                        \"account_number\": \"007881300004451\",\n                        \"account_ifsc\": \"YESB0000078\"\n                    }\n                ],\n                \"whitelisted_account_details\": [\n                    {\n                        \"account_number\": \"002281300011235\",\n                        \"account_ifsc\": \"YESB0000022\",\n                        \"remitter_relationship\": \"test ecollect 1\"\n                    },\n                    {\n                        \"account_number\": \"00361001000589\",\n                        \"account_ifsc\": \"MSNU0000036\",\n                        \"remitter_relationship\": \"test ecollect 2\"\n                    },\n                    {\n                        \"account_number\": \"00361001000589\",\n                        \"account_ifsc\": \"MSNU0000036\",\n                        \"remitter_relationship\": \"Ecollect\"\n                    }\n                ]\n            },\n            {\n                \"virtual_account_number\": \"4625250000000427\",\n                \"custom_va_number\": \"000427\",\n                \"block_va_auto_settlement\": true,\n                \"name\": \"Test\",\n                \"customer_va_identifier\": \"313\",\n                \"status\": \"ACTIVE\",\n                \"va_created_on\": \"2025-01-10 12:31:20\",\n                \"bank_provider\": \"YESB\",\n                \"current_balance\": 15000.0,\n                \"settlement_account_details\": [\n                    {\n                        \"settlement_account_urn\": \"E153669400D64D1AA28E97D25E6B9CC5\",\n                        \"account_number\": \"007881300004451\",\n                        \"account_ifsc\": \"YESB0000078\"\n                    }\n                ],\n                \"whitelisted_account_details\": [\n                    {\n                        \"account_number\": \"002281300011235\",\n                        \"account_ifsc\": \"YESB0000022\",\n                        \"remitter_relationship\": \"test ecollect 1\"\n                    },\n                    {\n                        \"account_number\": \"00361001000589\",\n                        \"account_ifsc\": \"MSNU0000036\",\n                        \"remitter_relationship\": \"test ecollect 2\"\n                    },\n                    {\n                        \"account_number\": \"00361001000589\",\n                        \"account_ifsc\": \"MSNU0000036\",\n                        \"remitter_relationship\": \"Ecollect\"\n                    }\n                ]\n            },\n            {\n                \"virtual_account_number\": \"4625254845778981\",\n                \"custom_va_number\": \"4845778981\",\n                \"block_va_auto_settlement\": false,\n                \"name\": \"vraj\",\n                \"customer_va_identifier\": \"abc54rpiu\",\n                \"status\": \"ACTIVE\",\n                \"va_created_on\": \"2025-01-10 12:31:20\",\n                \"bank_provider\": \"YESB\",\n                \"current_balance\": 15000.0,\n                \"settlement_account_details\": [\n                    {\n                        \"settlement_account_urn\": \"E153669400D64D1AA28E97D25E6B9CC5\",\n                        \"account_number\": \"007881300004451\",\n                        \"account_ifsc\": \"YESB0000078\"\n                    }\n                ],\n                \"whitelisted_account_details\": [\n                    {\n                        \"account_number\": \"002281300011235\",\n                        \"account_ifsc\": \"YESB0000022\",\n                        \"remitter_relationship\": \"test ecollect 1\"\n                    },\n                    {\n                        \"account_number\": \"00361001000589\",\n                        \"account_ifsc\": \"MSNU0000036\",\n                        \"remitter_relationship\": \"test ecollect 2\"\n                    },\n                    {\n                        \"account_number\": \"00361001000589\",\n                        \"account_ifsc\": \"MSNU0000036\",\n                        \"remitter_relationship\": \"Ecollect\"\n                    }\n                ]\n            }\n        ],\n        \"page_count\": 1,\n        \"total_page_count\": 11,\n        \"total_count\": 155\n    }\n}"
+              schema:
+                oneOf:
+                - title: 'Success: Virtual account details'
+                  type: object
+                  properties:
+                    decentro_txn_id:
+                      type: string
+                      example: 2110F0CD6FCC4722968688ABA787183C
+                    api_status:
+                      type: string
+                      example: SUCCESS
+                    message:
+                      type: string
+                      example: Virtual accounts retrieved successfully.
+                    data:
+                      type: object
+                      properties:
+                        virtual_accounts:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              virtual_account_number:
+                                type: string
+                                example: '4625250000004321'
+                              custom_va_number:
+                                type: string
+                                example: '00004321'
+                              block_va_auto_settlement:
+                                type: boolean
+                                example: false
+                                default: true
+                              name:
+                                type: string
+                                example: test
+                              customer_va_identifier:
+                                type: string
+                                example: b3a26908-xxxxxxxx-ba65-6bc423c14772
+                              status:
+                                type: string
+                                example: ACTIVE
+                              va_created_on:
+                                type: string
+                                example: '2025-01-10 12:31:20'
+                              bank_provider:
+                                type: string
+                                example: YESB
+                              current_balance:
+                                type: integer
+                                example: 15000
+                                default: 0
+                              settlement_account_details:
+                                type: array
+                                items:
+                                  type: object
+                                  properties:
+                                    settlement_account_urn:
+                                      type: string
+                                      example: E153669400D64D1AA28E97D25E6B9CC5
+                                    account_number:
+                                      type: string
+                                      example: 007881300004451
+                                    account_ifsc:
+                                      type: string
+                                      example: YESB0000078
+                              whitelisted_account_details:
+                                type: array
+                                items:
+                                  type: object
+                                  properties:
+                                    account_number:
+                                      type: string
+                                      example: 002281300011235
+                                    account_ifsc:
+                                      type: string
+                                      example: YESB0000022
+                                    remitter_relationship:
+                                      type: string
+                                      example: test demo 1
+                        page_count:
+                          type: integer
+                          example: 1
+                          default: 0
+                        total_page_count:
+                          type: integer
+                          example: 1
+                          default: 0
+                        total_count:
+                          type: integer
+                          example: 1
+                          default: 0
+                - title: 'Success: Virtual account details on multiple page'
+                  type: object
+                  properties:
+                    decentro_txn_id:
+                      type: string
+                      example: 5089F6E0F34342E397A4D116440A5EE4
+                    api_status:
+                      type: string
+                      example: SUCCESS
+                    message:
+                      type: string
+                      example: Virtual accounts retrieved successfully.
+                    data:
+                      type: object
+                      properties:
+                        virtual_accounts:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              virtual_account_number:
+                                type: string
+                                example: '4625250067981922'
+                              custom_va_number:
+                                type: string
+                                example: '67981922'
+                              block_va_auto_settlement:
+                                type: boolean
+                                example: true
+                                default: true
+                              name:
+                                type: string
+                                example: name Test
+                              customer_va_identifier:
+                                type: string
+                                example: '26237'
+                              status:
+                                type: string
+                                example: ACTIVE
+                              va_created_on:
+                                type: string
+                                example: '2025-01-10 12:31:20'
+                              bank_provider:
+                                type: string
+                                example: YESB
+                              current_balance:
+                                type: integer
+                                example: 15000
+                                default: 0
+                              settlement_account_details:
+                                type: array
+                                items:
+                                  type: object
+                                  properties:
+                                    settlement_account_urn:
+                                      type: string
+                                      example: E153669400D64D1AA28E97D25E6B9CC5
+                                    account_number:
+                                      type: string
+                                      example: 007881300004451
+                                    account_ifsc:
+                                      type: string
+                                      example: YESB0000078
+                              whitelisted_account_details:
+                                type: array
+                                items:
+                                  type: object
+                                  properties:
+                                    account_number:
+                                      type: string
+                                      example: 002281300011235
+                                    account_ifsc:
+                                      type: string
+                                      example: YESB0000022
+                                    remitter_relationship:
+                                      type: string
+                                      example: test ecollect 2
+                        page_count:
+                          type: integer
+                          example: 1
+                          default: 0
+                        total_page_count:
+                          type: integer
+                          example: 11
+                          default: 0
+                        total_count:
+                          type: integer
+                          example: 155
+                          default: 0
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                'Failure: Multiple identifiers not allowed in Input':
+                  value: "{\n    \"decentro_txn_id\": \"1305D1ABF79F4F3FAAB48E2E435D0B3E\",\n    \"api_status\": \"FAILURE\",\n    \"message\": \"Multiple identifiers were included in the request. Please provide only one identifier to proceed.\",\n    \"response_key\": \"error_multiple_identifiers_not_allowed\"\n}"
+              schema:
+                type: object
+                properties:
+                  decentro_txn_id:
+                    type: string
+                    example: 1305D1ABF79F4F3FAAB48E2E435D0B3E
+                  api_status:
+                    type: string
+                    example: FAILURE
+                  message:
+                    type: string
+                    example: Multiple identifiers were included in the request. Please provide only one identifier to proceed.
+                  response_key:
+                    type: string
+                    example: error_multiple_identifiers_not_allowed
+      deprecated: false
+      tags:
+      - Banking
+  /v3/banking/balance:
+    get:
+      summary: Get Balance
+      description: This API lets the platform fetch the current balance of a virtual account.
+      operationId: payments_api-virtualaccounts3-balance
+      parameters:
+      - name: client_id
+        in: header
+        description: Decentro assigned client_id during onboarding.
+        required: true
+        schema:
+          type: string
+          default: merchant_prod
+      - name: consumer_urn
+        in: query
+        description: A unique identifier assigned to client's by Decentro during On boarding.
+        schema:
+          type: string
+      - name: account_number
+        in: query
+        description: The virtual account number for which the balance needs to be fetched.
+        required: true
+        schema:
+          type: string
+      - name: client_secret
+        in: header
+        description: Decentro assigned client_secret during onboarding.
+        required: true
+        schema:
+          type: string
+          default: merchant_secret
+      - name: custom_va_number
+        in: query
+        description: 'The suffix part of the VA that uniquely identifies each VA. It can be from 6 -10 digit. Eg: va_suffix will be 000001 for virtual account number 46525000001'
+        schema:
+          type: string
+      - name: customer_va_identifier
+        in: query
+        description: Unique customer identifier that is mapped against the virtual account.
+        schema:
+          type: string
+      - name: fetch_child_balance
+        in: query
+        description: Pass this flag as true/false depending on whether you want to fetch the balance of a child consumer.
+        schema:
+          type: boolean
+      - name: provider_code
+        in: query
+        description: 'Provider code of the bank with which account is created. For example, provider_code: YESB'
+        schema:
+          type: string
+      - name: fetch_compliance_balance
+        in: query
+        description: Pass the flag as true/false depending on whether you want to fetch the compliance balance of the consumer
+        schema:
+          type: string
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                'Success: Virtual account balance':
+                  value: "{\n    \"decentro_txn_id\": \"A49B664CC3F44CB2A1A0A6FC513BFAC1\",\n    \"api_status\": \"SUCCESS\",\n    \"message\": \"Successfully fetched the balance.\",\n    \"data\": {\n        \"account_balance\": {\n            \"account_number\": \"4625250067981922\",\n            \"account_type\": \"VIRTUAL\",\n            \"current_balance\": 0.0,\n            \"minimum_balance\": 0.0\n        }\n    }\n}"
+                'Success: consumer URN balance (cumulative)':
+                  value: "{\n    \"decentro_txn_id\": \"D1B356E8E8F04C3C8309DF35FA09CB98\",\n    \"api_status\": \"SUCCESS\",\n    \"message\": \"Successfully fetched the balance.\",\n    \"data\": {\n        \"consumer_cumulative_balance\": 179.5981\n    }\n}"
+                'Success: customer VA identifier balance (cumulative)':
+                  value: "{\n    \"decentro_txn_id\": \"2C8B0407002248D38A995B19E9367668\",\n    \"api_status\": \"SUCCESS\",\n    \"message\": \"Successfully fetched the balance.\",\n    \"data\": {\n        \"customer_va_identifier_cumulative_balance\": 0.0\n    }\n}"
+                'Failure: No virtual account found':
+                  value: "{\n    \"decentro_txn_id\": \"35D0A0C8822A47E1AA93AF3D69C71171\",\n    \"api_status\": \"FAILURE\",\n    \"message\": \"No account found for the given `account_number`. Kindly try again with the correct value.\",\n    \"response_key\": \"error_account_number_not_found\"\n}"
+              schema:
+                oneOf:
+                - title: 'Success: Virtual account balance'
+                  type: object
+                  properties:
+                    decentro_txn_id:
+                      type: string
+                      example: A49B664CC3F44CB2A1A0A6FC513BFAC1
+                    api_status:
+                      type: string
+                      example: SUCCESS
+                    message:
+                      type: string
+                      example: Successfully fetched the balance.
+                    data:
+                      type: object
+                      properties:
+                        account_balance:
+                          type: object
+                          properties:
+                            account_number:
+                              type: string
+                              example: '4625250067981922'
+                            account_type:
+                              type: string
+                              example: VIRTUAL
+                            current_balance:
+                              type: integer
+                              example: 0
+                              default: 0
+                            minimum_balance:
+                              type: integer
+                              example: 0
+                              default: 0
+                - title: 'Success: consumer URN balance (cumulative)'
+                  type: object
+                  properties:
+                    decentro_txn_id:
+                      type: string
+                      example: D1B356E8E8F04C3C8309DF35FA09CB98
+                    api_status:
+                      type: string
+                      example: SUCCESS
+                    message:
+                      type: string
+                      example: Successfully fetched the balance.
+                    data:
+                      type: object
+                      properties:
+                        consumer_cumulative_balance:
+                          type: number
+                          example: 179.5981
+                          default: 0
+                - title: 'Success: customer VA identifier balance (cumulative)'
+                  type: object
+                  properties:
+                    decentro_txn_id:
+                      type: string
+                      example: 2C8B0407002248D38A995B19E9367668
+                    api_status:
+                      type: string
+                      example: SUCCESS
+                    message:
+                      type: string
+                      example: Successfully fetched the balance.
+                    data:
+                      type: object
+                      properties:
+                        customer_va_identifier_cumulative_balance:
+                          type: integer
+                          example: 0
+                          default: 0
+                - title: 'Failure: No virtual account found'
+                  type: object
+                  properties:
+                    decentro_txn_id:
+                      type: string
+                      example: 35D0A0C8822A47E1AA93AF3D69C71171
+                    api_status:
+                      type: string
+                      example: FAILURE
+                    message:
+                      type: string
+                      example: No account found for the given `account_number`. Kindly try again with the correct value.
+                    response_key:
+                      type: string
+                      example: error_account_number_not_found
+      deprecated: false
+      requestBody:
+        content:
+          application/json:
+            schema: {}
+            examples:
+              'Success: Balance fetched':
+                value:
+                  reference_id: 0000-0000-0002
+                  account_number: 462525xxxxxxxxx1
+      tags:
+      - Banking
+  /v3/banking/settlement_account_setup:
+    post:
+      summary: Manage VA Settlement
+      description: This API allows the platform to manage the settlement account to where the virtual account settlements are performed.
+      operationId: payments_api-settlementsv3-manage-settlement
+      parameters:
+      - name: client_id
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: client_secret
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: x_on_behalf_of
+        in: header
+        description: Optional header that allows parent merchant to consume the API on behalf of sub-merchant.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - reference_id
+              - action
+              - virtual_account_number
+              properties:
+                reference_id:
+                  type: string
+                  description: A unique ID assigned by clients for every API request.
+                action:
+                  type: string
+                  description: 'The action that the platform wants to take on settlement account. Possible values: ACTIVATE/DEACTIVATE.'
+                virtual_account_number:
+                  type: string
+                  description: The virtual account number against which the settlement account is being added.
+                settlement_account_number:
+                  type: string
+                  description: The bank account number to which the settlement needs to be undertaken. Mandatory if transfer_type = NEFT/RTGS/IMPS
+                settlement_account_ifsc:
+                  type: string
+                  description: The bank account IFSC to which the settlement needs to be undertaken. Mandatory if transfer_type = NEFT/RTGS/IMPS
+                settlement_account_name:
+                  type: string
+                  description: The name of the settlement account holder
+                settlement_account_urn:
+                  type: string
+                  description: Unique URN received while adding a settlement account against a VA. Mandatory when action is 'DEACTIVATE'.
+            examples:
+              'Success: Add settlement account':
+                value:
+                  reference_id: 2998c252-e748-45a3-91c7-75a721996346
+                  action: ACTIVATE
+                  virtual_account_number: '4625257719628478'
+                  settlement_account_number: Validaccount22
+                  settlement_account_ifsc: ICIC0001302
+                  settlement_account_name: Robot212454
+              'Success: Disable settlement account':
+                value:
+                  reference_id: 2998c252-e748-45a3-91c7-75a721996346
+                  action: DEACTIVATE
+                  virtual_account_number: '4625257719628478'
+                  settlement_account_urn: 1084AADE38054137B9F01594754020D6
+              'Failure: Empty action field':
+                value:
+                  reference_id: 0000-0000-0000
+                  virtual_account_number: '4625250092951178'
+                  settlement_account_number: '89433454678320'
+                  settlement_account_ifsc: ICIC0001302
+                  settlement_account_name: Jhon doe
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                'Success: Add settlement account':
+                  value: "{\n    \"decentro_txn_id\": \"B13CFE965925475195D9B815881DCFB2\",\n    \"api_status\": \"SUCCESS\",\n    \"message\": \"Settlement account details added successfully.\",\n    \"data\": {\n        \"settlement_account_details\": [\n            {\n                \"settlement_account_urn\": \"1084AADE38054137B9F01594754020D6\",\n                \"settlement_account_number\": \"89433454678320\",\n                \"settlement_account_ifsc\": \"ICIC0001302\",\n                \"settlement_account_name\": \"mock test\",\n                \"virtual_account_number\": \"4625250092951178\"\n            }\n        ]\n    },\n    \"response_key\": \"success_settlement_account_added\"\n}"
+                'Success: Disable settlement account':
+                  value: "{\n    \"decentro_txn_id\": \"63F2F1B28BEA44E3B275C825D4DA8A79\",\n    \"api_status\": \"SUCCESS\",\n    \"message\": \"Settlement account deactivated successfully.\",\n    \"data\": {\n        \"settlement_account_details\": [\n            {\n                \"settlement_account_urn\": \"1084AADE38054137B9F01594754020D6\",\n                \"settlement_account_number\": \"89433454678320\",\n                \"settlement_account_ifsc\": \"ICIC0001302\",\n                \"settlement_account_name\": \"Jhon doe\",\n                \"virtual_account_number\": \"4625250092951178\"\n            }\n        ]\n    },\n    \"response_key\": \"success_settlement_account_deactivated\"\n}"
+              schema:
+                oneOf:
+                - title: 'Success: Add settlement account'
+                  type: object
+                  properties:
+                    decentro_txn_id:
+                      type: string
+                      example: B13CFE965925475195D9B815881DCFB2
+                    api_status:
+                      type: string
+                      example: SUCCESS
+                    message:
+                      type: string
+                      example: Settlement account details added successfully.
+                    data:
+                      type: object
+                      properties:
+                        settlement_account_details:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              settlement_account_urn:
+                                type: string
+                                example: 1084AADE38054137B9F01594754020D6
+                              settlement_account_number:
+                                type: string
+                                example: '89433454678320'
+                              settlement_account_ifsc:
+                                type: string
+                                example: ICIC0001302
+                              settlement_account_name:
+                                type: string
+                                example: mock test
+                              virtual_account_number:
+                                type: string
+                                example: '4625250092951178'
+                    response_key:
+                      type: string
+                      example: success_settlement_account_added
+                - title: 'Success: Disable settlement account'
+                  type: object
+                  properties:
+                    decentro_txn_id:
+                      type: string
+                      example: 63F2F1B28BEA44E3B275C825D4DA8A79
+                    api_status:
+                      type: string
+                      example: SUCCESS
+                    message:
+                      type: string
+                      example: Settlement account deactivated successfully.
+                    data:
+                      type: object
+                      properties:
+                        settlement_account_details:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              settlement_account_urn:
+                                type: string
+                                example: 1084AADE38054137B9F01594754020D6
+                              settlement_account_number:
+                                type: string
+                                example: '89433454678320'
+                              settlement_account_ifsc:
+                                type: string
+                                example: ICIC0001302
+                              settlement_account_name:
+                                type: string
+                                example: Jhon doe
+                              virtual_account_number:
+                                type: string
+                                example: '4625250092951178'
+                    response_key:
+                      type: string
+                      example: success_settlement_account_deactivated
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                'Failure: Empty action':
+                  value: "{\n    \"decentro_txn_id\": \"1157BA5DABD6427C84563202583FDC92\",\n    \"api_status\": \"FAILURE\",\n    \"message\": \"Action cannot be null or empty. Hint: action (string)\",\n    \"response_key\": \"error_missing_action\"\n}"
+              schema:
+                type: object
+                properties:
+                  decentro_txn_id:
+                    type: string
+                    example: 1157BA5DABD6427C84563202583FDC92
+                  api_status:
+                    type: string
+                    example: FAILURE
+                  message:
+                    type: string
+                    example: 'Action cannot be null or empty. Hint: action (string)'
+                  response_key:
+                    type: string
+                    example: error_missing_action
+      deprecated: false
+      tags:
+      - Banking
+  /v3/banking/account/statement:
+    get:
+      summary: Get Virtual Account Statement
+      description: This API can be used by platforms to fetch the statement of a virtual account.
+      operationId: payments_api-virtualaccounts3-statement
+      parameters:
+      - name: client_id
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: client_secret
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: from
+        in: query
+        description: 'The starting date and time when the statement needs to be fetched. Format: %Y-%m-%d %H:%M:%S'''
+        required: true
+        schema:
+          type: string
+          format: date-time
+      - name: to
+        in: query
+        description: 'The ending date and time when the statement needs to be fetched. Format: %Y-%m-%d %H:%M:%S'''
+        required: true
+        schema:
+          type: string
+          format: date-time
+      - name: consumer_urn
+        in: query
+        description: A unique identifier assigned to each merchant by Decentro during onboarding.
+        required: true
+        schema:
+          type: string
+      - name: virtual_account_number
+        in: query
+        description: Virtual account number as requested by the platform.
+        schema:
+          type: string
+      - name: page
+        in: query
+        description: The page number for viewing the account statement. Should be a valid positive integer.
+        required: true
+        schema:
+          type: string
+      - name: custom_va_number
+        in: query
+        description: 'The suffix part of the VA that uniquely identifies each VA. It can be from 6 -10 digit. Eg: va_suffix will be 000001 for virtual account number 46525000001'
+        schema:
+          type: string
+      - name: customer_va_identifier
+        in: query
+        description: Unique customer identifier that is mapped against the virtual account.
+        schema:
+          type: string
+      - name: x_on_behalf_of
+        in: header
+        description: Optional header that allows parent merchant to consume the API on behalf of sub-merchant.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                'Success: Get statement via virtual account number':
+                  value: "{\n    \"decentro_txn_id\": \"179BC4C397744F45AF27E40033566C16\",\n    \"api_status\": \"SUCCESS\",\n    \"message\": \"Statement fetched successfully.\",\n    \"data\": {\n        \"name\": \"jhon doe\",\n        \"from\": \"2024-07-10T10:30:00\",\n        \"to\": \"2024-07-21T00:16:54\",\n        \"total_count\": 151,\n        \"withdrawal_count\": 77,\n        \"deposit_count\": 74,\n        \"opening_balance\": 0.0,\n        \"closing_balance\": 702.5651,\n        \"statement\": [\n            {\n                \"timestamp\": \"2024-07-16T15:33:49\",\n                \"description\": \"NA\",\n                \"bank_reference_number\": \"5127037\",\n                \"decentro_txn_id\": \"4C07B636347B410C849BA0316DFC8C01\",\n                \"amount\": 1.0,\n                \"updated_balance\": 1.0,\n                \"type\": \"CREDIT\",\n                \"transaction_type\": \"MAIN\",\n                \"transaction_status\": \"SUCCESS\",\n                \"transfer_type\": \"IMPS\",\n                \"beneficiary_account_number\": \"YESB010035837506\",\n                \"beneficiary_account_ifsc\": \"YESB0CMSNOC\",\n                \"sender_account_number\": \"87654359000011\",\n                \"sender_account_ifsc\": \"ICIC0000107\"\n            },\n            {\n                \"timestamp\": \"2024-07-16T15:33:52\",\n                \"description\": \"NA\",\n                \"bank_reference_number\": \"1227594\",\n                \"decentro_txn_id\": \"0D9BEF4C40EE48CDA62ACCB380A17911\",\n                \"amount\": 1.0,\n                \"updated_balance\": 2.0,\n                \"type\": \"CREDIT\",\n                \"transaction_type\": \"MAIN\",\n                \"transaction_status\": \"SUCCESS\",\n                \"transfer_type\": \"NEFT\",\n                \"beneficiary_account_number\": \"YESB010035837506\",\n                \"beneficiary_account_ifsc\": \"YESB0CMSNOC\",\n                \"sender_account_number\": \"87654359000011\",\n                \"sender_account_ifsc\": \"ICIC0000107\"\n            },\n            {\n                \"timestamp\": \"2024-07-16T15:51:45\",\n                \"description\": \"Testing\",\n                \"bank_reference_number\": \"1234567890\",\n                \"decentro_txn_id\": \"417AC5275A7A45DFB151F6C3DE5E3792\",\n                \"amount\": 1.0,\n                \"updated_balance\": 7.0,\n                \"type\": \"DEBIT\",\n                \"transaction_type\": \"MAIN\",\n                \"transaction_status\": \"SUCCESS\",\n                \"transfer_type\": \"IMPS\",\n                \"beneficiary_account_number\": \"218901504450\",\n                \"beneficiary_account_ifsc\": \"ICIC0002189\",\n                \"sender_account_number\": \"YESB010035837506\",\n                \"sender_account_ifsc\": \"YESB0CMSNOC\"\n            }\n        ]\n    },\n    \"response_key\": \"success_account_statement_fetched\"\n}"
+              schema:
+                type: object
+                properties:
+                  decentro_txn_id:
+                    type: string
+                    example: 179BC4C397744F45AF27E40033566C16
+                  api_status:
+                    type: string
+                    example: SUCCESS
+                  message:
+                    type: string
+                    example: Statement fetched successfully.
+                  data:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                        example: jhon doe
+                      from:
+                        type: string
+                        example: '2024-07-10T10:30:00'
+                      to:
+                        type: string
+                        example: '2024-07-21T00:16:54'
+                      total_count:
+                        type: integer
+                        example: 151
+                        default: 0
+                      withdrawal_count:
+                        type: integer
+                        example: 77
+                        default: 0
+                      deposit_count:
+                        type: integer
+                        example: 74
+                        default: 0
+                      opening_balance:
+                        type: integer
+                        example: 0
+                        default: 0
+                      closing_balance:
+                        type: number
+                        example: 702.5651
+                        default: 0
+                      statement:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            timestamp:
+                              type: string
+                              example: '2024-07-16T15:33:49'
+                            description:
+                              type: string
+                              example: NA
+                            bank_reference_number:
+                              type: string
+                              example: '5127037'
+                            decentro_txn_id:
+                              type: string
+                              example: 4C07B636347B410C849BA0316DFC8C01
+                            amount:
+                              type: integer
+                              example: 1
+                              default: 0
+                            updated_balance:
+                              type: integer
+                              example: 1
+                              default: 0
+                            type:
+                              type: string
+                              example: CREDIT
+                            transaction_type:
+                              type: string
+                              example: MAIN
+                            transaction_status:
+                              type: string
+                              example: SUCCESS
+                            transfer_type:
+                              type: string
+                              example: IMPS
+                            beneficiary_account_number:
+                              type: string
+                              example: YESB010035837506
+                            beneficiary_account_ifsc:
+                              type: string
+                              example: YESB0CMSNOC
+                            sender_account_number:
+                              type: string
+                              example: '87654359000011'
+                            sender_account_ifsc:
+                              type: string
+                              example: ICIC0000107
+                  response_key:
+                    type: string
+                    example: success_account_statement_fetched
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                'Failure: Invalid virtual account number':
+                  value: "{\n    \"decentro_txn_id\": \"09D2DC1DB0784543B6E561A8AB4F8E25\",\n    \"api_status\": \"FAILURE\",\n    \"message\": \"No virtual account found with the given values. Please provide a valid value for either the virtual_account_number, custom_va_number, or customer_va_identifier, and try again.\",\n    \"response_key\": \"error_no_record_found\"\n}"
+                'Failure: Invalid page value':
+                  value: "{\n    \"decentro_txn_id\": \"5B7FEA08A6144962AC8A7620A8C0CEBE\",\n    \"api_status\": \"FAILURE\",\n    \"message\": \"The page number cannot be empty. Hint page(int).\",\n    \"response_key\": \"error_empty_page\"\n}"
+              schema:
+                oneOf:
+                - title: 'Failure: Invalid virtual account number'
+                  type: object
+                  properties:
+                    decentro_txn_id:
+                      type: string
+                      example: 09D2DC1DB0784543B6E561A8AB4F8E25
+                    api_status:
+                      type: string
+                      example: FAILURE
+                    message:
+                      type: string
+                      example: No virtual account found with the given values. Please provide a valid value for either the virtual_account_number, custom_va_number, or customer_va_identifier, and try again.
+                    response_key:
+                      type: string
+                      example: error_no_record_found
+                - title: 'Failure: Invalid page value'
+                  type: object
+                  properties:
+                    decentro_txn_id:
+                      type: string
+                      example: 5B7FEA08A6144962AC8A7620A8C0CEBE
+                    api_status:
+                      type: string
+                      example: FAILURE
+                    message:
+                      type: string
+                      example: The page number cannot be empty. Hint page(int).
+                    response_key:
+                      type: string
+                      example: error_empty_page
+      deprecated: false
+      tags:
+      - Banking
+  /v3/banking/register_remitter_account:
+    post:
+      summary: Remitter whitelisting API
+      description: The API can be used by clients to request whitelisting of a remitter's account for VA based collections.
+      operationId: remitter-whitelisting-1
+      parameters:
+      - name: client_id
+        in: header
+        description: Decentro assigned client_id during on boarding.
+        required: true
+        schema:
+          type: string
+      - name: client_secret
+        in: header
+        description: Decentro assigned client_secret during on boarding.
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - reference_id
+              - action
+              properties:
+                reference_id:
+                  type: string
+                  description: A unique ID assigned by clients for every API request.
+                action:
+                  type: string
+                  description: 'The action to be performed for whitelisting account. Possible values: ADD, REMOVE, UPDATE.'
+                account details:
+                  type: object
+                  description: The account details of the remitter that is to be whitelisted.
+                  properties:
+                    account_number:
+                      type: string
+                      description: The remitter account number that is to be whitelisted
+                    account_ifsc:
+                      type: string
+                      description: The remitter account ifsc that is to be whitelisted.
+                    remitter_relationship:
+                      type: string
+                      description: 'The relation between merchant and remitter. Example: vendor, customer, sub-merchant, etc'
+                    remitter_code:
+                      type: string
+                      description: The unique remitter code assigned during initial whitelisting is performed. Mandatory if action = UPDATE
+                consumer_urn:
+                  type: string
+                  description: A unique identifier assigned to client's by Decentro during On boarding.
+                custom_va_number:
+                  type: string
+                  description: 'The suffix part of the VA that uniquely identifies each VA. It can be from 6 -10 digit. Eg: va_suffix will be 000001 for virtual account number 46525000001'
+                customer_va_identifier:
+                  type: string
+                  description: Unique customer identifier that is mapped against the virtual accounts.
+                virtual_account_number:
+                  type: string
+                  description: Virtual account number as requested by the platform.
+            examples:
+              'ADD: Adding a remitter whitelisting account':
+                value:
+                  reference_id: 0000-0000-0001
+                  action: ADD
+                  account_details:
+                  - account_number: 0022XXXXXX11235
+                    account_ifsc: YESXXXX0022
+                    remitter_relationship: test demo eg
+                  consumer_urn: C4598C6B444XXXXXXXXX74F1E96A239
+              'UPDATE: Updating a remitter whitelisting account':
+                value:
+                  reference_id: 0000-0000-0002
+                  action: UPDATE
+                  account_details:
+                  - remitter_relationship: test demo eg
+                    remitter_code: G70WW6U0APWT2JUF
+                  consumer_urn: C4598C6B444XXXXXXXXX74F1E96A239
+              'REMOVE: Removing a remitter whitelisting account':
+                value:
+                  reference_id: 0000-0000-0003
+                  action: REMOVE
+                  remitter_code: G70WW6U0APWT2JUF
+                  remitter_relationship: test demo eg
+                  consumer_urn: C4598C6B444XXXXXXXXX74F1E96A239
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                'Success: Adding a remitter whitelisting account':
+                  value: "{\n    \"decentro_txn_id\": \"2A4F2F71CFD94023A6F8F059092B8C65\",\n    \"api_status\": \"SUCCESS\",\n    \"message\": \"Whitelisting ADD request initiated successfully.\",\n    \"data\": {\n        \"whitelisting_account_details\": [\n            {\n                \"account_number\": \"002281300011235\",\n                \"account_ifsc\": \"YESB0000022\",\n                \"remitter_code\": \"16XYF7K7CW2OD7NG\",\n                \"remitter_relationship\": \"test demo eg\"\n            }\n        ],\n        \"mapped_to_virtual_account_list\": [\n            {\n                \"virtual_account_number\": \"4625250067981922\",\n                \"custom_va_number\": \"67981922\",\n                \"customer_va_identifier\": \"26237\"\n            },\n            {\n                \"virtual_account_number\": \"4625250086391789\",\n                \"custom_va_number\": \"86391789\",\n                \"customer_va_identifier\": \"91991\"\n            },\n            {\n                \"virtual_account_number\": \"4625250063280568\",\n                \"custom_va_number\": \"63280568\",\n                \"customer_va_identifier\": \"15796\"\n            }\n        ]\n    }\n}"
+                'Success: Updating a remitter whitelisting account':
+                  value: "{\n    \"decentro_txn_id\": \"EA5A3F09FBE3496A89BD8ADBB4F93063\",\n    \"api_status\": \"SUCCESS\",\n    \"message\": \"Whitelisting UPDATE request initiated successfully.\",\n    \"data\": {\n        \"whitelisting_account_details\": [\n            {\n                \"account_number\": \"002281300011235\",\n                \"account_ifsc\": \"YESB0000022\",\n                \"remitter_code\": \"7426788T34MYB6B4\",\n                \"remitter_relationship\": \"test demo eg 1\"\n            }\n        ],\n        \"mapped_to_virtual_account_list\": [\n            {\n                \"virtual_account_number\": \"4625250067981922\",\n                \"custom_va_number\": \"67981922\",\n                \"customer_va_identifier\": \"26237\"\n            },\n            {\n                \"virtual_account_number\": \"4625250086391789\",\n                \"custom_va_number\": \"86391789\",\n                \"customer_va_identifier\": \"91991\"\n            },\n            {\n                \"virtual_account_number\": \"4625250086399817\",\n                \"custom_va_number\": \"86399817\",\n                \"customer_va_identifier\": \"23446\"\n            }\n        ]\n    }\n}\n"
+                'Success: Removing a remitter whitelisting account':
+                  value: "{\n    \"decentro_txn_id\": \"07A38F91FF354D5A9286FC531A3C7152\",\n    \"api_status\": \"SUCCESS\",\n    \"message\": \"Whitelisting remitter account removed successfully\"\n}"
+              schema:
+                oneOf:
+                - title: 'Success: Adding a remitter whitelisting account'
+                  type: object
+                  properties:
+                    decentro_txn_id:
+                      type: string
+                      example: 2A4F2F71CFD94023A6F8F059092B8C65
+                    api_status:
+                      type: string
+                      example: SUCCESS
+                    message:
+                      type: string
+                      example: Whitelisting ADD request initiated successfully.
+                    data:
+                      type: object
+                      properties:
+                        whitelisting_account_details:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              account_number:
+                                type: string
+                                example: 002281300011235
+                              account_ifsc:
+                                type: string
+                                example: YESB0000022
+                              remitter_code:
+                                type: string
+                                example: 16XYF7K7CW2OD7NG
+                              remitter_relationship:
+                                type: string
+                                example: test demo eg
+                        mapped_to_virtual_account_list:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              virtual_account_number:
+                                type: string
+                                example: '4625250067981922'
+                              custom_va_number:
+                                type: string
+                                example: '67981922'
+                              customer_va_identifier:
+                                type: string
+                                example: '26237'
+                - title: 'Success: Updating a remitter whitelisting account'
+                  type: object
+                  properties:
+                    decentro_txn_id:
+                      type: string
+                      example: EA5A3F09FBE3496A89BD8ADBB4F93063
+                    api_status:
+                      type: string
+                      example: SUCCESS
+                    message:
+                      type: string
+                      example: Whitelisting UPDATE request initiated successfully.
+                    data:
+                      type: object
+                      properties:
+                        whitelisting_account_details:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              account_number:
+                                type: string
+                                example: 002281300011235
+                              account_ifsc:
+                                type: string
+                                example: YESB0000022
+                              remitter_code:
+                                type: string
+                                example: 7426788T34MYB6B4
+                              remitter_relationship:
+                                type: string
+                                example: test demo eg 1
+                        mapped_to_virtual_account_list:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              virtual_account_number:
+                                type: string
+                                example: '4625250067981922'
+                              custom_va_number:
+                                type: string
+                                example: '67981922'
+                              customer_va_identifier:
+                                type: string
+                                example: '26237'
+                - title: 'Success: Removing a remitter whitelisting account'
+                  type: object
+                  properties:
+                    decentro_txn_id:
+                      type: string
+                      example: 07A38F91FF354D5A9286FC531A3C7152
+                    api_status:
+                      type: string
+                      example: SUCCESS
+                    message:
+                      type: string
+                      example: Whitelisting remitter account removed successfully
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                'Failure: Multiple identifiers not allowed in input':
+                  value: "{\n    \"decentro_txn_id\": \"E395605E48EF43A982AA9C04057F0632\",\n    \"api_status\": \"FAILURE\",\n    \"message\": \"Multiple identifiers were included in the request. Hint: Please provide only one identifier to proceed.\",\n    \"response_key\": \"error_multiple_identifiers_not_allowed\"\n}"
+              schema:
+                type: object
+                properties:
+                  decentro_txn_id:
+                    type: string
+                    example: E395605E48EF43A982AA9C04057F0632
+                  api_status:
+                    type: string
+                    example: FAILURE
+                  message:
+                    type: string
+                    example: 'Multiple identifiers were included in the request. Hint: Please provide only one identifier to proceed.'
+                  response_key:
+                    type: string
+                    example: error_multiple_identifiers_not_allowed
+      deprecated: false
+      tags:
+      - Banking
+  /v3/banking/manage_split_settlement:
+    post:
+      summary: Add Split Settlement Rule API
+      description: ''
+      operationId: add-split-settlement-rule-api
+      parameters:
+      - name: client_id
+        in: header
+        description: Decentro assigned client_id during on boarding.
+        required: true
+        schema:
+          type: string
+      - name: client_secret
+        in: header
+        description: Decentro assigned client_secret during on boarding.
+        required: true
+        schema:
+          type: string
+      - name: x_on_behalf_off
+        in: header
+        description: Optional header that allows parent merchant to consume the API on behalf of sub-merchant.The child consumer URN value must be passed here.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - reference_id
+              properties:
+                reference_id:
+                  type: string
+                  description: A unique ID assigned by clients for every API request.
+                  default: 0000-0000-0001
+                consumer_urn:
+                  type: string
+                  description: A unique identifier assigned to client's by Decentro during On boarding. (Mandatory if "virtual_account_number" is not passed)
+                  default: 84E9A23xxxxxxxxxxxxxxx9E5FE16A
+                virtual_account_number:
+                  type: string
+                  description: The virtual account number against which the settlement account is being added. (Mandatory if "consumer_urn" is not passed.)
+                  default: '4625257719628478'
+                split_settlement_rule:
+                  type: array
+                  items:
+                    properties:
+                      settlement_account_urn:
+                        type: string
+                        description: The URN generated by Decentro for a settlement account number added.
+                        default: 1084AADE38054137B9F01594754020D6
+                      percentage:
+                        type: integer
+                        description: The percentage assigned for the settlement account. percentage or amount must be present here. Maximum of 2 decibels are allowed.
+                        default: null
+                        format: int32
+                      amount:
+                        type: integer
+                        description: The amount assigned for the settlement account. percentage or amount must be present. Maximum of 2 decibels are allowed.
+                        default: 10
+                        format: int32
+                      commission_deduction:
+                        type: boolean
+                        description: A flag to mark the commission deduction's settlement account when the settlement process takes place. Only 1 account can have the flag as "true".
+                        default: true
+                    required:
+                    - settlement_account_urn
+                    type: object
+            examples:
+              Add Split rule against a consumer URN:
+                value:
+                  reference_id: 0000-0000-0001
+                  consumer_urn: B15CDC6B444B4B7781D5A74F1E96A239
+                  split_settlement_rule:
+                  - settlement_account_urn: B2071BE05A8442FBACDC9C7A7EAB12A4
+                    amount: 10
+                  - settlement_account_urn: 21A97487CB3643F9B5A21935394C36E0
+                    percentage: 100
+                    commission_deduction: 'true'
+              Add split rule against a virtual account number:
+                value:
+                  reference_id: 0000-0000-0001
+                  virtual_account_number: '4625250012121213'
+                  split_settlement_rule:
+                  - settlement_account_urn: B2071BE05A8442FBACDC9C7A7EAB12A4
+                    amount: 10
+                  - settlement_account_urn: 21A97487CB3643F9B5A21935394C36E0
+                    percentage: 100
+                    commission_deduction: 'true'
+              Add split rule with split by percentage only:
+                value:
+                  reference_id: 0000-0000-0001
+                  consumer_urn: B15CDC6B444B4B7781D5A74F1E96A239
+                  split_settlement_rule:
+                  - settlement_account_urn: B2071BE05A8442FBACDC9C7A7EAB12A4
+                    percentage: 90
+                  - settlement_account_urn: 21A97487CB3643F9B5A21935394C36E0
+                    percentage: 10
+                    commission_deduction: 'true'
+              Add split rule with hybrid split:
+                value:
+                  reference_id: 0000-0000-0001
+                  consumer_urn: B15CDC6B444B4B7781D5A74F1E96A239
+                  split_settlement_rule:
+                  - settlement_account_urn: B2071BE05A8442FBACDC9C7A7EAB12A4
+                    amount: 10
+                  - settlement_account_urn: 21A97487CB3643F9B5A21935394C36E0
+                    percentage: 50
+                  - settlement_account_urn: 21A97487CB3643F9B5A21935394C36E0
+                    percentage: 50
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Split Rule Successfully Added:
+                  value: "{\n    \"decentro_txn_id\": \"42300FB0FA1A46428BDA4A9369DD24E7\",\n    \"api_status\": \"SUCCESS\",\n    \"message\": \"Split Settlement Rule added successfully.\",\n    \"data\": {\n        \"split_settlement_rule_urn\": \"74A62639EDC44714B0AC9FB9BF7D26EE\",\n        \"split_settlement_rule\": [\n            {\n                \"amount\": 10.0,\n                \"commission_deduction\": false,\n                \"settlement_account_urn\": \"B2071BE05A8442FBACDC9C7A7EAB12A4\"\n            },\n            {\n                \"percentage\": 100.0,\n                \"commission_deduction\": true,\n                \"settlement_account_urn\": \"21A97487CB3643F9B5A21935394C36E0\"\n            }\n        ]\n    },\n    \"response_key\": \"success_split_rule_added_successfully\"\n}"
+              schema:
+                type: object
+                properties:
+                  decentro_txn_id:
+                    type: string
+                    example: 42300FB0FA1A46428BDA4A9369DD24E7
+                  api_status:
+                    type: string
+                    example: SUCCESS
+                  message:
+                    type: string
+                    example: Split Settlement Rule added successfully.
+                  data:
+                    type: object
+                    properties:
+                      split_settlement_rule_urn:
+                        type: string
+                        example: 74A62639EDC44714B0AC9FB9BF7D26EE
+                      split_settlement_rule:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            amount:
+                              type: integer
+                              example: 10
+                              default: 0
+                            commission_deduction:
+                              type: boolean
+                              example: false
+                              default: true
+                            settlement_account_urn:
+                              type: string
+                              example: B2071BE05A8442FBACDC9C7A7EAB12A4
+                  response_key:
+                    type: string
+                    example: success_split_rule_added_successfully
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Malformed Request:
+                  value: "{\n    \"decentro_txn_id\": \"59FCD3AF442847BEBAF51E158675D508\",\n    \"api_status\": \"FAILURE\",\n    \"message\": \"Malformed request detected.\",\n    \"response_key\": \"error_malformed_request\"\n}"
+                Sum of Percentage must be equal to 100:
+                  value: "{\n    \"decentro_txn_id\": \"8E2E980B72C54B6BBBCEA3304A851AC9\",\n    \"api_status\": \"FAILURE\",\n    \"message\": \"The sum of the percentages in the split settlement rule must equal 100. Please ensure the total allocation is correct. Hint: split_settlement_rule (list)\",\n    \"response_key\": \"error_invalid_split_settlement_rule\"\n}"
+                Amount or Percentage Required:
+                  value: "{\n    \"decentro_txn_id\": \"CC0DD0F349A14D0EA2E4DCE6CDFB5DCE\",\n    \"api_status\": \"FAILURE\",\n    \"message\": \"Either amount or percentage is required. Hint: split_settlement_rule (list)\",\n    \"response_key\": \"error_invalid_split_settlement_rule\"\n}"
+              schema:
+                oneOf:
+                - title: Malformed Request
+                  type: object
+                  properties:
+                    decentro_txn_id:
+                      type: string
+                      example: 59FCD3AF442847BEBAF51E158675D508
+                    api_status:
+                      type: string
+                      example: FAILURE
+                    message:
+                      type: string
+                      example: Malformed request detected.
+                    response_key:
+                      type: string
+                      example: error_malformed_request
+                - title: Sum of Percentage must be equal to 100
+                  type: object
+                  properties:
+                    decentro_txn_id:
+                      type: string
+                      example: 8E2E980B72C54B6BBBCEA3304A851AC9
+                    api_status:
+                      type: string
+                      example: FAILURE
+                    message:
+                      type: string
+                      example: 'The sum of the percentages in the split settlement rule must equal 100. Please ensure the total allocation is correct. Hint: split_settlement_rule (list)'
+                    response_key:
+                      type: string
+                      example: error_invalid_split_settlement_rule
+                - title: Amount or Percentage Required
+                  type: object
+                  properties:
+                    decentro_txn_id:
+                      type: string
+                      example: CC0DD0F349A14D0EA2E4DCE6CDFB5DCE
+                    api_status:
+                      type: string
+                      example: FAILURE
+                    message:
+                      type: string
+                      example: 'Either amount or percentage is required. Hint: split_settlement_rule (list)'
+                    response_key:
+                      type: string
+                      example: error_invalid_split_settlement_rule
+      deprecated: false
+      tags:
+      - Banking
+    put:
+      summary: Update Split Settlement Rule API
+      description: ''
+      operationId: update-split-settlement-rule-api
+      parameters:
+      - name: client_id
+        in: header
+        description: Decentro assigned client_id during on boarding.
+        required: true
+        schema:
+          type: string
+      - name: client_secret
+        in: header
+        description: Decentro assigned client_secret during on boarding.
+        required: true
+        schema:
+          type: string
+      - name: x_on_behalf_of
+        in: header
+        description: Optional header that allows parent merchant to consume the API on behalf of sub-merchant.The child consumer URN value must be passed here.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - reference_id
+              - split_settlement_rule_urn
+              properties:
+                reference_id:
+                  type: string
+                  description: A unique ID assigned by clients for every API request.
+                  default: 0000-0000-0001
+                consumer_urn:
+                  type: string
+                  description: A unique identifier assigned to client's by Decentro during On boarding. (Mandatory if "virtual_account_number" is not passed)
+                  default: 84E9A23xxxxxxxxxxxxxxx9E5FE16A
+                virtual_account_number:
+                  type: string
+                  description: The virtual account number against which the settlement account is being added. (Mandatory if "consumer_urn" is not passed.)
+                  default: '4625257719628478'
+                split_settlement_rule_urn:
+                  type: string
+                  description: A URN generated to map the rules of the split against it.
+                  default: 426BF8958FC64708A50258DC4C9DF5F4
+                is_active:
+                  type: boolean
+                  description: A boolean flag to activate or deactivate a split rule. (Optional)
+                  default: true
+                split_settlement_rule:
+                  type: array
+                  items:
+                    properties:
+                      settlement_account_urn:
+                        type: string
+                        description: The URN generated by Decentro for a settlement account number added.
+                        default: 1084AADE38054137B9F01594754020D6
+                      percentage:
+                        type: integer
+                        description: The percentage assigned for the settlement account. percentage or amount must be present here. Maximum of 2 decibels are allowed.
+                        default: null
+                        format: int32
+                      amount:
+                        type: integer
+                        description: The amount assigned for the settlement account. percentage or amount must be present. Maximum of 2 decibels are allowed.
+                        default: 10
+                        format: int32
+                      commission_deduction:
+                        type: boolean
+                        description: A flag to mark the commission deduction's settlement account when the settlement process takes place. Only 1 account can have the flag as "true".
+                        default: true
+                    required:
+                    - settlement_account_urn
+                    type: object
+            examples:
+              Update split rule with hybrid split:
+                value:
+                  reference_id: 0000-0000-0001
+                  consumer_urn: B15CDC6B444B4B7781D5A74F1E96A239
+                  split_settlement_rule:
+                  - settlement_account_urn: B2071BE05A8442FBACDC9C7A7EAB12A4
+                    amount: 10
+                  - settlement_account_urn: 21A97487CB3643F9B5A21935394C36E0
+                    percentage: 50
+                  - settlement_account_urn: 21A97487CB3643F9B5A21935394C36E0
+                    percentage: 50
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Split Rule Successfully Updated:
+                  value: "{\n    \"decentro_txn_id\": \"42300FB0FA1A46428BDA4A9369DD24E7\",\n    \"api_status\": \"SUCCESS\",\n    \"message\": \"Split Settlement Rule updated successfully.\",\n    \"data\": {\n        \"split_settlement_rule_urn\": \"426BF8958FC64708A50258DC4C9DF5F4\",\n        \"split_settlement_rule\": [\n            {\n                \"amount\": 10.0,\n                \"commission_deduction\": false,\n                \"settlement_account_urn\": \"B2071BE05A8442FBACDC9C7A7EAB12A4\"\n            },\n            {\n                \"percentage\": 100.0,\n                \"commission_deduction\": true,\n                \"settlement_account_urn\": \"21A97487CB3643F9B5A21935394C36E0\"\n            }\n        ]\n    },\n    \"response_key\": \"success_split_rule_updated_successfully\"\n}"
+              schema:
+                type: object
+                properties:
+                  decentro_txn_id:
+                    type: string
+                    example: 42300FB0FA1A46428BDA4A9369DD24E7
+                  api_status:
+                    type: string
+                    example: SUCCESS
+                  message:
+                    type: string
+                    example: Split Settlement Rule updated successfully.
+                  data:
+                    type: object
+                    properties:
+                      split_settlement_rule_urn:
+                        type: string
+                        example: 426BF8958FC64708A50258DC4C9DF5F4
+                      split_settlement_rule:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            amount:
+                              type: integer
+                              example: 10
+                              default: 0
+                            commission_deduction:
+                              type: boolean
+                              example: false
+                              default: true
+                            settlement_account_urn:
+                              type: string
+                              example: B2071BE05A8442FBACDC9C7A7EAB12A4
+                  response_key:
+                    type: string
+                    example: success_split_rule_updated_successfully
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Malformed Request:
+                  value: "{\n    \"decentro_txn_id\": \"59FCD3AF442847BEBAF51E158675D508\",\n    \"api_status\": \"FAILURE\",\n    \"message\": \"Malformed request detected.\",\n    \"response_key\": \"error_malformed_request\"\n}"
+                Sum of Percentage must be equal to 100:
+                  value: "{\n    \"decentro_txn_id\": \"8E2E980B72C54B6BBBCEA3304A851AC9\",\n    \"api_status\": \"FAILURE\",\n    \"message\": \"The sum of the percentages in the split settlement rule must equal 100. Please ensure the total allocation is correct. Hint: split_settlement_rule (list)\",\n    \"response_key\": \"error_invalid_split_settlement_rule\"\n}"
+                Amount or Percentage Required:
+                  value: "{\n    \"decentro_txn_id\": \"CC0DD0F349A14D0EA2E4DCE6CDFB5DCE\",\n    \"api_status\": \"FAILURE\",\n    \"message\": \"Either amount or percentage is required. Hint: split_settlement_rule (list)\",\n    \"response_key\": \"error_invalid_split_settlement_rule\"\n}"
+              schema:
+                oneOf:
+                - title: Malformed Request
+                  type: object
+                  properties:
+                    decentro_txn_id:
+                      type: string
+                      example: 59FCD3AF442847BEBAF51E158675D508
+                    api_status:
+                      type: string
+                      example: FAILURE
+                    message:
+                      type: string
+                      example: Malformed request detected.
+                    response_key:
+                      type: string
+                      example: error_malformed_request
+                - title: Sum of Percentage must be equal to 100
+                  type: object
+                  properties:
+                    decentro_txn_id:
+                      type: string
+                      example: 8E2E980B72C54B6BBBCEA3304A851AC9
+                    api_status:
+                      type: string
+                      example: FAILURE
+                    message:
+                      type: string
+                      example: 'The sum of the percentages in the split settlement rule must equal 100. Please ensure the total allocation is correct. Hint: split_settlement_rule (list)'
+                    response_key:
+                      type: string
+                      example: error_invalid_split_settlement_rule
+                - title: Amount or Percentage Required
+                  type: object
+                  properties:
+                    decentro_txn_id:
+                      type: string
+                      example: CC0DD0F349A14D0EA2E4DCE6CDFB5DCE
+                    api_status:
+                      type: string
+                      example: FAILURE
+                    message:
+                      type: string
+                      example: 'Either amount or percentage is required. Hint: split_settlement_rule (list)'
+                    response_key:
+                      type: string
+                      example: error_invalid_split_settlement_rule
+      deprecated: false
+      tags:
+      - Banking
+    get:
+      summary: Get Split Settlement Rule API
+      description: ''
+      operationId: get-split-settlement-rule-api
+      parameters:
+      - name: split_settlement_rule_urn
+        in: query
+        description: The URN generated when a split rule is created.
+        schema:
+          type: string
+      - name: client_id
+        in: header
+        description: Decentro assigned client_id during on boarding.
+        required: true
+        schema:
+          type: string
+      - name: client_secret
+        in: header
+        description: Decentro assigned client_secret during on boarding.
+        required: true
+        schema:
+          type: string
+      - name: consumer_urn
+        in: query
+        description: The URN provided when a consumer generated against which the split rules where created
+        schema:
+          type: string
+      - name: virtual_account_number
+        in: query
+        description: The account number against which the split rules where created.
+        schema:
+          type: string
+      - name: x_on_behalf_of
+        in: header
+        description: Optional header that allows parent merchant to consume the API on behalf of sub-merchant.The child consumer URN value must be passed here.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Split Settlement Rule Fetched:
+                  value: "{\n    \"decentro_txn_id\": \"F80AED94002C4DCAB9EFA8BB0586955A\",\n    \"api_status\": \"SUCCESS\",\n    \"message\": \"Split Settlement Rule fetched successfully.\",\n    \"data\": {\n        \"split_settlement_rule\": [\n            {\n                \"percentage\": 70.0,\n                \"settlement_account_urn\": \"C97205D24D9F46BF81F72E7E5071CBE9\"\n            },\n            {\n                \"percentage\": 30.0,\n                \"commission_deduction\": true,\n                \"settlement_account_urn\": \"C488531FEC6244B5AB41942563601430\"\n            }\n        ],\n        \"is_active\": true,\n        \"consumer_urn\": \"84E9A23DFFA345C9ADC8CDBD9E5FE16A\"\n    },\n    \"response_key\": \"success_split_rule_fetched_successfully\"\n}"
+              schema:
+                type: object
+                properties:
+                  decentro_txn_id:
+                    type: string
+                    example: F80AED94002C4DCAB9EFA8BB0586955A
+                  api_status:
+                    type: string
+                    example: SUCCESS
+                  message:
+                    type: string
+                    example: Split Settlement Rule fetched successfully.
+                  data:
+                    type: object
+                    properties:
+                      split_settlement_rule:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            percentage:
+                              type: integer
+                              example: 70
+                              default: 0
+                            settlement_account_urn:
+                              type: string
+                              example: C97205D24D9F46BF81F72E7E5071CBE9
+                      is_active:
+                        type: boolean
+                        example: true
+                        default: true
+                      consumer_urn:
+                        type: string
+                        example: 84E9A23DFFA345C9ADC8CDBD9E5FE16A
+                  response_key:
+                    type: string
+                    example: success_split_rule_fetched_successfully
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Split rule not found:
+                  value: "{\n    \"decentro_txn_id\": \"4E11E7111AE44BB6A50E78B676A15543\",\n    \"api_status\": \"FAILURE\",\n    \"message\": \"Split Settlement Rule URN does not match any records for the specified company. Hint: split_settlement_rule_urn (string)\",\n    \"response_key\": \"error_invalid_split_settlement_rule_urn\"\n}"
+                Invalid or Null Query Params:
+                  value: "{\n    \"decentro_txn_id\": \"64CBDB142A324955B4272E10204403DA\",\n    \"api_status\": \"FAILURE\",\n    \"message\": \"Split Settlement Rule URN cannot be null or empty. Hint: split_settlement_rule_urn (string)\",\n    \"response_key\": \"error_missing_split_settlement_rule_urn\"\n}"
+              schema:
+                oneOf:
+                - title: Split rule not found
+                  type: object
+                  properties:
+                    decentro_txn_id:
+                      type: string
+                      example: 4E11E7111AE44BB6A50E78B676A15543
+                    api_status:
+                      type: string
+                      example: FAILURE
+                    message:
+                      type: string
+                      example: 'Split Settlement Rule URN does not match any records for the specified company. Hint: split_settlement_rule_urn (string)'
+                    response_key:
+                      type: string
+                      example: error_invalid_split_settlement_rule_urn
+                - title: Invalid or Null Query Params
+                  type: object
+                  properties:
+                    decentro_txn_id:
+                      type: string
+                      example: 64CBDB142A324955B4272E10204403DA
+                    api_status:
+                      type: string
+                      example: FAILURE
+                    message:
+                      type: string
+                      example: 'Split Settlement Rule URN cannot be null or empty. Hint: split_settlement_rule_urn (string)'
+                    response_key:
+                      type: string
+                      example: error_missing_split_settlement_rule_urn
+      deprecated: false
+      tags:
+      - Banking
+  /v3/banking/account/virtual_transfer:
+    post:
+      summary: Virtual Transfer API
+      description: This API enables merchants to seamlessly transfer funds between virtual accounts (VAs).
+      operationId: virtual-transfer-api
+      parameters:
+      - name: client_id
+        in: header
+        description: Decentro assigned client_id during on boarding.
+        schema:
+          type: string
+      - name: client_secret
+        in: header
+        description: Decentro assigned client_secret during on boarding.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - reference_id
+              - consumer_urn
+              - from_virtual_account
+              - to_virtual_account
+              - amount
+              - purpose_message
+              properties:
+                reference_id:
+                  type: string
+                  description: A unique ID assigned by clients for every API request.
+                consumer_urn:
+                  type: string
+                  description: A unique identifier assigned to client's by Decentro during On boarding.
+                from_virtual_account:
+                  type: string
+                  description: The virtual account from which money will be debited.
+                to_virtual_account:
+                  type: string
+                  description: The virtual account to which money will be credited.
+                amount:
+                  type: string
+                  description: The amount to be transferred between the virtual accounts.
+                purpose_message:
+                  type: string
+                  description: The purpose message for the virtual transfer.
+            examples:
+              'Success: Virtual transfer success':
+                value:
+                  reference_id: 0000-0000-0001
+                  consumer_urn: 84E9A23DFFA345C9ADC8CxxxxxxFE16A
+                  from_virtual_account: 462xxxxxxx91036
+                  to_virtual_account: 4625xxxxxxxx4264
+                  amount: 1000
+                  purpose_message: test V2V transfer
+              'Failure: Invalid virtual account':
+                value:
+                  reference_id: 0000-0000-0001
+                  consumer_urn: 84E9A23DFFA345C9ADC8CxxxxxxFE16A
+                  from_virtual_account: 462xxxxxxx93453
+                  to_virtual_account: 4625xxxxxxxx4264
+                  amount: 1000
+                  purpose_message: test V2V transfer
+              'Failure: Insufficient balance in the account':
+                value:
+                  reference_id: 0000-0000-0001
+                  consumer_urn: 84E9A23DFFA345C9ADC8CxxxxxxFE16A
+                  from_virtual_account: 462xxxxxxx93453
+                  to_virtual_account: 4625xxxxxxxx4264
+                  amount: 1000
+                  purpose_message: test V2V transfer
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                'Success: Virtual transfer success':
+                  value: "{\n    \"decentro_txn_id\": \"2C8FDC24E3184929850F45BF511A10C2\",\n    \"api_status\": \"SUCCESS\",\n    \"message\": \"Funds transfer request processed successful\",\n    \"data\": {\n        \"transaction_status\": \"SUCCESS\",\n        \"transaction_status_description\": \"Funds transferred successfully\",\n        \"from_virtual_account\": \"4625255142591036\",\n        \"to_virtual_account\": \"4625251223174264\",\n        \"transaction_date\": \"2025-01-10\",\n        \"from_virtual_account_updated_balance\": 8000.0,\n        \"to_virtual_account_updated_balance\": 2000.0\n    },\n    \"response_key\": \"success_transaction_status_successful\"\n}"
+              schema:
+                type: object
+                properties:
+                  decentro_txn_id:
+                    type: string
+                    example: 2C8FDC24E3184929850F45BF511A10C2
+                  api_status:
+                    type: string
+                    example: SUCCESS
+                  message:
+                    type: string
+                    example: Funds transfer request processed successful
+                  data:
+                    type: object
+                    properties:
+                      transaction_status:
+                        type: string
+                        example: SUCCESS
+                      transaction_status_description:
+                        type: string
+                        example: Funds transferred successfully
+                      from_virtual_account:
+                        type: string
+                        example: '4625255142591036'
+                      to_virtual_account:
+                        type: string
+                        example: '4625251223174264'
+                      transaction_date:
+                        type: string
+                        example: '2025-01-10'
+                      from_virtual_account_updated_balance:
+                        type: integer
+                        example: 8000
+                        default: 0
+                      to_virtual_account_updated_balance:
+                        type: integer
+                        example: 2000
+                        default: 0
+                  response_key:
+                    type: string
+                    example: success_transaction_status_successful
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                'Failure: Invalid virtual account':
+                  value: "{\n    \"decentro_txn_id\": \"3EEEAE63DC5B468AA054861FE40D3C74\",\n    \"api_status\": \"FAILURE\",\n    \"message\": \"from virtual account is not valid\",\n    \"response_key\": \"error_invalid_from_virtual_account\"\n}"
+                'Failure: Insufficient balance in the account':
+                  value: "{\n    \"decentro_txn_id\": \"401EE35E5EAB47A88D03F410CE7A4CB9\",\n    \"api_status\": \"FAILURE\",\n    \"message\": \"Remitter account balance is not sufficient.\",\n    \"response_key\": \"error_decentro_error\"\n}"
+              schema:
+                oneOf:
+                - title: 'Failure: Invalid virtual account'
+                  type: object
+                  properties:
+                    decentro_txn_id:
+                      type: string
+                      example: 3EEEAE63DC5B468AA054861FE40D3C74
+                    api_status:
+                      type: string
+                      example: FAILURE
+                    message:
+                      type: string
+                      example: from virtual account is not valid
+                    response_key:
+                      type: string
+                      example: error_invalid_from_virtual_account
+                - title: 'Failure: Insufficient balance in the account'
+                  type: object
+                  properties:
+                    decentro_txn_id:
+                      type: string
+                      example: 401EE35E5EAB47A88D03F410CE7A4CB9
+                    api_status:
+                      type: string
+                      example: FAILURE
+                    message:
+                      type: string
+                      example: Remitter account balance is not sufficient.
+                    response_key:
+                      type: string
+                      example: error_decentro_error
+      deprecated: false
+      tags:
+      - Banking
+  /v3/banking/settlement_account_details:
+    get:
+      summary: Get Settlement Account Details
+      description: ''
+      operationId: get-settlement-account-details
+      parameters:
+      - name: consumer_urn
+        in: query
+        description: (Mandatory if virtual_account_number is not passed) The consumer URN must be passed here
+        schema:
+          type: string
+      - name: virtual_account_number
+        in: query
+        description: (Mandatory if consumer_urn is not passed) The virtual account number must be passed here
+        schema:
+          type: string
+      - name: page
+        in: query
+        description: Numerical value of the page number needs to be passed.
+        required: true
+        schema:
+          type: string
+      - name: limit
+        in: query
+        description: The number of records that will be present in a page. If no value is passed, then the default is 11
+        schema:
+          type: string
+      - name: client_id
+        in: header
+        required: true
+        schema:
+          type: string
+          default: xxx
+      - name: client_secret
+        in: header
+        required: true
+        schema:
+          type: string
+          default: xxx
+      - name: x_on_behalf_of
+        in: header
+        description: Optional header that allows parent merchant to consume the API on behalf of sub-merchant.The child consumer URN value must be passed here.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                For consumer URN:
+                  value: "{\n    \"decentro_txn_id\": \"7304758D11884597B7160368A264891F\",\n    \"api_status\": \"SUCCESS\",\n    \"message\": \"Settlement Account Details fetched successfully\",\n    \"data\":\n    {\n        \"consumer_urn\": \"B15CDC6B444B4B7781D5A74F1E96A239\",\n        \"page\": 2,\n        \"total_pages\": 2,\n        \"total_records\": 17,\n        \"limit\": 11,\n        \"page_size\": 6,\n        \"settlement_account_details\":\n        [\n            {\n                \"settlement_account_urn\": \"6C0A9FCAC53C44BE94B5A756F8D4B9C0\",\n                \"name\": \"test demo 1\",\n                \"settlement_account_number\": \"002281300011235\",\n                \"settlement_account_ifsc\": \"YESB0000022\",\n                \"is_active\": true,\n                \"is_master_settlement_account\": false\n            },\n            {\n                \"settlement_account_urn\": \"0604738E12404F73873442072CD2F1B8\",\n                \"name\": \"test demo 2\",\n                \"settlement_account_number\": \"00361001000589\",\n                \"settlement_account_ifsc\": \"ICIC0002189\",\n                \"is_active\": true,\n                \"is_master_settlement_account\": false\n            },\n            {\n                \"settlement_account_urn\": \"C8BCA6D8A42F43C887B5C7634061814B\",\n                \"name\": \"test demo 3\",\n                \"settlement_account_number\": \"00361001000589\",\n                \"settlement_account_ifsc\": \"YESB0001139\",\n                \"is_active\": true,\n                \"is_master_settlement_account\": false\n            },\n            {\n                \"settlement_account_urn\": \"262D135741D340AEB909C0A76DCF57A5\",\n                \"name\": \"test demo 4\",\n                \"settlement_account_number\": \"982374501000589\",\n                \"settlement_account_ifsc\": \"ICIC0002189\",\n                \"is_active\": true,\n                \"is_master_settlement_account\": false\n            },\n            {\n                \"settlement_account_urn\": \"92704D08DD0B4C45B93CB1330678DCEF\",\n                \"name\": \"test demo 5\",\n                \"settlement_account_number\": \"218901504450fail001\",\n                \"settlement_account_ifsc\": \"ICIC0002189\",\n                \"is_active\": true,\n                \"is_master_settlement_account\": false\n            },\n            {\n                \"settlement_account_urn\": \"C09F755A67BA418B8C6A4AC9222D2FB0\",\n                \"name\": \"test demo 5\",\n                \"settlement_account_number\": \"23121001000589\",\n                \"settlement_account_ifsc\": \"ICIC0002189\",\n                \"is_active\": true,\n                \"is_master_settlement_account\": false\n            }\n        ]\n    },\n    \"response_key\": \"success_settlement_accounts_fetched_successfully\"\n}"
+                For Virtual Account Number:
+                  value: "\t{\n\t    \"decentro_txn_id\": \"7304758D11884597B7160368A264891F\",\n\t    \"api_status\": \"SUCCESS\",\n\t    \"message\": \"Settlement Account Details fetched successfully\",\n\t    \"data\":\n\t    {\n\t        \"virtual_account_number\": \"4625259008398922\",\n\t        \"page\": 2,\n\t        \"total_pages\": 2,\n\t        \"total_records\": 17,\n\t        \"limit\": 11,\n\t        \"page_size\": 6,\n\t        \"settlement_account_details\":\n\t        [\n\t            {\n\t                \"settlement_account_urn\": \"6C0A9FCAC53C44BE94B5A756F8D4B9C0\",\n\t                \"name\": \"test demo 1\",\n\t                \"settlement_account_number\": \"002281300011235\",\n\t                \"settlement_account_ifsc\": \"YESB0000022\",\n\t                \"is_active\": true,\n\t                \"is_master_settlement_account\": false\n\t            },\n\t            {\n\t                \"settlement_account_urn\": \"0604738E12404F73873442072CD2F1B8\",\n\t                \"name\": \"test demo 2\",\n\t                \"settlement_account_number\": \"00361001000589\",\n\t                \"settlement_account_ifsc\": \"ICIC0002189\",\n\t                \"is_active\": true,\n\t                \"is_master_settlement_account\": false\n\t            },\n\t            {\n\t                \"settlement_account_urn\": \"C8BCA6D8A42F43C887B5C7634061814B\",\n\t                \"name\": \"test demo 3\",\n\t                \"settlement_account_number\": \"00361001000589\",\n\t                \"settlement_account_ifsc\": \"YESB0001139\",\n\t                \"is_active\": true,\n\t                \"is_master_settlement_account\": false\n\t            },\n\t            {\n\t                \"settlement_account_urn\": \"262D135741D340AEB909C0A76DCF57A5\",\n\t                \"name\": \"test demo 4\",\n\t                \"settlement_account_number\": \"982374501000589\",\n\t                \"settlement_account_ifsc\": \"ICIC0002189\",\n\t                \"is_active\": true,\n\t                \"is_master_settlement_account\": false\n\t            },\n\t            {\n\t                \"settlement_account_urn\": \"92704D08DD0B4C45B93CB1330678DCEF\",\n\t                \"name\": \"test demo 5\",\n\t                \"settlement_account_number\": \"218901504450fail001\",\n\t                \"settlement_account_ifsc\": \"ICIC0002189\",\n\t                \"is_active\": true,\n\t                \"is_master_settlement_account\": false\n\t            },\n\t            {\n\t                \"settlement_account_urn\": \"C09F755A67BA418B8C6A4AC9222D2FB0\",\n\t                \"name\": \"test demo 5\",\n\t                \"settlement_account_number\": \"23121001000589\",\n\t                \"settlement_account_ifsc\": \"ICIC0002189\",\n\t                \"is_active\": true,\n\t                \"is_master_settlement_account\": false\n\t            }\n\t        ]\n\t    },\n\t    \"response_key\": \"success_settlement_accounts_fetched_successfully\"\n\t}"
+              schema:
+                oneOf:
+                - title: For consumer URN
+                  type: object
+                  properties:
+                    decentro_txn_id:
+                      type: string
+                      example: 7304758D11884597B7160368A264891F
+                    api_status:
+                      type: string
+                      example: SUCCESS
+                    message:
+                      type: string
+                      example: Settlement Account Details fetched successfully
+                    data:
+                      type: object
+                      properties:
+                        consumer_urn:
+                          type: string
+                          example: B15CDC6B444B4B7781D5A74F1E96A239
+                        page:
+                          type: integer
+                          example: 2
+                          default: 0
+                        total_pages:
+                          type: integer
+                          example: 2
+                          default: 0
+                        total_records:
+                          type: integer
+                          example: 17
+                          default: 0
+                        limit:
+                          type: integer
+                          example: 11
+                          default: 0
+                        page_size:
+                          type: integer
+                          example: 6
+                          default: 0
+                        settlement_account_details:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              settlement_account_urn:
+                                type: string
+                                example: 6C0A9FCAC53C44BE94B5A756F8D4B9C0
+                              name:
+                                type: string
+                                example: test demo 1
+                              settlement_account_number:
+                                type: string
+                                example: 002281300011235
+                              settlement_account_ifsc:
+                                type: string
+                                example: YESB0000022
+                              is_active:
+                                type: boolean
+                                example: true
+                                default: true
+                              is_master_settlement_account:
+                                type: boolean
+                                example: false
+                                default: true
+                    response_key:
+                      type: string
+                      example: success_settlement_accounts_fetched_successfully
+                - title: For Virtual Account Number
+                  type: object
+                  properties:
+                    decentro_txn_id:
+                      type: string
+                      example: 7304758D11884597B7160368A264891F
+                    api_status:
+                      type: string
+                      example: SUCCESS
+                    message:
+                      type: string
+                      example: Settlement Account Details fetched successfully
+                    data:
+                      type: object
+                      properties:
+                        virtual_account_number:
+                          type: string
+                          example: '4625259008398922'
+                        page:
+                          type: integer
+                          example: 2
+                          default: 0
+                        total_pages:
+                          type: integer
+                          example: 2
+                          default: 0
+                        total_records:
+                          type: integer
+                          example: 17
+                          default: 0
+                        limit:
+                          type: integer
+                          example: 11
+                          default: 0
+                        page_size:
+                          type: integer
+                          example: 6
+                          default: 0
+                        settlement_account_details:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              settlement_account_urn:
+                                type: string
+                                example: 6C0A9FCAC53C44BE94B5A756F8D4B9C0
+                              name:
+                                type: string
+                                example: test demo 1
+                              settlement_account_number:
+                                type: string
+                                example: 002281300011235
+                              settlement_account_ifsc:
+                                type: string
+                                example: YESB0000022
+                              is_active:
+                                type: boolean
+                                example: true
+                                default: true
+                              is_master_settlement_account:
+                                type: boolean
+                                example: false
+                                default: true
+                    response_key:
+                      type: string
+                      example: success_settlement_accounts_fetched_successfully
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Consumer or Virtual Account not present:
+                  value: "{\n    \"decentro_txn_id\": \"DB18FDDA07B14174B33E0C9B20B1DE2D\",\n    \"api_status\": \"FAILURE\",\n    \"message\": \"Either Consumer URN or Virtual Account Number must be provided. Hint: consumer_urn (string) or virtual_account_number (string)\",\n    \"response_key\": \"error_missing_consumer_urn_and_virtual_account_number\"\n}"
+                Authentication Error:
+                  value: "{\n    \"decentro_txn_id\": \"A133435FFE0349D29D1478759A80D1DA\",\n    \"api_status\": \"FAILURE\",\n    \"message\": \"Client Secret cannot be empty. Hint: client_secret (string)\",\n    \"response_key\": \"error_empty_client_secret\"\n}"
+                Maximum Limit:
+                  value: "{\n    \"decentro_txn_id\": \"2FEC35FAE3A34B1BB533D4E74783226C\",\n    \"api_status\": \"FAILURE\",\n    \"message\": \"Limit cannot be greater than 50. Hint: limit (integer)\",\n    \"response_key\": \"error_invalid_limit\"\n}"
+                'Invalid Page ':
+                  value: "{\n    \"decentro_txn_id\": \"6CB80DFBDBB74BFBAAA3B4C501C437B6\",\n    \"api_status\": \"SUCCESS\",\n    \"message\": \"Settlement Account Details fetched successfully\",\n    \"data\":\n    {\n        \"consumer_urn\": \"B15CDC6B444B4B7781D5A74F1E96A239\",\n        \"page\": 1000,\n        \"total_pages\": 2,\n        \"total_records\": 17,\n        \"limit\": 11,\n        \"page_size\": 0,\n        \"settlement_account_details\":\n        []\n    },\n    \"response_key\": \"success_settlement_accounts_fetched_successfully\"\n}"
+              schema:
+                oneOf:
+                - title: Consumer or Virtual Account not present
+                  type: object
+                  properties:
+                    decentro_txn_id:
+                      type: string
+                      example: DB18FDDA07B14174B33E0C9B20B1DE2D
+                    api_status:
+                      type: string
+                      example: FAILURE
+                    message:
+                      type: string
+                      example: 'Either Consumer URN or Virtual Account Number must be provided. Hint: consumer_urn (string) or virtual_account_number (string)'
+                    response_key:
+                      type: string
+                      example: error_missing_consumer_urn_and_virtual_account_number
+                - title: Authentication Error
+                  type: object
+                  properties:
+                    decentro_txn_id:
+                      type: string
+                      example: A133435FFE0349D29D1478759A80D1DA
+                    api_status:
+                      type: string
+                      example: FAILURE
+                    message:
+                      type: string
+                      example: 'Client Secret cannot be empty. Hint: client_secret (string)'
+                    response_key:
+                      type: string
+                      example: error_empty_client_secret
+                - title: Maximum Limit
+                  type: object
+                  properties:
+                    decentro_txn_id:
+                      type: string
+                      example: 2FEC35FAE3A34B1BB533D4E74783226C
+                    api_status:
+                      type: string
+                      example: FAILURE
+                    message:
+                      type: string
+                      example: 'Limit cannot be greater than 50. Hint: limit (integer)'
+                    response_key:
+                      type: string
+                      example: error_invalid_limit
+                - title: 'Invalid Page '
+                  type: object
+                  properties:
+                    decentro_txn_id:
+                      type: string
+                      example: 6CB80DFBDBB74BFBAAA3B4C501C437B6
+                    api_status:
+                      type: string
+                      example: SUCCESS
+                    message:
+                      type: string
+                      example: Settlement Account Details fetched successfully
+                    data:
+                      type: object
+                      properties:
+                        consumer_urn:
+                          type: string
+                          example: B15CDC6B444B4B7781D5A74F1E96A239
+                        page:
+                          type: integer
+                          example: 1000
+                          default: 0
+                        total_pages:
+                          type: integer
+                          example: 2
+                          default: 0
+                        total_records:
+                          type: integer
+                          example: 17
+                          default: 0
+                        limit:
+                          type: integer
+                          example: 11
+                          default: 0
+                        page_size:
+                          type: integer
+                          example: 0
+                          default: 0
+                        settlement_account_details:
+                          type: array
+                          items:
+                            type: object
+                            properties: {}
+                    response_key:
+                      type: string
+                      example: success_settlement_accounts_fetched_successfully
+      deprecated: false
+      tags:
+      - Banking
+  /v3/banking/manage_default_settlement_configuration:
+    post:
+      summary: Set Default Split Settlement Rule Configuration
+      description: ''
+      operationId: set-default-split-settlement-rule-configuration
+      parameters:
+      - name: client_id
+        in: header
+        description: Decentro assigned client_id during on boarding.
+        required: true
+        schema:
+          type: string
+          default: client_id
+      - name: client_secret
+        in: header
+        description: Decentro assigned client_secret during on boarding.
+        required: true
+        schema:
+          type: string
+          default: client_secret
+      - name: x_on_behalf_off
+        in: header
+        description: Optional header that allows parent merchant to consume the API on behalf of sub-merchant.The child consumer URN value must be passed here.
+        schema:
+          type: string
+          default: C51740BA757C44B3A42D569D59118148
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - reference_id
+              - default_split_settlement_rule_urn
+              properties:
+                reference_id:
+                  type: string
+                  description: A unique ID assigned by clients for every API request.
+                  default: 0000-0000-0001
+                settlement_type:
+                  type: string
+                  description: The payment channel against which the settlement must be configured. "UPI_COLLECTION","E_COLLECT","NACH","UPI_AUTOPAY"
+                  default: E_COLLECT
+                virtual_account_number:
+                  type: string
+                  description: The virtual account number to be passed here. Mandatory only if the settlement type is "E_COLLECT".
+                  default: '4625257719628478'
+                consumer_urn:
+                  type: string
+                  description: The consumer URN to be passed here. Mandatory only if settlement type is not "E_COLLECT".
+                  default: 84E9A23xxxxxxxxxxxxxxx9E5FE16A
+                default_split_settlement_rule_urn:
+                  type: string
+                  description: A URN generated to map the rules of the split against it. The URN passed here will be the default split rule.
+                  default: 426BF8958FC64708A50258DC4C9DF5F4
+            examples:
+              UPI collection:
+                value:
+                  reference_id: 0389274e-d15c-416e-88de-ecb30f599aab
+                  settlement_type: UPI_COLLECTION
+                  consumer_urn: 820D7E712A594AF6A162241081AA1532
+                  default_split_settlement_rule_urn: 43CB10225A0448119CD39BE8487BC4A0
+              Ecollect:
+                value:
+                  reference_id: 0389274e-d15c-416e-88de-ecb30f599aab
+                  settlement_type: E_COLLECT
+                  virtual_account_number: '4625257719628478'
+                  default_split_settlement_rule_urn: 43CB10225A0448119CD39BE8487BC4A0
+              Nach:
+                value:
+                  reference_id: 0389274e-d15c-416e-88de-ecb30f599aab
+                  settlement_type: NACH
+                  consumer_urn: 820D7E712A594AF6A162241081AA1532
+                  default_split_settlement_rule_urn: 43CB10225A0448119CD39BE8487BC4A0
+              Autopay:
+                value:
+                  reference_id: 0389274e-d15c-416e-88de-ecb30f599aab
+                  settlement_type: UPI_AUTOPAY
+                  consumer_urn: 820D7E712A594AF6A162241081AA1532
+                  default_split_settlement_rule_urn: 43CB10225A0448119CD39BE8487BC4A0
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Default Settlement Config saved successfully:
+                  value: "{\n    \"decentro_txn_id\": \"96C55AFDE9FD4BF9AA7CB9E9982569A5\",\n    \"api_status\": \"SUCCESS\",\n    \"message\": \"Default Settlement Config saved successfully.\",\n    \"data\":\n    {\n        \"default_split_settlement_urn\": \"DD31C52176DB4F068C08E7FDBAE2E2CB\",\n        \"default_split_settlement_rule\":\n        [\n            {\n                \"percentage\": 1.0,\n                \"commission_deduction\": true,\n                \"settlement_account_urn\": \"12341B04125744CAAC39CCD20431D92F\"\n            },\n            {\n                \"percentage\": 99.0,\n                \"commission_deduction\": false,\n                \"settlement_account_urn\": \"12341B04125744CAAC39CCD20431D92F\"\n            }\n        ]\n    },\n    \"response_key\": \"success_default_settlement_config_saved_successfully\"\n}"
+              schema:
+                type: object
+                properties:
+                  decentro_txn_id:
+                    type: string
+                    example: 96C55AFDE9FD4BF9AA7CB9E9982569A5
+                  api_status:
+                    type: string
+                    example: SUCCESS
+                  message:
+                    type: string
+                    example: Default Settlement Config saved successfully.
+                  data:
+                    type: object
+                    properties:
+                      default_split_settlement_urn:
+                        type: string
+                        example: DD31C52176DB4F068C08E7FDBAE2E2CB
+                      default_split_settlement_rule:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            percentage:
+                              type: integer
+                              example: 1
+                              default: 0
+                            commission_deduction:
+                              type: boolean
+                              example: true
+                              default: true
+                            settlement_account_urn:
+                              type: string
+                              example: 12341B04125744CAAC39CCD20431D92F
+                  response_key:
+                    type: string
+                    example: success_default_settlement_config_saved_successfully
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Malformed Request:
+                  value: "{\n    \"decentro_txn_id\": \"779D4B341AEE46CF90DA4452FC47D1C2\",\n    \"api_status\": \"FAILURE\",\n    \"message\": \"Malformed request detected.\",\n    \"response_key\": \"error_malformed_request\"\n}"
+                Virtual Account or Consumer URN must be added:
+                  value: "{\n    \"decentro_txn_id\": \"6FFCF4880FAF4AA9B50782FECB3F2292\",\n    \"api_status\": \"FAILURE\",\n    \"message\": \"Provide either the Virtual Account Number or the Consumer URN. Hint: virtual_account_number (string) or consumer_urn (string)\",\n    \"response_key\": \"error_invalid_consumer_urn_and_virtual_account_number\"\n}"
+                No Virtual Account or Consumer URN found:
+                  value: "{\n    \"decentro_txn_id\": \"E539592A5226438F9D267F347D048ADD\",\n    \"api_status\": \"FAILURE\",\n    \"message\": \"Provide either the Virtual Account Number or the Consumer URN. Hint: virtual_account_number (string) or consumer_urn (string)\",\n    \"response_key\": \"error_invalid_consumer_urn_and_virtual_account_number\"\n}"
+              schema:
+                oneOf:
+                - title: Malformed Request
+                  type: object
+                  properties:
+                    decentro_txn_id:
+                      type: string
+                      example: 779D4B341AEE46CF90DA4452FC47D1C2
+                    api_status:
+                      type: string
+                      example: FAILURE
+                    message:
+                      type: string
+                      example: Malformed request detected.
+                    response_key:
+                      type: string
+                      example: error_malformed_request
+                - title: Virtual Account or Consumer URN must be added
+                  type: object
+                  properties:
+                    decentro_txn_id:
+                      type: string
+                      example: 6FFCF4880FAF4AA9B50782FECB3F2292
+                    api_status:
+                      type: string
+                      example: FAILURE
+                    message:
+                      type: string
+                      example: 'Provide either the Virtual Account Number or the Consumer URN. Hint: virtual_account_number (string) or consumer_urn (string)'
+                    response_key:
+                      type: string
+                      example: error_invalid_consumer_urn_and_virtual_account_number
+                - title: No Virtual Account or Consumer URN found
+                  type: object
+                  properties:
+                    decentro_txn_id:
+                      type: string
+                      example: E539592A5226438F9D267F347D048ADD
+                    api_status:
+                      type: string
+                      example: FAILURE
+                    message:
+                      type: string
+                      example: 'Provide either the Virtual Account Number or the Consumer URN. Hint: virtual_account_number (string) or consumer_urn (string)'
+                    response_key:
+                      type: string
+                      example: error_invalid_consumer_urn_and_virtual_account_number
+      deprecated: false
+      tags:
+      - Banking
+  /v3/banking/account_validation/status:
+    get:
+      summary: Get Status - Verification Request (V3)
+      description: This API allows the platform to fetch the status of a verfication request intiated through the Mobile to Account (V3) API.
+      operationId: v3-get-verification-status
+      parameters:
+      - name: client_id
+        in: header
+        description: Decentro assigned client_id during on boarding.
+        required: true
+        schema:
+          type: string
+      - name: client_secret
+        in: header
+        description: Decentro assigned client_secret during on boarding.
+        required: true
+        schema:
+          type: string
+      - name: decentro_txn_id
+        in: query
+        description: The Decentro transaction ID that you received in the sync response of the Mobile to Account (V3) API.
+        schema:
+          type: string
+      - name: reference_id
+        in: query
+        description: The reference_id passed when initializing the Mobile to Account (V3) API.
+        schema:
+          type: string
+      - name: x_on_behalf_of
+        in: header
+        description: Optional header that allows parent merchant to consume the API on behalf of sub-merchant.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                'SUCCESS: Transaction Found - WIth Branch Details':
+                  value: "{\n    \"decentro_txn_id\": \"5C1AB3A0A1FA1000D9BC2271C7524399\",\n    \"api_status\": \"SUCCESS\",\n    \"message\": \"Transaction status retrieved successfully.\",\n    \"data\": {\n        \"request_decentro_txn_id\": \"794B7B317DFA01Bll81A0AE1F8996F5C\",\n        \"request_response_key\": \"success_account_details_retrieved\",\n        \"reference_id\": \"f1f7eaac\",\n        \"upi_vpa\": \"vpa@bank\",\n        \"name_as_per_bank\": \"CUSTOMER NAME\",\n        \"account_number\": \"XXXXX1234\",\n        \"account_type\": \"SAVINGS\",\n        \"ifsc\": \"BANK0000000\",\n        \"bank_reference_number\": \"BRN123\",\n        \"payout_status\": \"SUCCESS\",\n        \"payout_amount\": \"0.01\",\n        \"branch_details\": {\n            \"branch_verification_response_key\": \"success_branch_details_found\",\n            \"bank\": \"Bank\",\n            \"ifsc\": \"BANK0000000\",\n            \"branch\": \"LOCATION\",\n            \"centre\": \"LOCATION\",\n            \"district\": \"LOCATION\",\n            \"state\": \"STATE\",\n            \"contact\": \"9800000000\",\n            \"address\": \"ADDRESS\",\n            \"imps\": true,\n            \"rtgs\": true,\n            \"neft\": true,\n            \"micr\": null,\n            \"city\": \"CITY\",\n            \"swift\": \"NA\",\n            \"upi\": true\n        }\n    },\n    \"response_key\": \"success_validation_status_fetched\"\n}"
+                'SUCCESS: Transaction Found - WIthout Branch Details':
+                  value: "{\n    \"decentro_txn_id\": \"5C1AB3A0A1FA1000D9BC2271C7524399\",\n    \"api_status\": \"SUCCESS\",\n    \"message\": \"Transaction status retrieved successfully.\",\n    \"data\": {\n        \"request_decentro_txn_id\": \"794B7B317DFA01Bll81A0AE1F8996F5C\",\n        \"request_response_key\": \"success_account_details_retrieved\",\n        \"reference_id\": \"f1f7eaac\",\n        \"upi_vpa\": \"vpa@bank\",\n        \"name_as_per_bank\": \"CUSTOMER NAME\",\n        \"account_number\": \"XXXXX1234\",\n        \"account_type\": \"SAVINGS\",\n        \"ifsc\": \"BANK0000000\",\n        \"bank_reference_number\": \"BRN123\",\n        \"payout_status\": \"SUCCESS\",\n        \"payout_amount\": \"0.01\"\n    },\n    \"response_key\": \"success_validation_status_fetched\"\n}"
+              schema:
+                oneOf:
+                - title: 'SUCCESS: Transaction Found - WIth Branch Details'
+                  type: object
+                  properties:
+                    decentro_txn_id:
+                      type: string
+                      example: 5C1AB3A0A1FA1000D9BC2271C7524399
+                    api_status:
+                      type: string
+                      example: SUCCESS
+                    message:
+                      type: string
+                      example: Transaction status retrieved successfully.
+                    data:
+                      type: object
+                      properties:
+                        request_decentro_txn_id:
+                          type: string
+                          example: 794B7B317DFA01Bll81A0AE1F8996F5C
+                        request_response_key:
+                          type: string
+                          example: success_account_details_retrieved
+                        reference_id:
+                          type: string
+                          example: f1f7eaac
+                        upi_vpa:
+                          type: string
+                          example: vpa@bank
+                        name_as_per_bank:
+                          type: string
+                          example: CUSTOMER NAME
+                        account_number:
+                          type: string
+                          example: XXXXX1234
+                        account_type:
+                          type: string
+                          example: SAVINGS
+                        ifsc:
+                          type: string
+                          example: BANK0000000
+                        bank_reference_number:
+                          type: string
+                          example: BRN123
+                        payout_status:
+                          type: string
+                          example: SUCCESS
+                        payout_amount:
+                          type: string
+                          example: '0.01'
+                        branch_details:
+                          type: object
+                          properties:
+                            branch_verification_response_key:
+                              type: string
+                              example: success_branch_details_found
+                            bank:
+                              type: string
+                              example: Bank
+                            ifsc:
+                              type: string
+                              example: BANK0000000
+                            branch:
+                              type: string
+                              example: LOCATION
+                            centre:
+                              type: string
+                              example: LOCATION
+                            district:
+                              type: string
+                              example: LOCATION
+                            state:
+                              type: string
+                              example: STATE
+                            contact:
+                              type: string
+                              example: '9800000000'
+                            address:
+                              type: string
+                              example: ADDRESS
+                            imps:
+                              type: boolean
+                              example: true
+                              default: true
+                            rtgs:
+                              type: boolean
+                              example: true
+                              default: true
+                            neft:
+                              type: boolean
+                              example: true
+                              default: true
+                            micr: {}
+                            city:
+                              type: string
+                              example: CITY
+                            swift:
+                              type: string
+                              example: NA
+                            upi:
+                              type: boolean
+                              example: true
+                              default: true
+                    response_key:
+                      type: string
+                      example: success_validation_status_fetched
+                - title: 'SUCCESS: Transaction Found - WIthout Branch Details'
+                  type: object
+                  properties:
+                    decentro_txn_id:
+                      type: string
+                      example: 5C1AB3A0A1FA1000D9BC2271C7524399
+                    api_status:
+                      type: string
+                      example: SUCCESS
+                    message:
+                      type: string
+                      example: Transaction status retrieved successfully.
+                    data:
+                      type: object
+                      properties:
+                        request_decentro_txn_id:
+                          type: string
+                          example: 794B7B317DFA01Bll81A0AE1F8996F5C
+                        request_response_key:
+                          type: string
+                          example: success_account_details_retrieved
+                        reference_id:
+                          type: string
+                          example: f1f7eaac
+                        upi_vpa:
+                          type: string
+                          example: vpa@bank
+                        name_as_per_bank:
+                          type: string
+                          example: CUSTOMER NAME
+                        account_number:
+                          type: string
+                          example: XXXXX1234
+                        account_type:
+                          type: string
+                          example: SAVINGS
+                        ifsc:
+                          type: string
+                          example: BANK0000000
+                        bank_reference_number:
+                          type: string
+                          example: BRN123
+                        payout_status:
+                          type: string
+                          example: SUCCESS
+                        payout_amount:
+                          type: string
+                          example: '0.01'
+                    response_key:
+                      type: string
+                      example: success_validation_status_fetched
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Missing Query Parameter:
+                  value: "{\n  \"decentro_txn_id\": \"8B86FCF4F8E34F2C9BE1B5C3F414071B\",\n  \"api_status\": \"FAILURE\",\n  \"message\": \"Atleast one of decentro_txn_id (str) or reference_id (str) should be provided\",\n  \"response_key\": \"error_missing_key_decentro_txn_id_and_company_reference_id\"\n}"
+                Empty Query Parameter:
+                  value: "{\n    \"decentro_txn_id\": \"0720ABDFBA7243718B98FDE1E224E44C\",\n    \"api_status\": \"FAILURE\",\n    \"message\": \"Query parameter decentro transaction ID cannot be empty. Hint: decentro_txn_id (string)\",\n    \"response_key\": \"error_empty_decentro_txn_id\"\n}"
+                Invalid Query Parameter:
+                  value: "{\n    \"decentro_txn_id\": \"D024E931A964482B908B77F018B6E7FB\",\n    \"api_status\": \"FAILURE\",\n    \"message\": \"Query parameter decentro transaction ID is invalid. Hint: decentro_txn_id (string)\",\n    \"response_key\": \"error_invalid_decentro_txn_id\"\n}"
+              schema:
+                oneOf:
+                - title: Missing Query Parameter
+                  type: object
+                  properties:
+                    decentro_txn_id:
+                      type: string
+                      example: 8B86FCF4F8E34F2C9BE1B5C3F414071B
+                    api_status:
+                      type: string
+                      example: FAILURE
+                    message:
+                      type: string
+                      example: Atleast one of decentro_txn_id (str) or reference_id (str) should be provided
+                    response_key:
+                      type: string
+                      example: error_missing_key_decentro_txn_id_and_company_reference_id
+                - title: Empty Query Parameter
+                  type: object
+                  properties:
+                    decentro_txn_id:
+                      type: string
+                      example: 0720ABDFBA7243718B98FDE1E224E44C
+                    api_status:
+                      type: string
+                      example: FAILURE
+                    message:
+                      type: string
+                      example: 'Query parameter decentro transaction ID cannot be empty. Hint: decentro_txn_id (string)'
+                    response_key:
+                      type: string
+                      example: error_empty_decentro_txn_id
+                - title: Invalid Query Parameter
+                  type: object
+                  properties:
+                    decentro_txn_id:
+                      type: string
+                      example: D024E931A964482B908B77F018B6E7FB
+                    api_status:
+                      type: string
+                      example: FAILURE
+                    message:
+                      type: string
+                      example: 'Query parameter decentro transaction ID is invalid. Hint: decentro_txn_id (string)'
+                    response_key:
+                      type: string
+                      example: error_invalid_decentro_txn_id
+      deprecated: false
+      tags:
+      - Banking
+  /v3/banking/verify_pay:
+    post:
+      summary: VerifyPay (V3)
+      description: Validate a UPI VPA via a penny drop
+      operationId: verifypay-V3
+      parameters:
+      - name: client_id
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: client_secret
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: x_on_behalf_of
+        in: header
+        description: Optional header that allows parent merchant to consume the API on behalf of sub-merchant.
+        schema:
+          type: string
+      - name: content-type
+        in: header
+        description: Indicates the type of the resource being sent in the body of an HTTP request
+        required: true
+        schema:
+          type: string
+          default: application/json
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - consumer_urn
+              - is_consent_granted
+              - reference_id
+              - upi_vpa
+              properties:
+                consumer_urn:
+                  type: string
+                  description: A unique identifier assigned to client's by Decentro during On-boarding.
+                is_consent_granted:
+                  type: boolean
+                  description: 'This flag will be used to capture the end-customers consent to proceed with the verification. Possible Values: true, false.'
+                  default: true
+                reference_id:
+                  type: string
+                  description: A unique ID assigned by you for this transaction
+                upi_vpa:
+                  type: string
+                  description: UPI-ID (Virtual Payment Address) to be validated
+                  default: test@upi
+                purpose_message:
+                  type: string
+                  description: 'This parameter allows the platform to share a custom message that will be propagated to the end-customer. Minimum Length: 4 characters; Maximum Length: 50 characters'
+                fetch_branch_details:
+                  type: boolean
+                  description: 'This flag can be used to fetch the details of the bank branch associated with the bank account. Possible Values: true, false.'
+                  default: false
+                perform_name_match:
+                  type: boolean
+                  description: 'This flag can be used to perform a name match between the provided value and the account holders name received from their bank during the validation. Possible Values: true, false.'
+                  default: false
+                customer_name:
+                  type: string
+                  description: The name of the end-customer as per the merchant records. Mandatory if perform_name_match is true.
+            examples:
+              'Success: Valid UPI VPA':
+                value:
+                  reference_id: 88bf527d-73dc-465d-914f-8009ddca8bf1
+                  is_consent_granted: true
+                  upi_vpa: 8972241839@upi
+                  consumer_urn: 5269D0A80FF741F5B7A6E00F9D90F7E1
+                  purpose_message: Intenral Testing
+                  customer_name: First Last
+                  fetch_branch_details: true
+                  perform_name_match: true
+              'Success: Invalid UPI VPA':
+                value:
+                  reference_id: d477871e-f66a-4c1e-8c7f-8f0a72614f4c
+                  is_consent_granted: true
+                  upi_vpa: 8949342808@upi
+                  consumer_urn: 5269D0A80FF741F5B7A6E00F9D90F7E1
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Success - Masked Account Number:
+                  value: "{\n    \"decentro_txn_id\": \"1FE0327430174A4E8B5780C6B779FA94\",\n    \"api_status\": \"SUCCESS\",\n    \"message\": \"Account details retrieved successfully\",\n    \"data\": {\n        \"upi_vpa\": \"8972241839@upi\",\n        \"name_as_per_bank\": \"KAPIL DEV\",\n        \"account_number\": \"XXXXXXX1983\",\n        \"ifsc\": \"HDFC0000001\",\n        \"account_type\": \"SAVINGS\",\n        \"payout_status\": \"SUCCESS\",\n        \"payout_amount\": \"1.00\",\n        \"bank_reference_number\": \"0a3487327d724d1eb429393fb9c90c4d\"\n    },\n    \"response_key\": \"success_account_details_retrieved\"\n}"
+                'Success: Invalid UPI handle':
+                  value: "{\n    \"decentro_txn_id\": \"B76BF9FC9F4D46459E8808CA3AE8D37D\",\n    \"api_status\": \"SUCCESS\",\n    \"message\": \"An invalid account is mapped to this UPI VPA\",\n    \"data\": {\n        \"payout_status\": \"FAILED\"\n    },\n    \"response_key\": \"success_account_details_invalid\"\n}"
+                Success - Unmasked Account Number:
+                  value: "{\n    \"decentro_txn_id\": \"1FE0327430174A4E8B5780C6B779FA94\",\n    \"api_status\": \"SUCCESS\",\n    \"message\": \"Account details retrieved successfully\",\n    \"data\": {\n        \"upi_vpa\": \"8972241839@upi\",\n        \"name_as_per_bank\": \"KAPIL DEV\",\n        \"account_number\": \"52957191983\",\n        \"ifsc\": \"HDFC0000001\",\n        \"account_type\": \"SAVINGS\",\n        \"payout_status\": \"SUCCESS\",\n        \"payout_amount\": \"1.00\",\n        \"bank_reference_number\": \"0a3487327d724d1eb429393fb9c90c4d\"\n    },\n    \"response_key\": \"success_account_details_retrieved\"\n}"
+                Pending - Sync Response:
+                  value: "{\n    \"decentro_txn_id\": \"5A7BF95D484744858AE4AB8FADDB0BD1\",\n    \"api_status\": \"PENDING\",\n    \"message\": \"Validation is in progress, please use Get Validation API to fetch the final status.\",\n    \"response_key\": \"success_transaction_pending\"\n}"
+                'Success: With Branch Detials and Name Match Score':
+                  value: "{\n    \"decentro_txn_id\": \"17FC953DF0AA4E1DA8A90ADE7EE412D1\",\n    \"api_status\": \"SUCCESS\",\n    \"message\": \"Account details retrieved successfully\",\n    \"data\": {\n        \"upi_vpa\": \"8972241839@upi\",\n        \"name_as_per_bank\": \"KAPIL DEV\",\n        \"account_number\": \"XXXXXXX1983\",\n        \"ifsc\": \"HDFC0000001\",\n        \"bank_reference_number\": \"e77691a8146a45d5bc85b6e6fee1c45b\",\n        \"payout_status\": \"SUCCESS\",\n        \"payout_amount\": \"1.00\",\n        \"account_type\": \"SAVINGS\",\n        \"name_match_score\": 81,\n        \"original_customer_name\": \"AKHIL HALGERI ANAND\",\n        \"branch_details\": {\n            \"branch_verification_response_key\": \"success_branch_details_found\",\n            \"bank\": \"HDFC Bank\",\n            \"ifsc\": \"HDFC0000001\",\n            \"branch\": \"TULSIANI CHMBRS - NARIMAN PT\",\n            \"centre\": \"MUMBAI\",\n            \"district\": \"MUMBAI\",\n            \"state\": \"MAHARASHTRA\",\n            \"contact\": \"919890603333\",\n            \"address\": \"101-104 TULSIANI CHAMBERSFREE PRESS JOURNAL MARGNARIMAN POINTMUMBAI MAHARASHTRA 400 021\",\n            \"imps\": true,\n            \"rtgs\": true,\n            \"neft\": true,\n            \"micr\": \"400240003\",\n            \"city\": \"GREATER MUMBAI\",\n            \"swift\": \"HDFCINBB\",\n            \"upi\": true\n        }\n    },\n    \"response_key\": \"success_account_details_retrieved\"\n}"
+              schema:
+                oneOf:
+                - title: Success - Masked Account Number
+                  type: object
+                  properties:
+                    decentro_txn_id:
+                      type: string
+                      example: 1FE0327430174A4E8B5780C6B779FA94
+                    api_status:
+                      type: string
+                      example: SUCCESS
+                    message:
+                      type: string
+                      example: Account details retrieved successfully
+                    data:
+                      type: object
+                      properties:
+                        upi_vpa:
+                          type: string
+                          example: 8972241839@upi
+                        name_as_per_bank:
+                          type: string
+                          example: KAPIL DEV
+                        account_number:
+                          type: string
+                          example: XXXXXXX1983
+                        ifsc:
+                          type: string
+                          example: HDFC0000001
+                        account_type:
+                          type: string
+                          example: SAVINGS
+                        payout_status:
+                          type: string
+                          example: SUCCESS
+                        payout_amount:
+                          type: string
+                          example: '1.00'
+                        bank_reference_number:
+                          type: string
+                          example: 0a3487327d724d1eb429393fb9c90c4d
+                    response_key:
+                      type: string
+                      example: success_account_details_retrieved
+                - title: 'Success: Invalid UPI handle'
+                  type: object
+                  properties:
+                    decentro_txn_id:
+                      type: string
+                      example: B76BF9FC9F4D46459E8808CA3AE8D37D
+                    api_status:
+                      type: string
+                      example: SUCCESS
+                    message:
+                      type: string
+                      example: An invalid account is mapped to this UPI VPA
+                    data:
+                      type: object
+                      properties:
+                        payout_status:
+                          type: string
+                          example: FAILED
+                    response_key:
+                      type: string
+                      example: success_account_details_invalid
+                - title: Success - Unmasked Account Number
+                  type: object
+                  properties:
+                    decentro_txn_id:
+                      type: string
+                      example: 1FE0327430174A4E8B5780C6B779FA94
+                    api_status:
+                      type: string
+                      example: SUCCESS
+                    message:
+                      type: string
+                      example: Account details retrieved successfully
+                    data:
+                      type: object
+                      properties:
+                        upi_vpa:
+                          type: string
+                          example: 8972241839@upi
+                        name_as_per_bank:
+                          type: string
+                          example: KAPIL DEV
+                        account_number:
+                          type: string
+                          example: '52957191983'
+                        ifsc:
+                          type: string
+                          example: HDFC0000001
+                        account_type:
+                          type: string
+                          example: SAVINGS
+                        payout_status:
+                          type: string
+                          example: SUCCESS
+                        payout_amount:
+                          type: string
+                          example: '1.00'
+                        bank_reference_number:
+                          type: string
+                          example: 0a3487327d724d1eb429393fb9c90c4d
+                    response_key:
+                      type: string
+                      example: success_account_details_retrieved
+                - title: Pending - Sync Response
+                  type: object
+                  properties:
+                    decentro_txn_id:
+                      type: string
+                      example: 5A7BF95D484744858AE4AB8FADDB0BD1
+                    api_status:
+                      type: string
+                      example: PENDING
+                    message:
+                      type: string
+                      example: Validation is in progress, please use Get Validation API to fetch the final status.
+                    response_key:
+                      type: string
+                      example: success_transaction_pending
+                - title: 'Success: With Branch Detials and Name Match Score'
+                  type: object
+                  properties:
+                    decentro_txn_id:
+                      type: string
+                      example: 17FC953DF0AA4E1DA8A90ADE7EE412D1
+                    api_status:
+                      type: string
+                      example: SUCCESS
+                    message:
+                      type: string
+                      example: Account details retrieved successfully
+                    data:
+                      type: object
+                      properties:
+                        upi_vpa:
+                          type: string
+                          example: 8972241839@upi
+                        name_as_per_bank:
+                          type: string
+                          example: KAPIL DEV
+                        account_number:
+                          type: string
+                          example: XXXXXXX1983
+                        ifsc:
+                          type: string
+                          example: HDFC0000001
+                        bank_reference_number:
+                          type: string
+                          example: e77691a8146a45d5bc85b6e6fee1c45b
+                        payout_status:
+                          type: string
+                          example: SUCCESS
+                        payout_amount:
+                          type: string
+                          example: '1.00'
+                        account_type:
+                          type: string
+                          example: SAVINGS
+                        name_match_score:
+                          type: integer
+                          example: 81
+                          default: 0
+                        original_customer_name:
+                          type: string
+                          example: AKHIL HALGERI ANAND
+                        branch_details:
+                          type: object
+                          properties:
+                            branch_verification_response_key:
+                              type: string
+                              example: success_branch_details_found
+                            bank:
+                              type: string
+                              example: HDFC Bank
+                            ifsc:
+                              type: string
+                              example: HDFC0000001
+                            branch:
+                              type: string
+                              example: TULSIANI CHMBRS - NARIMAN PT
+                            centre:
+                              type: string
+                              example: MUMBAI
+                            district:
+                              type: string
+                              example: MUMBAI
+                            state:
+                              type: string
+                              example: MAHARASHTRA
+                            contact:
+                              type: string
+                              example: '919890603333'
+                            address:
+                              type: string
+                              example: 101-104 TULSIANI CHAMBERSFREE PRESS JOURNAL MARGNARIMAN POINTMUMBAI MAHARASHTRA 400 021
+                            imps:
+                              type: boolean
+                              example: true
+                              default: true
+                            rtgs:
+                              type: boolean
+                              example: true
+                              default: true
+                            neft:
+                              type: boolean
+                              example: true
+                              default: true
+                            micr:
+                              type: string
+                              example: '400240003'
+                            city:
+                              type: string
+                              example: GREATER MUMBAI
+                            swift:
+                              type: string
+                              example: HDFCINBB
+                            upi:
+                              type: boolean
+                              example: true
+                              default: true
+                    response_key:
+                      type: string
+                      example: success_account_details_retrieved
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                'Failure: Missing  Input - Is  Consent Granted':
+                  value: "{\n    \"decentro_txn_id\": \"6ABEF640484B45598A04F85E45C58D6B\",\n    \"api_status\": \"FAILURE\",\n    \"message\": \"Parameter `is_consent_granted` cannot be missing. Hint: `is_consent_granted` (`boolean`)\",\n    \"response_key\": \"error_is_consent_granted_missing\"\n}"
+                'Failure: Bad/Missing/Invalid Inputs':
+                  value: "{\n    \"decentro_txn_id\": \"5FF697492016484990D28642F80F86E4\",\n    \"api_status\": \"FAILURE\",\n    \"message\": \"Malformed request detected.\",\n    \"response_key\": \"error_malformed_request\"\n}"
+                'Failure: Missing  Input - Consumer Urn':
+                  value: "{\n    \"decentro_txn_id\": \"5721502D1A2D4AFEA497646CB4301934\",\n    \"api_status\": \"FAILURE\",\n    \"message\": \"Parameter `consumer_urn` cannot be missing/null. Hint: `consumer_urn` (`string`)\",\n    \"response_key\": \"error_consumer_urn_missing_or_null\"\n}"
+                'Failure: Missing  Input - Reference ID':
+                  value: "{\n    \"decentro_txn_id\": \"66A85F6F72CD4171B78B4BBA48E30E57\",\n    \"api_status\": \"FAILURE\",\n    \"message\": \"Parameter `reference_id` cannot be missing/null. Hint: `reference_id` (`string`)\",\n    \"response_key\": \"error_reference_id_missing_or_null\"\n}"
+              schema:
+                oneOf:
+                - title: 'Failure: Missing  Input - Is  Consent Granted'
+                  type: object
+                  properties:
+                    decentro_txn_id:
+                      type: string
+                      example: 6ABEF640484B45598A04F85E45C58D6B
+                    api_status:
+                      type: string
+                      example: FAILURE
+                    message:
+                      type: string
+                      example: 'Parameter `is_consent_granted` cannot be missing. Hint: `is_consent_granted` (`boolean`)'
+                    response_key:
+                      type: string
+                      example: error_is_consent_granted_missing
+                - title: 'Failure: Bad/Missing/Invalid Inputs'
+                  type: object
+                  properties:
+                    decentro_txn_id:
+                      type: string
+                      example: 5FF697492016484990D28642F80F86E4
+                    api_status:
+                      type: string
+                      example: FAILURE
+                    message:
+                      type: string
+                      example: Malformed request detected.
+                    response_key:
+                      type: string
+                      example: error_malformed_request
+                - title: 'Failure: Missing  Input - Consumer Urn'
+                  type: object
+                  properties:
+                    decentro_txn_id:
+                      type: string
+                      example: 5721502D1A2D4AFEA497646CB4301934
+                    api_status:
+                      type: string
+                      example: FAILURE
+                    message:
+                      type: string
+                      example: 'Parameter `consumer_urn` cannot be missing/null. Hint: `consumer_urn` (`string`)'
+                    response_key:
+                      type: string
+                      example: error_consumer_urn_missing_or_null
+                - title: 'Failure: Missing  Input - Reference ID'
+                  type: object
+                  properties:
+                    decentro_txn_id:
+                      type: string
+                      example: 66A85F6F72CD4171B78B4BBA48E30E57
+                    api_status:
+                      type: string
+                      example: FAILURE
+                    message:
+                      type: string
+                      example: 'Parameter `reference_id` cannot be missing/null. Hint: `reference_id` (`string`)'
+                    response_key:
+                      type: string
+                      example: error_reference_id_missing_or_null
+        '422':
+          description: '422'
+          content:
+            application/json:
+              examples:
+                'Failure: Provider Downtime':
+                  value: "{\n    \"decentro_txn_id\": \"F631EC900A3F4C88BA4C4383F0FB35BA\",\n    \"status\": \"FAILURE\",\n    \"message\": \"Provider is going through a downtime. Please try again after sometime\"\n}"
+                FAILURE - Downstream Provider Error:
+                  value: "{\n    \"decentro_txn_id\": \"A6513B6B48564C518A0EF8C8BD3331C9\",\n    \"api_status\": \"FAILURE\",\n    \"message\": \"Unexpected response received from provider. Please try again later.\",\n    \"response_key\": \"error_provider_error\"\n}"
+              schema:
+                oneOf:
+                - title: 'Failure: Provider Downtime'
+                  type: object
+                  properties:
+                    decentro_txn_id:
+                      type: string
+                      example: F631EC900A3F4C88BA4C4383F0FB35BA
+                    status:
+                      type: string
+                      example: FAILURE
+                    message:
+                      type: string
+                      example: Provider is going through a downtime. Please try again after sometime
+                - title: FAILURE - Downstream Provider Error
+                  type: object
+                  properties:
+                    decentro_txn_id:
+                      type: string
+                      example: A6513B6B48564C518A0EF8C8BD3331C9
+                    api_status:
+                      type: string
+                      example: FAILURE
+                    message:
+                      type: string
+                      example: Unexpected response received from provider. Please try again later.
+                    response_key:
+                      type: string
+                      example: error_provider_error
+      deprecated: false
+      tags:
+      - Banking
+x-readme:
+  headers: []
+  explorer-enabled: true
+  proxy-enabled: true
+x-readme-fauxas: true

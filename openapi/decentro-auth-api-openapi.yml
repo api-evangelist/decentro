@@ -1,0 +1,114 @@
+openapi: 3.2.0
+info:
+  title: Decfin Staging Auth API
+  version: '1.0'
+servers:
+- url: https://staging.api.decentro.tech
+security:
+- {}
+tags:
+- name: Auth
+paths:
+  /v2/auth/token:
+    get:
+      summary: Generate Credentials v3
+      description: Clients can use this API to generate a JSON Web Token for secure access to all v3 APIs as an alternative to client_id & client_secret.
+      operationId: testing-credentials-v3
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - grant_type
+              properties:
+                grant_type:
+                  type: string
+                  description: 'Possible value: client_credentials, refresh_token'
+                client_id:
+                  type: string
+                  description: Decentro assigned client_id during on boarding.
+                client_secret:
+                  type: string
+                  description: Decentro assigned client_secret during on boarding.
+                refresh_token:
+                  type: string
+                  description: The refresh token generated from the previous response of this API.
+            examples:
+              'Success: Create access token using client credentials':
+                value:
+                  grant_type: client_credentials
+                  client_id: demo_client_id
+                  client_secret: demo_client_secret
+              'Success: Create access token using refresh token':
+                value:
+                  grant_type: refresh_token
+                  refresh_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcyNjIyODkwNSwianRpIjoiOWRhZTNhOWItNWMxOC00MWU1LWJjNzktMWUxMGM1NGMwYmE3IiwidHlwZSI6InJlZnJlc2giLCJzdWIiOiJuZW93aXNlX3ByZXBvZCIsIm5iZiI6MTcyNjIyODkwNSwiZXhwIjoxNzI4ODIwOTA1LCJ1c2VyX2NsYWltcyI6eyJjb21wYW55X2lkIjoyLCJtb2R1bGVfYWNjZXNzIjp7ImNvcmVfYmFua2luZyI6W10sInBheW1lbnRzIjpbXX0sImdyYW50X3R5cGUiOiJjbGllbnRfY3JlZGVudGlhbHMifX0.eOq7QAMYno6RKwbexVtdeDq0cyayuPQK2jk4t6AtpVE
+              'Failure: Invalid client credentials':
+                value:
+                  grant_type: client_credentials
+                  client_id: invalid_client_id
+                  client_secret: invalid_client_secret
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                'Success: Create access token using client credentials':
+                  value: "{\n    \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcyNjIyOTQyMSwianRpIjoiMTM1NTU0M2EtMGM1ZS00YTMzLWE1NDktZTBhMTE5MjA5MzkyIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6Im5lb3dpc2VfcHJlcG9kIiwibmJmIjoxNzI2MjI5NDIxLCJleHAiOjE3MjYyMzAzMjEsInVzZXJfY2xhaW1zIjp7ImNvbXBhbnlfaWQiOjIsIm1vZHVsZV9hY2Nlc3MiOnsiY29yZV9iYW5raW5nIjpbXSwicGF5bWVudHMiOltdfSwiZ3JhbnRfdHlwZSI6ImNsaWVudF9jcmVkZW50aWFscyJ9fQ.GcR6DueHSiMEfHaA-_c8qvtDaWh06G2qGll1NwFuido\",\n    \"refresh_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcyNjIyOTQyMSwianRpIjoiM2NkMDNkZjItZGVmNi00Y2QyLWE1M2EtOTliZjA4NGFiNmYzIiwidHlwZSI6InJlZnJlc2giLCJzdWIiOiJuZW93aXNlX3ByZXBvZCIsIm5iZiI6MTcyNjIyOTQyMSwiZXhwIjoxNzI4ODIxNDIxLCJ1c2VyX2NsYWltcyI6eyJjb21wYW55X2lkIjoyLCJtb2R1bGVfYWNjZXNzIjp7ImNvcmVfYmFua2luZyI6W10sInBheW1lbnRzIjpbXX0sImdyYW50X3R5cGUiOiJjbGllbnRfY3JlZGVudGlhbHMifX0.RccoGLak2ZSEkx1VL3J1eoLa3NcX0QRddXH-RMGB9k4\",\n    \"request_urn\": \"43688d386fab4ac8909da49e5a7e8e31\"\n}"
+                'Success: Create access token using refresh token':
+                  value: "{\n    \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcyNjIyODk4OSwianRpIjoiNmEyOGJhODktZGM4NS00NjY0LWE1Y2QtN2U5OWQ3M2NmNDhiIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6Im5lb3dpc2VfcHJlcG9kIiwibmJmIjoxNzI2MjI4OTg5LCJleHAiOjE3MjYyMjk4ODksInVzZXJfY2xhaW1zIjp7ImNvbXBhbnlfaWQiOjIsIm1vZHVsZV9hY2Nlc3MiOnsiY29yZV9iYW5raW5nIjpbXSwicGF5bWVudHMiOltdfSwiZ3JhbnRfdHlwZSI6ImNsaWVudF9jcmVkZW50aWFscyJ9fQ.t9H7PRP3ID853uXtpaPVQzdDCyY4BEeKf2JTYHZiIto\",\n    \"refresh_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcyNjIyODkwNSwianRpIjoiOWRhZTNhOWItNWMxOC00MWU1LWJjNzktMWUxMGM1NGMwYmE3IiwidHlwZSI6InJlZnJlc2giLCJzdWIiOiJuZW93aXNlX3ByZXBvZCIsIm5iZiI6MTcyNjIyODkwNSwiZXhwIjoxNzI4ODIwOTA1LCJ1c2VyX2NsYWltcyI6eyJjb21wYW55X2lkIjoyLCJtb2R1bGVfYWNjZXNzIjp7ImNvcmVfYmFua2luZyI6W10sInBheW1lbnRzIjpbXX0sImdyYW50X3R5cGUiOiJjbGllbnRfY3JlZGVudGlhbHMifX0.eOq7QAMYno6RKwbexVtdeDq0cyayuPQK2jk4t6AtpVE\",\n    \"request_urn\": \"d5003b7a2e49413b9a4dbf7ecb86261e\"\n}"
+              schema:
+                oneOf:
+                - title: 'Success: Create access token using client credentials'
+                  type: object
+                  properties:
+                    access_token:
+                      type: string
+                      example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcyNjIyOTQyMSwianRpIjoiMTM1NTU0M2EtMGM1ZS00YTMzLWE1NDktZTBhMTE5MjA5MzkyIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6Im5lb3dpc2VfcHJlcG9kIiwibmJmIjoxNzI2MjI5NDIxLCJleHAiOjE3MjYyMzAzMjEsInVzZXJfY2xhaW1zIjp7ImNvbXBhbnlfaWQiOjIsIm1vZHVsZV9hY2Nlc3MiOnsiY29yZV9iYW5raW5nIjpbXSwicGF5bWVudHMiOltdfSwiZ3JhbnRfdHlwZSI6ImNsaWVudF9jcmVkZW50aWFscyJ9fQ.GcR6DueHSiMEfHaA-_c8qvtDaWh06G2qGll1NwFuido
+                    refresh_token:
+                      type: string
+                      example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcyNjIyOTQyMSwianRpIjoiM2NkMDNkZjItZGVmNi00Y2QyLWE1M2EtOTliZjA4NGFiNmYzIiwidHlwZSI6InJlZnJlc2giLCJzdWIiOiJuZW93aXNlX3ByZXBvZCIsIm5iZiI6MTcyNjIyOTQyMSwiZXhwIjoxNzI4ODIxNDIxLCJ1c2VyX2NsYWltcyI6eyJjb21wYW55X2lkIjoyLCJtb2R1bGVfYWNjZXNzIjp7ImNvcmVfYmFua2luZyI6W10sInBheW1lbnRzIjpbXX0sImdyYW50X3R5cGUiOiJjbGllbnRfY3JlZGVudGlhbHMifX0.RccoGLak2ZSEkx1VL3J1eoLa3NcX0QRddXH-RMGB9k4
+                    request_urn:
+                      type: string
+                      example: 43688d386fab4ac8909da49e5a7e8e31
+                - title: 'Success: Create access token using refresh token'
+                  type: object
+                  properties:
+                    access_token:
+                      type: string
+                      example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcyNjIyODk4OSwianRpIjoiNmEyOGJhODktZGM4NS00NjY0LWE1Y2QtN2U5OWQ3M2NmNDhiIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6Im5lb3dpc2VfcHJlcG9kIiwibmJmIjoxNzI2MjI4OTg5LCJleHAiOjE3MjYyMjk4ODksInVzZXJfY2xhaW1zIjp7ImNvbXBhbnlfaWQiOjIsIm1vZHVsZV9hY2Nlc3MiOnsiY29yZV9iYW5raW5nIjpbXSwicGF5bWVudHMiOltdfSwiZ3JhbnRfdHlwZSI6ImNsaWVudF9jcmVkZW50aWFscyJ9fQ.t9H7PRP3ID853uXtpaPVQzdDCyY4BEeKf2JTYHZiIto
+                    refresh_token:
+                      type: string
+                      example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcyNjIyODkwNSwianRpIjoiOWRhZTNhOWItNWMxOC00MWU1LWJjNzktMWUxMGM1NGMwYmE3IiwidHlwZSI6InJlZnJlc2giLCJzdWIiOiJuZW93aXNlX3ByZXBvZCIsIm5iZiI6MTcyNjIyODkwNSwiZXhwIjoxNzI4ODIwOTA1LCJ1c2VyX2NsYWltcyI6eyJjb21wYW55X2lkIjoyLCJtb2R1bGVfYWNjZXNzIjp7ImNvcmVfYmFua2luZyI6W10sInBheW1lbnRzIjpbXX0sImdyYW50X3R5cGUiOiJjbGllbnRfY3JlZGVudGlhbHMifX0.eOq7QAMYno6RKwbexVtdeDq0cyayuPQK2jk4t6AtpVE
+                    request_urn:
+                      type: string
+                      example: d5003b7a2e49413b9a4dbf7ecb86261e
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                'Failure: Invalid client credentials':
+                  value: "{\n    \"response_message\": \"Invalid client_id or client_secret\",\n    \"response_key\": \"invalid_client_credentials\",\n    \"request_urn\": \"2dd7118665a24bde930238d05fb521f2\"\n}"
+              schema:
+                type: object
+                properties:
+                  response_message:
+                    type: string
+                    example: Invalid client_id or client_secret
+                  response_key:
+                    type: string
+                    example: invalid_client_credentials
+                  request_urn:
+                    type: string
+                    example: 2dd7118665a24bde930238d05fb521f2
+      deprecated: false
+      tags:
+      - Auth
+x-readme:
+  headers: []
+  explorer-enabled: true
+  proxy-enabled: true
+x-readme-fauxas: true

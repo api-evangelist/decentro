@@ -1,0 +1,100 @@
+openapi: 3.2.0
+info:
+  title: Decfin Staging Deposit Simulation API
+  version: '1.0'
+servers:
+- url: https://staging.api.decentro.tech
+security:
+- {}
+tags:
+- name: Deposit Simulation
+paths:
+  /deposit_simulation/ecollect:
+    post:
+      summary: Simulate E-collect Transaction (Staging) - PA platform
+      description: This API can be used in our Staging environment to simulate an incoming E-Collect Transaction for a specific Virtual Account
+      operationId: simulate-e-collect-transaction-staging
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - account_number
+              - ifsc
+              - name
+              - amount
+              - transfer_type
+              - remarks
+              - bank_reference_number
+              properties:
+                beneficiary_details:
+                  type: string
+                  description: This block will contain the details of the beneficiary or the destination Virtual Account
+                account_number:
+                  type: string
+                  description: The Account number of the remitter. This is the account from which the funds are being loaded.
+                ifsc:
+                  type: string
+                  description: The IFSC code mapped to the remitter account. This is the account from which the funds are being loaded.
+                remitter_details:
+                  type: string
+                  description: This block will contain the details of the remitter, aka, the sender.
+                name:
+                  type: string
+                  description: The name of remitter, aka, the sender.
+                transfer_details:
+                  type: string
+                  description: This block will contain the details of the the fund transfer
+                amount:
+                  type: string
+                  description: The transfer amount. Up to 2 decimal places are supported.
+                transfer_type:
+                  type: string
+                  description: 'The channel through which the funds are transferred. Possible values are: IMPS, NEFT, RTGS'
+                remarks:
+                  type: string
+                  description: The purpose message or reason for the fund transfer.
+                bank_reference_number:
+                  type: string
+                  description: The bank reference number associated with the fund transfer. This value will be propagated in our callbacks for ease of reconciliation.
+            examples:
+              Sample Request:
+                value:
+                  beneficiary_details:
+                    account_number: YBLTRU6340378299288
+                    ifsc: YES0000106
+                  remitter_details:
+                    account_number: '026431500007721'
+                    ifsc: YESB0CMSNOC
+                    name: Mocked Remitter
+                  transfer_details:
+                    amount: 100
+                    transfer_type: IMPS
+                    remarks: Test Credit
+                    bank_reference_number: '986700002'
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                API Response:
+                  value: "{\n    \"message\": \"Deposit request accepted.\",\n    \"response_key\": \"success_deposit_request_accepted\"\n}"
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Deposit request accepted.
+                  response_key:
+                    type: string
+                    example: success_deposit_request_accepted
+      deprecated: false
+      tags:
+      - Deposit Simulation
+x-readme:
+  headers: []
+  explorer-enabled: true
+  proxy-enabled: true
+x-readme-fauxas: true

@@ -116,24 +116,6 @@ apis:
     url: json-schema/decentro-payout.json
   - type: Rules
     url: rules/decentro-payments-api-rules.yml
-- aid: decentro:decentro-collections-api
-  name: Decentro Collections API
-  description: The Collections API from Decentro — 2 operation(s) for collections.
-  humanURL: https://docs.decentro.tech/
-  baseURL: https://in.decentro.tech
-  tags:
-  - Collection
-  tags_raw:
-  - Collections
-  properties:
-  - type: OpenAPI
-    url: openapi/decentro-collections-api-openapi.yml
-  - type: Documentation
-    url: https://docs.decentro.tech/
-  - type: JSONSchema
-    url: json-schema/decentro-payout.json
-  - type: Rules
-    url: rules/decentro-payments-api-rules.yml
 - aid: decentro:decentro-forensics-api
   name: Decentro Forensics API
   description: The Forensics API from Decentro — 2 operation(s) for forensics.
@@ -160,56 +142,6 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/decentro-journals-api-openapi.yml
-  - type: Documentation
-    url: https://docs.decentro.tech/
-  - type: JSONSchema
-    url: json-schema/decentro-payout.json
-  - type: Rules
-    url: rules/decentro-payments-api-rules.yml
-- aid: decentro:decentro-mandates-api
-  name: Decentro Mandates API
-  description: The Mandates API from Decentro — 2 operation(s) for mandates.
-  humanURL: https://docs.decentro.tech/
-  baseURL: https://in.decentro.tech
-  tags:
-  - Mandates
-  properties:
-  - type: OpenAPI
-    url: openapi/decentro-mandates-api-openapi.yml
-  - type: Documentation
-    url: https://docs.decentro.tech/
-  - type: JSONSchema
-    url: json-schema/decentro-payout.json
-  - type: Rules
-    url: rules/decentro-payments-api-rules.yml
-- aid: decentro:decentro-payouts-api
-  name: Decentro Payouts API
-  description: The Payouts API from Decentro — 2 operation(s) for payouts.
-  humanURL: https://docs.decentro.tech/
-  baseURL: https://in.decentro.tech
-  tags:
-  - Payouts
-  properties:
-  - type: OpenAPI
-    url: openapi/decentro-payouts-api-openapi.yml
-  - type: Documentation
-    url: https://docs.decentro.tech/
-  - type: JSONSchema
-    url: json-schema/decentro-payout.json
-  - type: Rules
-    url: rules/decentro-payments-api-rules.yml
-- aid: decentro:decentro-settlements-api
-  name: Decentro Settlements API
-  description: The Settlements API from Decentro — 1 operation(s) for settlements.
-  humanURL: https://docs.decentro.tech/
-  baseURL: https://in.decentro.tech
-  tags:
-  - Settlement
-  tags_raw:
-  - Settlements
-  properties:
-  - type: OpenAPI
-    url: openapi/decentro-settlements-api-openapi.yml
   - type: Documentation
     url: https://docs.decentro.tech/
   - type: JSONSchema
@@ -244,6 +176,86 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/decentro-verification-api-openapi.yml
+  - type: Documentation
+    url: https://docs.decentro.tech/
+  - type: JSONSchema
+    url: json-schema/decentro-payout.json
+  - type: Rules
+    url: rules/decentro-payments-api-rules.yml
+- aid: decentro:decentro-auth-api
+  name: Decentro Auth API
+  description: The Auth API from Decentro — 1 operation(s) for auth.
+  humanURL: https://docs.decentro.tech/
+  baseURL: https://in.decentro.tech
+  tags:
+  - Auth
+  properties:
+  - type: OpenAPI
+    url: openapi/decentro-auth-api-openapi.yml
+  - type: Documentation
+    url: https://docs.decentro.tech/
+  - type: JSONSchema
+    url: json-schema/decentro-payout.json
+  - type: Rules
+    url: rules/decentro-payments-api-rules.yml
+- aid: decentro:decentro-banking-api
+  name: Decentro Banking API
+  description: The Banking API from Decentro — 11 operation(s) for banking.
+  humanURL: https://docs.decentro.tech/
+  baseURL: https://in.decentro.tech
+  tags:
+  - Banking
+  properties:
+  - type: OpenAPI
+    url: openapi/decentro-banking-api-openapi.yml
+  - type: Documentation
+    url: https://docs.decentro.tech/
+  - type: JSONSchema
+    url: json-schema/decentro-payout.json
+  - type: Rules
+    url: rules/decentro-payments-api-rules.yml
+- aid: decentro:decentro-decentro-api
+  name: Decentro Decentro API
+  description: The Decentro API from Decentro — 2 operation(s) for decentro.
+  humanURL: https://docs.decentro.tech/
+  baseURL: https://in.decentro.tech
+  tags:
+  - Decentro
+  properties:
+  - type: OpenAPI
+    url: openapi/decentro-decentro-api-openapi.yml
+  - type: Documentation
+    url: https://docs.decentro.tech/
+  - type: JSONSchema
+    url: json-schema/decentro-payout.json
+  - type: Rules
+    url: rules/decentro-payments-api-rules.yml
+- aid: decentro:decentro-deposit-simulation-api
+  name: Decentro Deposit Simulation API
+  description: The Deposit Simulation API from Decentro — 1 operation(s) for deposit simulation.
+  humanURL: https://docs.decentro.tech/
+  baseURL: https://in.decentro.tech
+  tags:
+  - Deposit Simulation
+  properties:
+  - type: OpenAPI
+    url: openapi/decentro-deposit-simulation-api-openapi.yml
+  - type: Documentation
+    url: https://docs.decentro.tech/
+  - type: JSONSchema
+    url: json-schema/decentro-payout.json
+  - type: Rules
+    url: rules/decentro-payments-api-rules.yml
+- aid: decentro:decentro-payments-api
+  name: Decentro Payments API
+  description: The Payments API from Decentro — 29 operation(s) for payments.
+  humanURL: https://docs.decentro.tech/
+  baseURL: https://in.decentro.tech
+  tags:
+  - Payments
+  properties:
+  - type: OpenAPI
+    url: openapi/decentro-payments-api-openapi.yml
   - type: Documentation
     url: https://docs.decentro.tech/
   - type: JSONSchema

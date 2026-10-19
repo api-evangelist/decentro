@@ -1,0 +1,12 @@
+{
+ "url": "https://docs.decentro.tech/openapi/65e59db4d5a4dc005d972404",
+ "final": "https://docs.decentro.tech/openapi/65e59db4d5a4dc005d972404",
+ "status": 200,
+ "content_type": "application/json; charset=utf-8",
+ "bytes": 381679,
+ "sha256": "2d36d3dab8c67deee79b8bbafe7bde2f7f7343ca8ef1d80561c450c1e8a7cd53",
+ "fetched_at": "2026-10-19",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "byte-identical",
+ "note": "re-archived: the provider's current document replaced a stale archive (roadmap#793); the old files are in openapi/_superseded/2026-10-19-stale"
+}
