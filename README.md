@@ -1,4 +1,4 @@
-# Decentro (decentro)
+# Decentro
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,135 +66,163 @@
 
 Decentro is a banking-as-a-service platform that provides businesses with seamless integration to Indian banking infrastructure - including payments (UPI, IMPS, NEFT, RTGS), virtual accounts, KYC, ledger primitives, and credit-bureau data. Decentro publishes a developer portal and Postman collection covering six API categories: KYC & Onboarding, Bytes (alternate data), Scanner (forensics), Payments, Virtual Accounts, and Ledger.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/decentro/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/decentro/refs/heads/main/apis.yml)
+**Areas:** Banking · Banking as a Service · Fintech · India · KYC · Ledger · Payments · UPI · Virtual Accounts
 
-## Scope
+## Decentro on APIs.io
 
-- **Position:** Consuming
-- **Access:** 3rd-Party
+Everything profiled for Decentro is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/decentro/](https://apis.io/providers/decentro/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (11)
 
-- Banking
-- Banking-as-a-Service
-- FinTech
-- India
-- KYC
-- Ledger
-- Payments
-- UPI
-- Virtual Accounts
+- [Decentro KYC & Onboarding API](https://apis.io/apis/decentro/kyc-api/) — Identity verification, customer onboarding, DigiLocker integration, Aadhaar OTP, document classification, and face match.
+- [Decentro Virtual Accounts API](https://apis.io/apis/decentro/virtual-accounts-api/) — Create and manage virtual bank accounts, balances, statements, and remitter whitelisting for collections and reconciliation.
+- [Decentro Accounts API](https://apis.io/apis/decentro/decentro-accounts-api/) — The Accounts API from Decentro — 2 operation(s) for accounts.
+- [Decentro Collections API](https://apis.io/apis/decentro/decentro-collections-api/) — The Collections API from Decentro — 2 operation(s) for collections.
+- [Decentro Forensics API](https://apis.io/apis/decentro/decentro-forensics-api/) — The Forensics API from Decentro — 2 operation(s) for forensics.
+- [Decentro Journals API](https://apis.io/apis/decentro/decentro-journals-api/) — The Journals API from Decentro — 1 operation(s) for journals.
+- [Decentro Mandates API](https://apis.io/apis/decentro/decentro-mandates-api/) — The Mandates API from Decentro — 2 operation(s) for mandates.
+- [Decentro Payouts API](https://apis.io/apis/decentro/decentro-payouts-api/) — The Payouts API from Decentro — 2 operation(s) for payouts.
+- [Decentro Settlements API](https://apis.io/apis/decentro/decentro-settlements-api/) — The Settlements API from Decentro — 1 operation(s) for settlements.
+- [Decentro Transactions API](https://apis.io/apis/decentro/decentro-transactions-api/) — The Transactions API from Decentro — 1 operation(s) for transactions.
+- [Decentro Verification API](https://apis.io/apis/decentro/decentro-verification-api/) — The Verification API from Decentro — 1 operation(s) for verification.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2025-02-24
-- **Modified:** 2026-05-19
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### Decentro KYC & Onboarding API
+Which operations an agent can call, which act, and which need a human in the loop.
 
-Identity verification, customer onboarding, DigiLocker integration, Aadhaar OTP, document classification, and face match.
+- [Decentro Agentic Access](https://apis.io/agentic-access/decentro/decentro-agentic-access/)
 
-- **Human URL:** [https://docs.decentro.tech/](https://docs.decentro.tech/)
-- **Base URL:** `https://in.decentro.tech`
+#### JSON Schema (2)
 
-#### Tags
+The data models the API reads and writes.
 
-- Aadhaar
-- DigiLocker
-- Forensics
-- KYC
-- Onboarding
+- [Decentro Payout](https://apis.io/schemas/decentro/decentro-payout/)
+- [Decentro Virtual Account](https://apis.io/schemas/decentro/decentro-virtual-account/)
 
-#### Properties
+#### JSON-LD (1)
 
-- [Documentation](https://docs.decentro.tech/)
-- [OpenAPI](openapi/decentro-kyc-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/decentro-kyc-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/decentro-kyc-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Linked-data contexts for the provider's vocabulary.
 
-### Decentro Payments API
+- [Decentro Context](https://apis.io/jsonld/decentro/decentro-context/)
 
-Collections, payouts, ENACH mandates, UPI Autopay, settlements, and refunds for the Indian banking system.
+#### Vocabulary (1)
 
-- **Human URL:** [https://docs.decentro.tech/](https://docs.decentro.tech/)
-- **Base URL:** `https://in.decentro.tech`
+The provider's domain terms, defined.
 
-#### Tags
+- [Decentro Vocabulary](https://apis.io/vocabularies/decentro/decentro-vocabulary/)
 
-- Collections
-- Mandates
-- Payouts
-- Settlements
-- UPI
+#### Collections (13)
 
-#### Properties
+Postman and Open Collection request collections.
 
-- [Documentation](https://docs.decentro.tech/)
-- [OpenAPI](openapi/decentro-payments-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/decentro-payments-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/decentro-payments-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/decentro-payout.json) — [JSON Schema](https://json-schema.org/specification)
-- [Rules](rules/decentro-payments-api-rules.yml)
-- [Capabilities](capabilities/decentro-payments-api-capabilities.yml)
+- [Decentro KYC & Onboarding Accounts API](https://apis.io/collections/decentro/open-decentro-accounts-api/)
+- [Decentro KYC & Onboarding Accounts Collections API](https://apis.io/collections/decentro/open-decentro-collections-api/)
+- [Decentro KYC & Onboarding Accounts Forensics API](https://apis.io/collections/decentro/open-decentro-forensics-api/)
+- [Decentro KYC & Onboarding Accounts Journals API](https://apis.io/collections/decentro/open-decentro-journals-api/)
+- [Decentro & Onboarding Accounts KYC API](https://apis.io/collections/decentro/open-decentro-kyc-api/)
+- [Decentro Ledger API](https://apis.io/collections/decentro/open-decentro-ledger-api/)
+- [Decentro KYC & Onboarding Accounts Mandates API](https://apis.io/collections/decentro/open-decentro-mandates-api/)
+- [Decentro Payments API](https://apis.io/collections/decentro/open-decentro-payments-api/)
+- [Decentro KYC & Onboarding Accounts Payouts API](https://apis.io/collections/decentro/open-decentro-payouts-api/)
+- [Decentro KYC & Onboarding Accounts Settlements API](https://apis.io/collections/decentro/open-decentro-settlements-api/)
+- [Decentro KYC & Onboarding Accounts Transactions API](https://apis.io/collections/decentro/open-decentro-transactions-api/)
+- [Decentro KYC & Onboarding Accounts Verification API](https://apis.io/collections/decentro/open-decentro-verification-api/)
+- [Decentro KYC & Onboarding Accounts Virtual Accounts API](https://apis.io/collections/decentro/open-decentro-virtual-accounts-api/)
 
-### Decentro Virtual Accounts API
+#### Governance rules (2)
 
-Create and manage virtual bank accounts, balances, statements, and remitter whitelisting for collections and reconciliation.
+Spectral rulesets for the provider's contracts.
 
-- **Human URL:** [https://docs.decentro.tech/](https://docs.decentro.tech/)
-- **Base URL:** `https://in.decentro.tech`
+- [Decentro — jsonschema rules](https://apis.io/rules/decentro/decentro-jsonschema-spectral-rules/)
+- [Decentro — payments api rules](https://apis.io/rules/decentro/decentro-payments-api-rules/)
 
-#### Tags
+#### Security (2)
 
-- Banking
-- Reconciliation
-- Virtual Accounts
+Authentication, trust centre, and vulnerability disclosure.
 
-#### Properties
+- [Decentro Authentication](https://apis.io/security/decentro/decentro-authentication/)
+- [Decentro Domain Security](https://apis.io/security/decentro/decentro-domain-security/)
 
-- [Documentation](https://docs.decentro.tech/)
-- [OpenAPI](openapi/decentro-virtual-accounts-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/decentro-virtual-accounts-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/decentro-virtual-accounts-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/decentro-virtual-account.json) — [JSON Schema](https://json-schema.org/specification)
+#### Plans and pricing (1)
 
-### Decentro Ledger API
+Published plans, tiers and prices.
 
-Double-entry accounting primitives for journals, ledger accounts, and transactions tied to Decentro virtual accounts and external counterparties.
+- [Decentro Plans Pricing](https://apis.io/plans/decentro/decentro-plans-pricing/)
 
-- **Human URL:** [https://docs.decentro.tech/](https://docs.decentro.tech/)
-- **Base URL:** `https://in.decentro.tech`
+#### Rate limits (1)
 
-#### Tags
+Published request limits.
 
-- Accounts
-- Accounting
-- Ledger
-- Transactions
+- [Decentro Rate Limits](https://apis.io/rate-limits/decentro/decentro-rate-limits/)
 
-#### Properties
+#### FinOps (1)
 
-- [Documentation](https://docs.decentro.tech/)
-- [OpenAPI](openapi/decentro-ledger-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/decentro-ledger-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/decentro-ledger-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+What the API costs to run, by operation.
 
-## Common Properties
+- [Decentro Finops](https://apis.io/finops/decentro/decentro-finops/)
 
-- [GitHub Organization](https://github.com/decentro-in)
-- [LinkedIn](https://www.linkedin.com/company/decentro)
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
 - [Website](https://decentro.tech/)
-- [Portal](https://docs.decentro.tech/)
-- [Reference](https://docs.decentro.tech/reference)
-- [Blog](https://decentro.tech/blog/)
 - [Pricing](https://decentro.tech/pricing/)
-- [JSON-LD](json-ld/decentro-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
-- [Vocabulary](vocabulary/decentro-vocabulary.yml)
-- [L L Ms Txt](https://docs.decentro.tech/llms.txt)
+- [Blog](https://decentro.tech/blog/)
+- [GitHub](https://github.com/decentro-in)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 31.0** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 51.7 |
+| Contract governance | 27.3 |
+| Operational transparency | 7.9 |
+| Developer ergonomics | 35.7 |
+| Access clarity | 5.3 |
+
+**Agent readiness 19.6** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 13.4** — Banking & Open Finance
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/decentro/](https://apis.io/providers/decentro/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Decentro: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/decentro/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
